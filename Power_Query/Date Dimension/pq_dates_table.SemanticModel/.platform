@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "pq_dates_table"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5d37c36f-5cbc-4227-a2f1-77bcfad92a1b"
+  }
+}

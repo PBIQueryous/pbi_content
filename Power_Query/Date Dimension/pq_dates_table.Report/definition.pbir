@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../pq_dates_table.SemanticModel"
+    },
+    "byConnection": null
+  }
+}

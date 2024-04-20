@@ -1,0 +1,19 @@
+{
+  "name": "Custom",
+  "visualStyles": {
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#E8E8E8"
+              }
+            },
+            "transparency": 20
+          }
+        ]
+      }
+    }
+  }
+}

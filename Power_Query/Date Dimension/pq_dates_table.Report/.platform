@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "pq_dates_table"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a94692a6-f8be-4a97-a3d3-19963aa7c8dd"
+  }
+}

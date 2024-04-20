@@ -1,0 +1,66 @@
+{
+  "config": "{\"version\":\"5.37\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY22SU09\",\"version\":\"5.37\",\"type\":2},\"customTheme\":{\"name\":\"Custom8061553639002172.json\",\"version\":\"5.37\",\"type\":1}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"isPersistentUserStateDisabled\":false,\"hideVisualContainerHeader\":false,\"useStylableVisualContainerHeader\":true,\"exportDataMode\":1,\"useNewFilterPaneExperience\":true,\"optOutNewFilterPaneExperience\":false,\"defaultFilterActionIsDataFilter\":true,\"useCrossReportDrillthrough\":false,\"allowChangeFilterTypes\":true,\"allowInlineExploration\":false,\"disableFilterPaneSearch\":false,\"enableDeveloperMode\":false,\"useEnhancedTooltips\":true,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Custom8061553639002172.json",
+            "path": "Custom8061553639002172.json",
+            "type": 201
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY22SU09",
+            "path": "BaseThemes/CY22SU09.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 1080.00,
+      "name": "ReportSection",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"87d15b905db354e663b1\",\"layouts\":[{\"id\":0,\"position\":{\"x\":297.8396072013093,\"y\":74.23895253682487,\"z\":1000,\"width\":1605.859247135843,\"height\":225.36824877250407,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"tbl_fnDates.Week End\",\"active\":true},{\"queryRef\":\"tbl_fnDates.2W Date\"},{\"queryRef\":\"tbl_fnDates.Month Start\"},{\"queryRef\":\"tbl_fnDates.2M Date\"},{\"queryRef\":\"tbl_fnDates.6M Date\"}],\"Y\":[{\"queryRef\":\"CountNonNull(tbl_fnDates.Date)\"}],\"Tooltips\":[{\"queryRef\":\"Min(tbl_fnDates.Month Start)\"},{\"queryRef\":\"Min(tbl_fnDates.Month End)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"tbl_fnDates\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Date\"}},\"Function\":5},\"Name\":\"CountNonNull(tbl_fnDates.Date)\",\"NativeReferenceName\":\"Count of Date\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Month Start\"}},\"Function\":3},\"Name\":\"Min(tbl_fnDates.Month Start)\",\"NativeReferenceName\":\"Earliest Month Start\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Month End\"}},\"Function\":4},\"Name\":\"Min(tbl_fnDates.Month End)\",\"NativeReferenceName\":\"Latest Month End\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Week End\"},\"Name\":\"tbl_fnDates.Week End\",\"NativeReferenceName\":\"1 WEEK\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"2W Date\"},\"Name\":\"tbl_fnDates.2W Date\",\"NativeReferenceName\":\"FORTNIGHTLY (2 WEEKS)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Month Start\"},\"Name\":\"tbl_fnDates.Month Start\",\"NativeReferenceName\":\"MONTHLY\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"2M Date\"},\"Name\":\"tbl_fnDates.2M Date\",\"NativeReferenceName\":\"BIMENSAL (2 MONTHS)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"6M Date\"},\"Name\":\"tbl_fnDates.6M Date\",\"NativeReferenceName\":\"BIANNUAL (6 MONTHS)\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Week End\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"2W Date\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Month Start\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"2M Date\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"6M Date\"}}}]},\"queryFieldParametersByRole\":{\"Category\":[{\"index\":0,\"length\":5,\"expr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Date Fields\"}},\"Property\":\"DateParameter\"}}}]},\"columnProperties\":{\"tbl_fnDates.Week End\":{\"displayName\":\"1 WEEK\"},\"tbl_fnDates.2W Date\":{\"displayName\":\"FORTNIGHTLY (2 WEEKS)\"},\"tbl_fnDates.Month Start\":{\"displayName\":\"MONTHLY\"},\"tbl_fnDates.2M Date\":{\"displayName\":\"BIMENSAL (2 MONTHS)\"},\"tbl_fnDates.6M Date\":{\"displayName\":\"BIANNUAL (6 MONTHS)\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryAxis\":[{\"properties\":{\"axisType\":{\"expr\":{\"Literal\":{\"Value\":\"'Scalar'\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Dates Table'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 225.37,
+          "width": 1605.86,
+          "x": 297.84,
+          "y": 74.24,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"ad622ff0198d902403a0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":53.02782324058919,\"y\":74.23895253682487,\"z\":0,\"width\":233.32242225859247,\"height\":225.36824877250407,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DateParameter.DateParameter\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date Fields\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DateParameter\"},\"Name\":\"DateParameter.DateParameter\",\"NativeReferenceName\":\"DateParameter\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{}}],\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 225.37,
+          "width": 233.32,
+          "x": 53.03,
+          "y": 74.24,
+          "z": 0.00
+        }
+      ],
+      "width": 1920.00
+    }
+  ],
+  "theme": "Custom8061553639002172.json"
+}
