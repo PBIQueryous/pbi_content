@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+
+<rect x="0" y="0" width="2" height="2" fill="#1E6A67" stroke="#0C556C" stroke-width="0.05">
+	<animateMotion dur="6s" repeatCount="indefinite"
+		path="M 0 0 h 10 h -10"
+	/>
+    <animate
+        attributeName="fill"
+        values="#1E6A67; #9AB53D; #1E6A67"
+        dur="6s"
+        repeatCount="1"
+    />
+    <animate
+    attributeName="stroke"
+    values="#1E6A67; #FFD500; #1E6A67"
+    dur="6s"
+    repeatCount="indefinite"
+/>
+</rect>
+</svg>

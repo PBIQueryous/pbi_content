@@ -1,0 +1,74 @@
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 100 100'><style>
+    text {
+      font-family: Segoe UI;
+      stroke: none;
+      dominant-baseline: middle;
+      text-anchor: middle;
+    }
+  </style><defs>
+    <symbol id='box' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+      <g id='box'>
+        <g stroke-width='0.5' stroke-linejoin='round' stroke-linecap='round'>
+          <g>
+            <path d='M 7.5 35 L 57.5 85 L 92.5 55 L 42.5 5 Z' />
+          </g>
+          <g>
+            <path d='M 7.5 45 L 7.5 35 L 57.5 85 L 57.5 95 L 7.5 45 ' />
+            <path d='M 57.5 85 L 57.5 95 L 92.5 65 L 92.5 55 L 57.5 85 Z' />
+          </g>
+        </g>
+      </g>
+    </symbol>
+    <symbol id='boxSelected' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+      <g id='box'>
+        <g stroke-width='0.5' stroke-linejoin='round' stroke-linecap='round'>
+          <g>
+            <path d='M 7.5 35 L 57.5 85 L 92.5 55 L 42.5 5 Z' />
+          </g>
+          <g>
+            <path d='M 7.5 45 L 7.5 35 L 57.5 85 L 57.5 95 L 7.5 45 ' />
+            <path d='M 57.5 85 L 57.5 95 L 92.5 65 L 92.5 55 L 57.5 85 Z' />
+          </g>
+          <text x='44.5' y='45' transform='rotate(45, 45, 45)' fill='#ffffff'>
+            3
+        </text>
+        </g>
+      </g>
+    </symbol>
+    <symbol id='boxEnd' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+      <g id='box'>
+        <g stroke-width='0.5' stroke-linejoin='round' stroke-linecap='round'>
+          <g>
+            <path d='M 7.5 35 L 57.5 85 L 92.5 55 L 42.5 5 Z' />
+          </g>
+          <g>
+            <path d='M 7.5 45 L 7.5 35 L 57.5 85 L 57.5 95 L 7.5 45 ' />
+            <path d='M 57.5 85 L 57.5 95 L 92.5 65 L 92.5 55 L 57.5 85 Z' />
+          </g>
+          <text x='44.5' y='42.5' transform='rotate(45, 45, 45)' fill='#ffffff'>
+            E
+        </text>
+        </g>
+      </g>
+    </symbol>
+  </defs><use x='-100' height='60' fill='hsl(224, 52%, 32%)' stroke='hsl(224, 24%, 55%)' transform='matrix(1, 0, 0, 1, 15, 38)' xlink:href='#box'>
+                <animateMotion path='M 100 0 L 100 0' calcMode='linear' begin='0s' dur='0.1s' fill='freeze' />
+            </use><use x='-100' height='60' fill='hsl(224, 52%, 32%)' stroke='hsl(224, 24%, 55%)' transform='matrix(1, 0, 0, 1, 15, 32)' xlink:href='#box'>
+                <animateMotion path='M 100 0 L 100 0' calcMode='linear' begin='0s' dur='0.1s' fill='freeze' />
+            </use><use x='-100' height='60' fill='hsl(224, 52%, 32%)' stroke='hsl(224, 24%, 55%)' transform='matrix(1, 0, 0, 1, 15, 26)' xlink:href='#box'>
+                <animateMotion path='M 100 0 L 100 0' calcMode='linear' begin='0s' dur='0.1s' fill='freeze' />
+            </use><use x='-100' height='60' fill='hsl(224, 52%, 32%)' stroke='hsl(224, 24%, 55%)' transform='matrix(1, 0, 0, 1, 15, 20)' xlink:href='#box'>
+                <animateMotion path='M 100 0 L 100 0' calcMode='linear' begin='0s' dur='1s' fill='freeze' />
+                <animate attributeName='fill' attributeType='XML' values='hsl(224, 52%, 32%);#FFC300' begin='0.5s' dur='0.5s' fill='freeze' />
+                <animate attributeName='stroke' attributeType='XML' values='hsl(224, 24%, 55%);#fcdb6f' begin='0.5s' dur='0.5s' fill='freeze' />
+                <animateMotion path='M 200 0' calcMode='linear' begin='1s' dur='1s' fill='freeze' />
+            </use>
+            <use x='-100' height='60' fill='#FFC300' stroke='#fcdb6f' transform='matrix(1, 0, 0, 1, 15, 20)' xlink:href='#boxSelected'>
+                <animateMotion path='M 100 0 L 70 0' calcMode='linear' begin='0.75s' dur='1s' fill='freeze' />
+            </use><use x='-100' height='60' fill='hsl(224, 52%, 32%)' stroke='hsl(224, 24%, 55%)' transform='matrix(1, 0, 0, 1, 15, 14)' xlink:href='#box'>
+                <animateMotion path='M 100 0 L 100 0' calcMode='linear' begin='0s' dur='0.1s' fill='freeze' />
+            </use><use x='-100' height='60' fill='hsl(224, 52%, 32%)' stroke='hsl(224, 24%, 55%)' transform='matrix(1, 0, 0, 1, 15, 8)' xlink:href='#box'>
+                <animateMotion path='M 100 0 L 100 0' calcMode='linear' begin='0s' dur='0.1s' fill='freeze' />
+            </use><use x='-100' height='60' fill='hsl(224, 52%, 32%)' stroke='hsl(224, 24%, 55%)' transform='matrix(1, 0, 0, 1, 15, 2)' xlink:href='#boxEnd'>
+                <animateMotion path='M 100 0 L 100 0' calcMode='linear' begin='0s' dur='0.1s' fill='freeze' />
+            </use></svg>

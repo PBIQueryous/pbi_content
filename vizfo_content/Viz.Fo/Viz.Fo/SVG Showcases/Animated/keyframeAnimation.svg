@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    
+<style>
+
+.box{
+    animation-name: changeColor;
+    animation-duration: 5s;
+}
+
+@keyframes changeColor {
+    from {
+      fill: black; rx: 0;
+    }
+    50% {
+      fill: red; rx: 5;
+    }
+    75% {
+      fill: hsl(0,25%,50%);
+    }
+    to {
+        fill: black;
+    }
+  }
+</style>
+
+<rect class="box" width="100" height="100" />
+
+</svg>

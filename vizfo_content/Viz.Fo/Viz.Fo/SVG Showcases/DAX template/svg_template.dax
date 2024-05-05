@@ -1,0 +1,23 @@
+/* SETUP */
+// INSERT YOUR SETUP VARIABLES HERE
+
+/* COLORS DECLARTIONS */
+// INSERT YOUR COLORS VARIABLES HERE
+
+/* SVG DECLARTIONS */
+// BASIC SVG DECLARATION
+VAR _svgDeclaration = "data:image/svg+xml;utf8,"
+VAR _svgHeader = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>"
+VAR _svgEnd = "</svg>"
+
+/* STYLE DECLARTIONS */
+VAR _style = "<style></style>"
+
+/* DEFINITIONS DECLARTIONS */
+VAR _defs = "<defs></defs>"
+
+/* CALCULATION */
+// INSERT YOUR CALCULATION HERE
+VAR _result = _svgDeclaration & _svgHeader & _style & _defs & <CALCULATED-PART-OF-SVG> & _svgEnd
+RETURN
+    _result

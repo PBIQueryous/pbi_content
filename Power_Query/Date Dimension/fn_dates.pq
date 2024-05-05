@@ -105,6 +105,8 @@ let
               List.Combine({list_Dates, {var_CurrentDate}})
             else
               list_Dates, 
+
+          // base table starts here
           make_Table = Table.FromList(
             tx_AddToday, 
             Splitter.SplitByNothing(), 
@@ -112,9 +114,15 @@ let
           ), 
           
           // start deriving columns here
-
+          date_id = Table.AddColumn(make_Table, "DateID", each 
+                let
+                    date_field = Date.Year([Date]) ,
+                    months_in_year = 12 ,
+                    months_field = Date.Month([Date]),
+                    output = date_field * months_in_year + months_field - 1
+                in output, Int64.Type),
           // Year as integer
-          col_Year = Table.AddColumn(make_Table, "YearNUM", each Date.Year([Date]), type number),
+          col_Year = Table.AddColumn(date_id, "YearNUM", each Date.Year([Date]), type number),
 
           // calendar Year Offset 
           col_YearOFFSET = Table.AddColumn(
@@ -1222,6 +1230,7 @@ in fiscal_academic_periods,
           cols_Reorder = Table.ReorderColumns(
             cols_Format, 
             {
+              "DateID",
               "Date",
               "CY Selection", 
               "isYearComplete", 

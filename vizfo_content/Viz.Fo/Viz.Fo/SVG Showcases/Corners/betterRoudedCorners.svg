@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110">
+    <style>
+        .text, .yAxis, .xAxis{
+            font-family: 'Segoe UI';
+            font-size: 4px;
+            fill: #000;
+        }
+        .yAxis {
+            dominant-baseline: middle;
+            text-anchor: middle;
+        }
+        .xAxis {
+            dominant-baseline: middle;
+            text-anchor: middle;
+        }
+        .grid{
+            stroke: #ccc;
+            stroke-width: 0.25;
+            stroke-linecap: round;
+            stro
+        }
+    </style>
+    <g class="texts">
+        <g class="yAxis">
+            <text x="5" y="10">1</text>
+            <text x="5" y="20">2</text>
+            <text x="5" y="30">3</text>
+            <text x="5" y="40">4</text>
+            <text x="5" y="50">5</text>
+            <text x="5" y="60">6</text>
+            <text x="5" y="70">7</text>
+            <text x="5" y="80">8</text>
+            <text x="5" y="90">9</text>
+            <text x="5" y="100">10</text>
+        </g>
+        <g class="xAxis">
+            <text x="10" y="105">1</text>
+            <text x="20" y="105">2</text>
+            <text x="30" y="105">3</text>
+            <text x="40" y="105">4</text>
+            <text x="50" y="105">5</text>
+            <text x="60" y="105">6</text>
+            <text x="70" y="105">7</text>
+            <text x="80" y="105">8</text>
+            <text x="90" y="105">9</text>
+            <text x="100" y="105">10</text>
+        </g>
+    </g>
+    <g class="grid">
+        <g class="yLines">
+            <line x1="10" x2="10" y1="10" y2="100"/>
+            <line x1="20" x2="20" y1="10" y2="100"/>
+            <line x1="30" x2="30" y1="10" y2="100"/>
+            <line x1="40" x2="40" y1="10" y2="100"/>
+            <line x1="50" x2="50" y1="10" y2="100"/>
+            <line x1="60" x2="60" y1="10" y2="100"/>
+            <line x1="70" x2="70" y1="10" y2="100"/>
+            <line x1="80" x2="80" y1="10" y2="100"/>
+            <line x1="90" x2="90" y1="10" y2="100"/>
+            <line x1="100" x2="100" y1="10" y2="100"/>
+        </g>
+        <g class="xLines">
+            <line x1="10" x2="100" y1="10" y2="10"/>
+            <line x1="10" x2="100" y1="20" y2="20"/>
+            <line x1="10" x2="100" y1="30" y2="30"/>
+            <line x1="10" x2="100" y1="40" y2="40"/>
+            <line x1="10" x2="100" y1="50" y2="50"/>
+            <line x1="10" x2="100" y1="60" y2="60"/>
+            <line x1="10" x2="100" y1="70" y2="70"/>
+            <line x1="10" x2="100" y1="80" y2="80"/>
+            <line x1="10" x2="100" y1="90" y2="90"/>
+            <line x1="10" x2="100" y1="100" y2="100"/>
+            </g>
+    </g>
+    <g fill="none" stroke="black" stroke-width="0.5">
+        <rect x="20" y="20" width="70" height="70" rx="12.5"/>
+        <rect x="30" y="30" width="50" height="50" rx="2.5"  />
+    </g>
+</svg>

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 170" >
+
+    <style>
+        text{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .frame{
+            fill: white;
+        }
+        .productName{
+            font-family: Arial, Helvetica, sans-serif;
+            dominant-baseline: hanging;
+            font-size: 12pt;
+        }
+        .bold{
+            font-weight: bold;
+        }
+        #progressBar{
+            .greyBar{
+                fill: #E6E6E6
+            }
+            .orangeColour{
+                fill: #efb74f
+            }
+            .redColour{
+                fill: hsl(0, 50%, 50%)
+            }
+            .targetLine{
+                stroke: #000;
+                stroke-width: 2;
+                stroke-dasharray: 8,2;
+            }
+            .progressText{
+                font-size: 10pt;
+                font-weight: bold;
+                dominant-baseline middle;
+                font-style: italic;
+            }
+            .xAxis{
+                font-size: 8pt;
+                fill: #bcbcbc;
+            }
+            
+
+        }
+            .supportLine{
+        stroke: #bcbcbc;
+        stroke-dasharray: 1;
+        }
+                .textEnd{
+                text-anchor: end;
+            }
+            .textMiddle{
+                text-anchor: middle;
+            }
+        .textResults{
+            font-size: 10pt;
+            dominant-baseline: hanging;
+        }
+        .greyText{
+            font-size: ;
+            fill: #bcbcbc;
+        }
+        .columns{
+            stroke: #d6d6d6;
+            fill: #e9e9e9;
+        }
+        .circles{
+            stroke: none;
+            
+        }
+        .positive{
+                fill: green;
+            }
+            .neutral{
+                fill: orange ;
+            }
+            .negative{
+                fill: crimson
+            }
+        .targetLines{
+            stroke-width: 0.5;
+            stroke-dasharray: 3,2;
+            .neutral{
+                stroke: orange ;
+            }
+            .negative{
+                stroke: crimson
+            }
+        }
+    </style>
+    <defs>
+        <svg id="progress" viewBox="10 10 210 150" >
+            <g id="progressBar">
+        <text class="productName bold" x="10" y="10">  IoT Sensor A  </text>
+        <rect class="greyBar" x="10" y="65" width="210" height="40" />
+        <rect class="orangeColour" x="10" y="65" width="180" height="40"/>
+        <line class="targetLine"  x1="210" x2="210" y1="45" y2="125"/>
+        <text class="progressText" x="20" y="90" > 79.1% </text>
+        <g class="xAxis">
+            <text x="10" y="160"> 0% </text>
+            <text class="textMiddle" x="110" y="160"> 50% </text>
+            <text class="textEnd" x="220" y="160"> 100% </text>
+        </g>     
+        
+    </g>
+        </svg>
+    </defs>
+    <g class="frame">
+        <rect width="100%" height="100%"/>
+    </g>
+    <line class="supportLine" x1="10" x2="450" y1="145" y2="145" />
+    <use href="#progress" x="10" y="10" width="210" height="150" /> 
+   <g id="columnChart" >
+    <text class="textResults textEnd"  x="450" y="10" > 80 <tspan class="greyText" > / 100k </tspan>  </text>
+    <g class="columns">
+        <rect x="248" y="45" width="8" height="80" />
+        <rect x="264" y="45" width="8" height="80" />
+        <rect x="280" y="45" width="8" height="80" />
+        <rect x="296" y="45" width="8" height="80" />
+        <rect x="312" y="45" width="8" height="80" />
+        <rect x="328" y="45" width="8" height="80" />
+        <rect x="344" y="45" width="8" height="80" />
+        <rect x="360" y="45" width="8" height="80" />
+        <rect x="376" y="45" width="8" height="80" />
+        <rect x="392" y="45" width="8" height="80" />
+        <rect x="408" y="45" width="8" height="80" />
+        <rect x="424" y="45" width="8" height="80" />
+        
+    </g>
+        <g class="circles">
+            <circle class="neutral" cx="252" cy="135" r="4" />
+            <circle class="positive" cx="268" cy="135" r="4" />
+            <circle class="negative" cx="284" cy="135" r="4" />
+        </g>
+
+        <g class="targetLines" >
+            <line class="neutral" x1="244" x2="436" y1="50" y2="50" />
+            <line class="negative" x1="244" x2="436" y1="70" y2="70" />
+        </g>
+
+   </g>
+    
+</svg>
