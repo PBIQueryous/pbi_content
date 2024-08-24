@@ -1,0 +1,53 @@
+table sodapops
+	lineageTag: e5497e80-785f-4671-a876-04f088b232cf
+
+	column Product
+		dataType: string
+		lineageTag: d89ee767-8adb-4661-9065-03b651541191
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Cost'
+		dataType: double
+		lineageTag: 3b9ddc2a-5a71-45ef-baea-a1728d6df73b
+		summarizeBy: sum
+		sourceColumn: Unit Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Sold Items'
+		dataType: double
+		lineageTag: 7debd6f3-c3a5-4196-b10e-4e677c5f5d0d
+		summarizeBy: sum
+		sourceColumn: Sold Items
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition sodapops = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_json_array("[
+				      {""Product"": ""Blue Bull"", ""Unit Cost"": 10, ""Sold Items"": 908},
+				      {""Product"": ""Fantazzy"", ""Unit Cost"": 36, ""Sold Items"": 95},
+				      {""Product"": ""Pepsini"", ""Unit Cost"": 53, ""Sold Items"": 50},
+				      {""Product"": ""Spriteez"", ""Unit Cost"": 25, ""Sold Items"": 58},
+				      {""Product"": ""Mountain Burst"", ""Unit Cost"": 68, ""Sold Items"": 115},
+				      {""Product"": ""Dr. Popper"", ""Unit Cost"": 96, ""Sold Items"": 63},
+				      {""Product"": ""Lucky 7's Up"", ""Unit Cost"": 80, ""Sold Items"": 105},
+				      {""Product"": ""Bubba-Cola"", ""Unit Cost"": 5, ""Sold Items"": 1539},
+				      {""Product"": ""Monsta NRG"", ""Unit Cost"": 15, ""Sold Items"": 633},
+				      {""Product"": ""Root Brew"", ""Unit Cost"": 65, ""Sold Items"": 89}
+				    ]")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

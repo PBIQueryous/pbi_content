@@ -1,0 +1,115 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "4da9200b3abeae0ab17e",
+  "position": {
+    "x": 19.606375765949927,
+    "y": 422.78751801984913,
+    "z": 9000,
+    "height": 173.31452750352611,
+    "width": 605.24682651622,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Multi-line chart with additional layered marks:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Using ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "line ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "marks with a ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "color ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "channel groups data points into different series, producing a ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "multi-series colored line chart",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#e044a7"
+                    },
+                    "url": "https://vega.github.io/vega-lite/examples/line_color.html"
+                  },
+                  {
+                    "value": ".",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

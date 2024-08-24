@@ -1,0 +1,167 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "42e1d565550007c290cb",
+  "position": {
+    "x": 18.966565349544073,
+    "y": 7.2948328267477205,
+    "z": 0,
+    "height": 337.02127659574467,
+    "width": 1886.4437689969604,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Vega and Vega-Lite specifications can get their data from many sources; in Deneb we use a named reference called "
+                  },
+                  {
+                    "value": "dataset",
+                    "textStyle": {
+                      "fontFamily": "Consolas"
+                    }
+                  },
+                  {
+                    "value": ". This points to the query result that Power BI pushes to the visual (based on the fields and measures you add to the "
+                  },
+                  {
+                    "value": "Values",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " data role. For more thorough documentation on how this works, you can read the "
+                  },
+                  {
+                    "value": "Visual Dataset Binding",
+                    "textStyle": {
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "value": " "
+                  },
+                  {
+                    "value": "documentation on the Deneb website",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://deneb-viz.github.io/visual-dataset-binding"
+                  },
+                  {
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "For all intents and purposes, consider the dataset that goes into Deneb "
+                  },
+                  {
+                    "value": "the same as that of a table visual",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ": Power BI will aggregate (summarize) all distinct groupings and measures. This is important if attempting to replicate examples from elsewhere, as these normally treat any data as raw. To mimic this behavior in Power BI you will need to introduce columns into your visual dataset to generate uniqueness - the most straightforward way to do this is using an "
+                  },
+                  {
+                    "value": "Index",
+                    "textStyle": {
+                      "textDecoration": "underline"
+                    }
+                  },
+                  {
+                    "value": " column, or similar to ensure the desired grain is preserved. "
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "For example, if we look at this penguins dataset without any groupings, we can see that Power BI groups at the highest level possible. By introducing a unique column to the dataset, Power BI will ensure the desired 1:1 level of grain. Note that in each table we have added a "
+                  },
+                  {
+                    "value": "Rows Grouped (Verification)",
+                    "textStyle": {
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "value": " column, which confirms how many rows have been aggregated from the underlying dataset."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Visual Dataset'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

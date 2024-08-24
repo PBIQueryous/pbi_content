@@ -1,0 +1,299 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "0fcdd70c4496d760d280",
+  "position": {
+    "x": 612.05930807248785,
+    "y": 360.29654036243835,
+    "z": 11000,
+    "height": 190.37891268533775,
+    "width": 299.80230642504119,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__KK_KPIsDATA"
+                    }
+                  },
+                  "Property": "Format Variance"
+                }
+              },
+              "queryRef": "Country by Year.Format Variance"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "__KK_KPIsDATA"
+                        }
+                      },
+                      "Property": "Actual"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(KPIsDATA.Actual)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__KK_KPIsDATA"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "KPIsDATA.Attribute"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "__KK_KPIsDATA"
+                        }
+                      },
+                      "Property": "Value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(KPIsDATA.Value)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__KK_KPIsDATA"
+                    }
+                  },
+                  "Property": "Variance"
+                }
+              },
+              "queryRef": "KPIsDATA.Variance"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__KK_KPITarget"
+                    }
+                  },
+                  "Property": "KPITarget Value"
+                }
+              },
+              "queryRef": "KPITarget.KPITarget Value"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "__KK_KPIsDATA"
+                  }
+                },
+                "Property": "Format Variance"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"data\": {\"name\": \"dataset\"},\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"bar\",\n        \"tooltip\": true\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"Date\",\n          \"type\": \"temporal\",\n          \"axis\": null\n        },\n        \"y\": {\n          \"field\": \"Variance\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"axis\": null\n        },\n        \"color\": {\n          \"condition\": {\n            \"test\": \"datum[''Value''] < datum[''KPITarget Value'']\",\n            \"value\": \"red\"\n          },\n          \"value\": \"green\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"dx\": 0,\n        \"dy\": -10,\n        \"xOffset\": 0,\n        \"yOffset\": 0,\n        \"angle\": 0,\n        \"align\": \"right\",\n        \"baseline\": \"bottom\",\n        \"font\": \"sans-serif\",\n        \"fontSize\": 20,\n        \"fontStyle\": \"normal\",\n        \"fontWeight\": \"normal\",\n        \"limit\": 0\n      },\n      \"encoding\": {\n        \"x\": {\n          \"aggregate\": \"max\",\n          \"field\": \"Date\",\n          \"type\": \"temporal\"\n        },\n        \"y\": {\n          \"aggregate\": {\n            \"argmax\": \"Date\"\n          },\n          \"field\": \"Value\",\n          \"type\": \"quantitative\"\n        },\n        \"text\": {\n          \"field\": \"Actual\",\n          \"format\": \".2s\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"dx\": 0,\n        \"dy\": -10,\n        \"xOffset\": 0,\n        \"yOffset\": 0,\n        \"angle\": 0,\n        \"align\": \"right\",\n        \"baseline\": \"top\",\n        \"font\": \"sans-serif\",\n        \"fontSize\": 14,\n        \"fontStyle\": \"normal\",\n        \"fontWeight\": \"normal\",\n        \"limit\": 0\n      },\n      \"encoding\": {\n        \"x\": {\n          \"aggregate\": \"max\",\n          \"field\": \"Date\",\n          \"type\": \"temporal\"\n        },\n        \"y\": {\n          \"aggregate\": {\n            \"argmax\": \"Date\"\n          },\n          \"field\": \"Value\",\n          \"type\": \"quantitative\"\n        },\n        \"text\": {\n          \"field\": \"Format Variance\"\n        }\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"autosize\": {\n    \"type\": \"fit\",\n    \"contains\": \"padding\"\n  },\n  \"view\": {\"stroke\": \"transparent\"},\n  \"font\": \"Segoe UI\",\n  \"bar\": {\"color\": \"#CE6C47\"},\n  \"axis\": {\n    \"domain\": false,\n    \"labelColor\": \"#605E5C\",\n    \"labelFontSize\": 12,\n    \"labelPadding\": 5,\n    \"ticks\": false,\n    \"tickCount\": 5,\n    \"titleFontSize\": 14,\n    \"titleFontWeight\": \"bold\",\n    \"titleColor\": \"#605E5C\",\n    \"gridDash\": [1, 5],\n    \"gridColor\": null\n  }\n}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.16.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.6.2.1'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "display": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "15L"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "3L"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "70L"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

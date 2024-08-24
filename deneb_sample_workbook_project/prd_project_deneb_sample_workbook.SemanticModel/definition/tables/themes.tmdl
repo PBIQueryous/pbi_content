@@ -1,0 +1,42 @@
+table themes
+	lineageTag: e1373744-e0df-4769-b45b-2ffdbfca59bf
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 47ed40f0-dee4-4c5d-8462-3525220f04ca
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column Percentage
+		dataType: double
+		lineageTag: f2d8a36c-fc3d-42db-9583-091c1c42d8cd
+		summarizeBy: sum
+		sourceColumn: Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Description
+		dataType: string
+		lineageTag: 2f2cbd26-2529-4ae5-955e-a9865c004cf4
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition themes = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("ddBBCsIwEIXhq4SAuyiZSdOTuCtdiAYrVgrF+6OrJuTNW2WRn2HmmyYfffDneBn/z3Upn+Lu27rtToIb48k9bvu77H4OR5gxzGY4YDiYoRojNUMZ+6r+0BHr67l82xlsKwzJnRgSuTYU21jBWGxjBWOxjRWMhRgrGIthrPWHjugPpVthSO7EkMi1odrGCYzVNk5grLZxAmMlxgmM1TBO9YeO6A+lW2FI7sSQyB3h/AM=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Index = _t, Percentage = _t, Description = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Index", Int64.Type}, {"Percentage", type number}, {"Description", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,48 @@
+table themes_named
+	lineageTag: ede83a57-1b43-482b-af8a-f601df37c71a
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: af71c60f-96ef-4d38-8c98-30fb15a5a66b
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: string
+		lineageTag: 518f7ca0-b9eb-4f8a-8463-769693122681
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: de61d883-e909-42c2-bb3c-ed5b2e2ec818
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quoted
+		dataType: string
+		lineageTag: a7b60c3e-bec2-4bba-93fa-ece4c05c2a0e
+		summarizeBy: none
+		sourceColumn: Quoted
+
+		annotation SummarizationSetBy = Automatic
+
+	partition themes_named = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("dc7BCsMgDAbgd8m5h6477FzoG+zoesgwiGDjcLb08RtbBJF6CcH/U3+l4AEdLJZlTnajYIij7J+174eXnF8LzJ2C4ZRaO2rgFBX+mTzu9xj3QqYOTAajOFnfIu1S8hxWbZjWGNA1rpxZ1efn/7b5Sw6rZl/UMkcXKXCueBFJqveN9y2coqznAw==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Index = _t, Value = _t, Category = _t, Quoted = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Index", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

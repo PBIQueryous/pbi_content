@@ -1,0 +1,98 @@
+table cars
+	lineageTag: 9a5d2db8-5f85-41d4-ba1b-c3a9929785eb
+
+	column Name
+		dataType: string
+		lineageTag: 3372f936-9aa9-4ce1-81a0-20a633750a0b
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Miles_per_Gallon
+		dataType: int64
+		formatString: 0
+		lineageTag: ca7a18af-d8f7-48db-a5fd-8d3d304c6d1f
+		summarizeBy: sum
+		sourceColumn: Miles_per_Gallon
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cylinders
+		dataType: int64
+		formatString: 0
+		lineageTag: b9b8fcde-65ea-489b-985f-70c2500e8cd6
+		summarizeBy: sum
+		sourceColumn: Cylinders
+
+		annotation SummarizationSetBy = Automatic
+
+	column Displacement
+		dataType: double
+		lineageTag: d69c67ed-4ff5-4b4b-bd9f-79858402b622
+		summarizeBy: sum
+		sourceColumn: Displacement
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Horsepower
+		dataType: int64
+		formatString: 0
+		lineageTag: 80690d5a-ea8e-45cb-8151-4824667ac275
+		summarizeBy: sum
+		sourceColumn: Horsepower
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weight_in_lbs
+		dataType: int64
+		formatString: 0
+		lineageTag: b94a8964-d9a5-43f7-8653-af5f936df252
+		summarizeBy: sum
+		sourceColumn: Weight_in_lbs
+
+		annotation SummarizationSetBy = Automatic
+
+	column Acceleration
+		dataType: double
+		lineageTag: b037c331-d721-41e0-a6e5-7f5153ee7e7c
+		summarizeBy: sum
+		sourceColumn: Acceleration
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Year
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e91e2269-6812-4bde-b9a8-340cf0b4206d
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Origin
+		dataType: string
+		lineageTag: a734a5c7-7220-4671-8575-da2dcd2486dd
+		summarizeBy: none
+		sourceColumn: Origin
+
+		annotation SummarizationSetBy = Automatic
+
+	partition cars = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("cars.json"),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Name", type text}, {"Miles_per_Gallon", Int64.Type}, {"Cylinders", Int64.Type}, {"Displacement", type number}, {"Horsepower", Int64.Type}, {"Weight_in_lbs", Int64.Type}, {"Acceleration", type number}, {"Year", type date}, {"Origin", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

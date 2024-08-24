@@ -1,0 +1,180 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/1.1.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY23SU11",
+      "reportVersionAtImport": "5.49",
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Custom9978995164988356.json",
+      "reportVersionAtImport": "5.50",
+      "type": "RegisteredResources"
+    }
+  },
+  "layoutOptimization": "None",
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "iconMapV34089C0EB522B416294AA926F71B4FDBB"
+  ],
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY23SU11",
+          "path": "BaseThemes/CY23SU11.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "STANDALONEdeneb7E15AEF80B9E4D4F8E12924291ECE89A",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "STANDALONEdeneb7E15AEF80B9E4D4F8E12924291ECE89A.pbiviz.json",
+          "path": "STANDALONEdeneb7E15AEF80B9E4D4F8E12924291ECE89A.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Custom9978995164988356.json",
+          "path": "Custom9978995164988356.json",
+          "type": "CustomTheme"
+        },
+        {
+          "name": "DenebBackground30133184093552456.png",
+          "path": "DenebBackground30133184093552456.png",
+          "type": "Image"
+        },
+        {
+          "name": "DenebBackground_v2277763047923157.png",
+          "path": "DenebBackground_v2277763047923157.png",
+          "type": "Image"
+        },
+        {
+          "name": "DenebBackground_v28419077823742744.png",
+          "path": "DenebBackground_v28419077823742744.png",
+          "type": "Image"
+        },
+        {
+          "name": "DenebBackground_v219057416983609476.png",
+          "path": "DenebBackground_v219057416983609476.png",
+          "type": "Image"
+        },
+        {
+          "name": "DenebBackground_v29579580945120463.png",
+          "path": "DenebBackground_v29579580945120463.png",
+          "type": "Image"
+        },
+        {
+          "name": "DenebBackground_v27503429448301522.png",
+          "path": "DenebBackground_v27503429448301522.png",
+          "type": "Image"
+        },
+        {
+          "name": "DenebBackground_v22949068520846223.png",
+          "path": "DenebBackground_v22949068520846223.png",
+          "type": "Image"
+        },
+        {
+          "name": "DenebBackground_v21961900762261355.png",
+          "path": "DenebBackground_v21961900762261355.png",
+          "type": "Image"
+        },
+        {
+          "name": "deneb-background-mouse_v27568040550090342.png",
+          "path": "deneb-background-mouse_v27568040550090342.png",
+          "type": "Image"
+        },
+        {
+          "name": "deneb-background-mouse_v35823961918948053.png",
+          "path": "deneb-background-mouse_v35823961918948053.png",
+          "type": "Image"
+        },
+        {
+          "name": "deneb_background_113479267403969364.png",
+          "path": "deneb_background_113479267403969364.png",
+          "type": "Image"
+        },
+        {
+          "name": "deneb_background_1662447557426812.png",
+          "path": "deneb_background_1662447557426812.png",
+          "type": "Image"
+        },
+        {
+          "name": "contributors_v35490676784347415.png",
+          "path": "contributors_v35490676784347415.png",
+          "type": "Image"
+        },
+        {
+          "name": "dataset_background8481175941521644.png",
+          "path": "dataset_background8481175941521644.png",
+          "type": "Image"
+        }
+      ]
+    },
+    {
+      "name": "BETAdeneb7E15AEF80B9E4D4F8E12924291ECE89A",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "BETAdeneb7E15AEF80B9E4D4F8E12924291ECE89A.pbiviz.json",
+          "path": "BETAdeneb7E15AEF80B9E4D4F8E12924291ECE89A.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useScaledTooltips": true,
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  }
+}

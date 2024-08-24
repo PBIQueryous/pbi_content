@@ -1,0 +1,254 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "b1a02c13e697ba1c8c05",
+  "position": {
+    "x": 113.14917127071823,
+    "y": 7.5432780847145491,
+    "z": 0,
+    "height": 426.94953959484349,
+    "width": 1786.2482504604052,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Deneb is a custom visual for Microsoft Power BI, which allows creators to use the declarative ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "JSON",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "color": "#e23692"
+                    },
+                    "url": "https://www.json.org/json-en.html"
+                  },
+                  {
+                    "value": " syntax of the ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Vega",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "color": "#e23692"
+                    },
+                    "url": "http://vega.github.io/vega"
+                  },
+                  {
+                    "value": " or ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Vega-Lite",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "color": "#e23692"
+                    },
+                    "url": "http://vega.github.io/vega-lite"
+                  },
+                  {
+                    "value": " languages to write a ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "specification",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ", and create their own bespoke data visualizations, without having to learn web development.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "This is similar to the approaches used for creating ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "R",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "color": "#e23692"
+                    },
+                    "url": "https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-r-visuals?WT.mc_id=DP-MVP-5003712"
+                  },
+                  {
+                    "value": " and ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Python",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "color": "#e23692"
+                    },
+                    "url": "https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-python-visuals?WT.mc_id=DP-MVP-5003712"
+                  },
+                  {
+                    "value": " visuals in Power BI, with the following additional benefits:",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "- No additional dependencies on local libraries or gateways for your end-users when publishing reports.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "- Specifications are rendered directly inside Power BI rather than being delegated to another location (typically resulting in faster render times for end-users).",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "- Built for the web, meaning that it's possible to integrate with Power BI's interactivity features, with some additional setup.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "In becoming familiar with Deneb alongside the Vega-Lite and Vega languages, you will learn to \"think visually\" and greatly expand your visual options within Power BI. You can find more detailed (and regularly updated) documentation hosted at "
+                  },
+                  {
+                    "value": "deneb-viz.github.io",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "16pt",
+                      "color": "#e23692"
+                    },
+                    "url": "https://deneb-viz.github.io/"
+                  },
+                  {
+                    "value": ",",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "This workbook is intended to give you a brief introduction of the Deneb visual and its potential by using examples, some of which are shown below.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Deneb: Declarative Visualization in Power BI'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

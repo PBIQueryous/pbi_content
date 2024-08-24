@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "3a0b3213f95c2a126daf",
+  "position": {
+    "x": 18.966565349544073,
+    "y": 7.2948328267477205,
+    "z": 5000,
+    "height": 119.63525835866261,
+    "width": 1886.4437689969604,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Both "
+                  },
+                  {
+                    "value": "Vega",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://vega.github.io/vega/examples/"
+                  },
+                  {
+                    "value": " and "
+                  },
+                  {
+                    "value": "Vega-Lite",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://vega.github.io/vega-lite/examples/"
+                  },
+                  {
+                    "value": " offer comprehensive examples on their respective websites. This page includes some of these examples, with their respective datasets loaded into this workbook's model, to provide further illustration of how to adapt examples to Deneb and Power BI."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Selected Vega-Lite Examples'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

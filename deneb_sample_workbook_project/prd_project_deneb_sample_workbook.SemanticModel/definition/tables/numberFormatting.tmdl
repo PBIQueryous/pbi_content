@@ -1,0 +1,139 @@
+table numberFormatting
+	lineageTag: 71eeb0ee-377f-4020-a473-f60204345741
+
+	measure @numberFormatting =
+			
+			SUM( numberFormatting[Value] )
+		lineageTag: a8ac1193-b1b8-49c1-9d11-674c430c4f89
+
+		formatStringDefinition = ```
+				//------- DYNAMIC FORMATTING ---------\\
+				------------------------------
+				var _selectedMeasure = SELECTEDMEASURE()
+				var _digitCount = 
+				    IFERROR(
+				        LEN( 
+				            CONVERT( 
+				                INT( _selectedMeasure ),
+				            STRING )
+				        )
+				    , 0)
+				
+				// define abbreviations
+				var _trillion = "T"
+				var _billion = "B"
+				var _million = "M"
+				var _thousand = "K"
+				
+				// derive suffix
+				var _suffix = 
+				    SWITCH(
+				        TRUE(),
+				        _digitCount >= 12, _trillion , // 13 to display 100 billions ( 0.9 Trillion vs 880 billion )
+				        _digitCount >= 9,  _billion, // 10 to display 100 millions ( 0.9 Billion vs 880 million )
+				        _digitCount >= 6,  _million, // 7 to display 100 thousands ( 0.9 Million vs 100 thousand )
+				        _digitCount >= 4,  _thousand,
+				        ""
+				    )
+				
+				// derive commas and decimals per abbreviation
+				var _dp = 0
+				var _dps = "." & REPT ( 0, _dp )
+				var commas =
+				    REPT( "," ,
+				        SWITCH( _suffix,
+				        _trillion, 4,   // "#,#0,,,,.# T"
+				        _billion, 3,    // "#,#0,,,.# B"
+				        _million, 2,    // "#,#0,,.# M"
+				        _thousand, 1    // "#,#0,.# K"
+				        ,0)             // "#,##0"
+				    )
+				
+				// derive formatting
+				var _decimalvalue = "#,##0.00"
+				var _baseFormat = "#,#0"
+				var _formattedNumber  = _baseFormat & commas & _dps & "# " & _suffix
+				var _result = 
+				    SWITCH(
+				        TRUE(),
+				        _digitCount >= 2, _formattedNumber
+				        , _decimalvalue
+				    )
+				RETURN
+				    _result
+				```
+
+	column Index
+		dataType: int64
+		lineageTag: 7fcf6cd6-4744-4aec-a47e-5016c46aee0f
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Category
+		dataType: string
+		lineageTag: 761ce18b-b671-4f23-839b-1ee0fee4c62f
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: int64
+		formatString: #,0
+		lineageTag: 724a87b6-37d6-4fdc-a399-03a315e56eb5
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition numberFormatting = m
+		mode: import
+		queryGroup: development
+		source = ```
+				let
+				    // Function to generate random values within specified intervals for a given exponent of 10.
+				    GenerateRandomValuesForDenomination = (exponent as number) as list =>
+				        let
+				            baseValue = Number.Power(10, exponent),
+				            secondValue = 5 * baseValue,
+				            thirdValue = Number.Power(10, exponent + 1) - 1,
+				            // Generate a random value between the base and second value.
+				            randomBetweenBaseAndSecond = Number.RoundDown(Number.RandomBetween(baseValue, secondValue)),
+				            // Generate a random value between the second and third value.
+				            randomBetweenSecondAndThird = Number.RoundDown(Number.RandomBetween(secondValue + 1, thirdValue)),
+				            // Include the base value to ensure coverage of the lower bound of each range.
+				            values = {baseValue, randomBetweenBaseAndSecond, randomBetweenSecondAndThird}
+				        in
+				            values,
+				
+				    // Generate random values across the specified ranges.
+				    Denominations = List.Transform({2..16}, each GenerateRandomValuesForDenomination(_)),
+				    
+				    // Flatten the nested list into a single list.
+				    CombinedList = List.Combine(Denominations),
+				    
+				    // Convert the list to a table.
+				    ConvertToTable = Table.FromList(CombinedList, Splitter.SplitByNothing(), {"Value"}),
+				    
+				    // Format the "Value" column as Int64.Type.
+				    FormattedTable = Table.TransformColumnTypes(ConvertToTable, {{"Value", Int64.Type}}),
+				    #"Added Index" = Table.AddIndexColumn(FormattedTable, "Index", 1, 1, Int64.Type),
+				    FinalTable = Table.AddColumn(#"Added Index", "Category", each 
+				        if [Value] < Number.Power(10, 3) then "Hundred" 
+				        else if [Value] < Number.Power(10, 6) then "Thousand" 
+				        else if [Value] < Number.Power(10, 9) then "Million" 
+				        else if [Value] < Number.Power(10, 12) then "Billion" 
+				        else if [Value] < Number.Power(10, 15) then "Trillion" 
+				        else if [Value] < Number.Power(10, 18) then "Quadrillion" 
+				        else "Beyond Quadrillion"),
+				    #"Filtered Rows" = Table.SelectRows(FinalTable, each ([Value] = 100 or [Value] = 1000 or [Value] = 10000 or [Value] = 100000 or [Value] = 1000000 or [Value] = 10000000 or [Value] = 100000000 or [Value] = 1000000000 or [Value] = 10000000000 or [Value] = 100000000000 or [Value] = 1000000000000))
+				in
+				    #"Filtered Rows"
+				```
+
+	annotation PBI_ResultType = Table
+

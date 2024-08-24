@@ -1,0 +1,71 @@
+table categorical_revenue
+	lineageTag: e3fa6943-b333-46e2-80a5-252d998297ba
+
+	column Category
+		dataType: string
+		lineageTag: 89e75154-1eca-4f2e-9db5-ea040f2d913a
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column AC
+		dataType: int64
+		formatString: 0
+		lineageTag: 598363a2-4819-4971-a2a8-79fb385ff53e
+		summarizeBy: sum
+		sourceColumn: AC
+
+		annotation SummarizationSetBy = Automatic
+
+	column PL
+		dataType: int64
+		formatString: 0
+		lineageTag: 57dde53d-a7a8-4066-b026-90d7c58c7557
+		summarizeBy: sum
+		sourceColumn: PL
+
+		annotation SummarizationSetBy = Automatic
+
+	column PY
+		dataType: int64
+		formatString: 0
+		lineageTag: 935b76d7-ae88-45cf-be29-b9e643395746
+		summarizeBy: sum
+		sourceColumn: PY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PL2
+		dataType: double
+		lineageTag: 5b4001d7-171b-4ede-894c-1060619481cb
+		summarizeBy: sum
+		sourceColumn: PL2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Gap
+		dataType: int64
+		formatString: 0
+		lineageTag: f7f09ca4-5a88-45b7-bf5a-de9027c18e88
+		summarizeBy: sum
+		sourceColumn: Gap
+
+		annotation SummarizationSetBy = Automatic
+
+	partition categorical_revenue = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45W8kksKMkvKFbSUbIwNQCS5gYg0gxIxupEKwU4F0N5OkqGBmDKEirllJ+fDZI0gkiCNRsZQuRCEpNyUkuKIZqAJEQSZmZGfl4qWA6i1dgU2Ub3xFywpIkpzDKQdoicY3JyanFxflFmKsJVFjC3KcXGAgA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Category = _t, AC = _t, PL = _t, PY = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"AC", Int64.Type}, {"Category", type text}, {"PL", Int64.Type}, {"PY", Int64.Type}}),
+				    #"Inserted Multiplication" = Table.AddColumn(#"Changed Type", "PL2", each [AC] * 1.2, type number),
+				    Custom1 = Table.AddColumn(#"Inserted Multiplication", "Gap", each [PL] - [AC], Int64.Type)
+				in
+				    Custom1
+
+	annotation PBI_ResultType = Table
+

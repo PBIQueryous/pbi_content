@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "e7a5475ebbdc21234b0c",
+  "position": {
+    "x": 13.577900552486188,
+    "y": 18.103867403314919,
+    "z": 0,
+    "height": 137.28766114180479,
+    "width": 1887.32817679558,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Deneb offers four "
+                  },
+                  {
+                    "value": "Vega Color schemes",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://vega.github.io/vega/docs/schemes/"
+                  },
+                  {
+                    "value": " that are tied to the current report theme and will update at run-time. This allows you to keep your visual's color scheme in-sync with your report, if you so wish. The visuals below show examples of binding these themes to your specification - try editing these visualsand experiment with different color schemes."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Color Schemes'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

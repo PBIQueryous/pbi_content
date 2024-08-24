@@ -1,0 +1,61 @@
+table __KK_KPI
+	lineageTag: 0b6de9e3-5d68-47ff-bb99-d5f3b84931e7
+
+	column 'Business Unit'
+		dataType: string
+		lineageTag: bee23ec1-b45e-4603-80f0-2b508609c5f0
+		summarizeBy: none
+		sourceColumn: Business Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Score
+		dataType: int64
+		formatString: 0
+		lineageTag: 662fa99a-b776-4b8c-88e3-68f68b22e916
+		summarizeBy: sum
+		sourceColumn: Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column Percentage
+		dataType: double
+		lineageTag: 5d001898-1bc6-4139-a58f-7214ba80d845
+		summarizeBy: sum
+		sourceColumn: Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Target
+		dataType: double
+		lineageTag: ea6a63aa-87d5-486e-8335-dfa974119333
+		summarizeBy: sum
+		sourceColumn: Target
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NPS
+		dataType: int64
+		formatString: 0
+		lineageTag: b3345f4b-1afb-46c3-8a6d-962e84dcfad7
+		summarizeBy: sum
+		sourceColumn: NPS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition __KK_KPI = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("XZDLCoMwEEV/JQjdqSQxmuQH7LIFl9ZF8EEFUfCx6N93ZtrSdjY3IffMzJ3UdVTtR9fP+ybONvFRHOkcpMhSeYLT5amkC7w28S+sZKIUGMqAWM1wK//xqp/HZd3AyTSI8YxXHz4MA/oOe+QMSpQmqgztMe0PjEnN+HBjCLtMnaja+zKF12BcrrCMdYRew0oxb4eUuhDlOvZzh0UOg3jFi95paSnxjWMtmjyOg69rng==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Business Unit" = _t, Score = _t, Percentage = _t, Target = _t, NPS = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Business Unit", type text}, {"Score", Int64.Type}, {"Percentage", Percentage.Type}, {"Target", Percentage.Type}, {"NPS", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

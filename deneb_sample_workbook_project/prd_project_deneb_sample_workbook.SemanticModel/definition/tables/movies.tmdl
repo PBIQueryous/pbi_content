@@ -1,0 +1,153 @@
+table movies
+	lineageTag: 11a8f09b-8811-4d67-9b40-14234601cc8d
+
+	column Title
+		dataType: string
+		lineageTag: 41305d39-800e-41cc-832d-8ba150e8fc53
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'US Gross'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0f59ba3a-3c88-4941-8d18-c66de8894934
+		summarizeBy: sum
+		sourceColumn: US Gross
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Worldwide Gross'
+		dataType: int64
+		formatString: 0
+		lineageTag: 70a98bb3-48b8-4165-afd4-4c785cf22671
+		summarizeBy: sum
+		sourceColumn: Worldwide Gross
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'US DVD Sales'
+		dataType: string
+		lineageTag: 2665f54f-f418-4bd6-8c9f-bfd48d4958c3
+		summarizeBy: none
+		sourceColumn: US DVD Sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production Budget'
+		dataType: int64
+		formatString: 0
+		lineageTag: 10d34571-feb9-408d-8d88-056e821b3d68
+		summarizeBy: sum
+		sourceColumn: Production Budget
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Release Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5e2cee5b-ad76-467e-babf-41caa6859c36
+		summarizeBy: none
+		sourceColumn: Release Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'MPAA Rating'
+		dataType: string
+		lineageTag: 371e3779-41b4-4e97-8c4f-fa8d6e96a5c7
+		summarizeBy: none
+		sourceColumn: MPAA Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Running Time min'
+		dataType: string
+		lineageTag: fbefb379-a0e0-430a-bccd-51db60b3ffe3
+		summarizeBy: none
+		sourceColumn: Running Time min
+
+		annotation SummarizationSetBy = Automatic
+
+	column Distributor
+		dataType: string
+		lineageTag: 7b6afa56-139e-4e3f-bd55-9d9b7338b7e8
+		summarizeBy: none
+		sourceColumn: Distributor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		lineageTag: 7bf75cbe-c513-4969-ad5d-9b4397adfbb3
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Major Genre'
+		dataType: string
+		lineageTag: 8d20af51-34b1-4707-8f7d-f83cef4fd0b8
+		summarizeBy: none
+		sourceColumn: Major Genre
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Creative Type'
+		dataType: string
+		lineageTag: 974a0069-0c57-4ff2-9631-8a3c616d92e7
+		summarizeBy: none
+		sourceColumn: Creative Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Director
+		dataType: string
+		lineageTag: 74c194b7-794b-4ca0-9f93-303d78b3a0de
+		summarizeBy: none
+		sourceColumn: Director
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rotten Tomatoes Rating'
+		dataType: int64
+		formatString: 0
+		lineageTag: 25325e20-147a-4c18-a964-664a056f0488
+		summarizeBy: sum
+		sourceColumn: Rotten Tomatoes Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IMDB Rating'
+		dataType: double
+		lineageTag: a7027419-bd32-41b2-b955-fead46fecd9c
+		summarizeBy: sum
+		sourceColumn: IMDB Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'IMDB Votes'
+		dataType: int64
+		formatString: 0
+		lineageTag: b60da0ce-39cb-4157-9ca6-13e4127664a2
+		summarizeBy: sum
+		sourceColumn: IMDB Votes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition movies = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("movies.json"),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Title", type any}, {"US Gross", Int64.Type}, {"Worldwide Gross", Int64.Type}, {"US DVD Sales", type any}, {"Production Budget", Int64.Type}, {"Release Date", type date}, {"MPAA Rating", type text}, {"Running Time min", type any}, {"Distributor", type text}, {"Source", type text}, {"Major Genre", type text}, {"Creative Type", type text}, {"Director", type text}, {"Rotten Tomatoes Rating", Int64.Type}, {"IMDB Rating", type number}, {"IMDB Votes", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

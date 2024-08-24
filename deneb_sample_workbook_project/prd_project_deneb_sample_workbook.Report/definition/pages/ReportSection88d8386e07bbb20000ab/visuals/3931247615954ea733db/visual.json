@@ -1,0 +1,130 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "3931247615954ea733db",
+  "position": {
+    "x": 21.901140684410645,
+    "y": 7.3003802281368815,
+    "z": 0,
+    "height": 119.72623574144487,
+    "width": 1883.4980988593154,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Both "
+                  },
+                  {
+                    "value": "concat",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "textDecoration": "underline",
+                      "color": "#e044a7"
+                    },
+                    "url": "https://vega.github.io/vega-lite/docs/concat.html"
+                  },
+                  {
+                    "value": " and "
+                  },
+                  {
+                    "value": "facet",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "textDecoration": "underline",
+                      "color": "#e044a7"
+                    },
+                    "url": "https://vega.github.io/vega-lite/docs/facet.html"
+                  },
+                  {
+                    "value": " are expressions used to nest and combine multiple charts views. Whereas "
+                  },
+                  {
+                    "value": "concat",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " allows you to physically place separate charts side-by-side, "
+                  },
+                  {
+                    "value": "facet",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " divides the data into corresponding groups (small multiples) and creates a chart for each group, allowing for easy comparison across different segments of the data. "
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Concat and Facet layers'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

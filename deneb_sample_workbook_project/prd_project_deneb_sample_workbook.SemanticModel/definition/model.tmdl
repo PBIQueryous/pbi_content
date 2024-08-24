@@ -1,0 +1,76 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup vega_import_functions
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup development\dev_json_outputs
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup powerbi_imported_datasets
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup development
+
+	annotation PBI_QueryGroupOrder = 3
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.132.1053.0 (24.08)
+
+annotation PBI_QueryOrder = ["fn_import_vega_dataset","fn_import_json_array","fn_JSONarrary_toTable_Parsable","output_data_values_json","output_jsonFunction_test","output_manual_input_json","output_jsonFunction_test2","json_table_built","perception_gap","penguins","stocks","sodapops","seattle_weather","themes","themes_named","intensity","patterns","driving","movies","barley","nps_score","population","un_population_projections","__ukpopulation","average_monthly_temperatures_UK","__dim_cities","__KK_KPIsDATA","__KK_KPI","worldpopulation_pq","_tempAverage","tbl_cities_dimension_prep","revenue","actual_vs_budget","countries","ohlc","dynamic_formatting","__dummy","cars","unemployment_across_industries","categorical_revenue","fn_import_json_array_TEST","__americanEstimation","numberFormatting","numberFormattingRange","basicnumberFormatting","__dim_bookmark","__dim_stepstatus"]
+
+annotation __TEdtr = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table penguins
+ref table stocks
+ref table sodapops
+ref table seattle_weather
+ref table themes
+ref table themes_named
+ref table intensity
+ref table patterns
+ref table driving
+ref table movies
+ref table barley
+ref table population
+ref table un_population_projections
+ref table average_monthly_temperatures_UK
+ref table __dim_cities
+ref table __dim_dates
+ref table __KK_KPIsDATA
+ref table __KK_KPI
+ref table __KK_KPITarget
+ref table worldpopulation_pq
+ref table nps_score
+ref table revenue
+ref table actual_vs_budget
+ref table countries
+ref table ohlc
+ref table dynamic_formatting
+ref table __dummy
+ref table cars
+ref table unemployment_across_industries
+ref table categorical_revenue
+ref table perception_gap
+ref table __ukpopulation
+ref table __americanEstimation
+ref table numberFormatting
+ref table numberFormattingRange
+ref table basicnumberFormatting
+ref table _tempAverage
+ref table __dim_bookmark
+ref table __dim_stepstatus
+
+ref cultureInfo en-US
+

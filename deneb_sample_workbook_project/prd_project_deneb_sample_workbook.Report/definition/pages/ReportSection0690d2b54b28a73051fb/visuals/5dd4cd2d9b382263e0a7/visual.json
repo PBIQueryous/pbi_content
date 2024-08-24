@@ -1,0 +1,268 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "5dd4cd2d9b382263e0a7",
+  "position": {
+    "x": 14.625742993641088,
+    "y": 0,
+    "z": 6000,
+    "height": 675.17205775898844,
+    "width": 521.13641008810112,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Step 1:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#000000"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "To build our dumbbell chart, we begin with creating a line. This line represents the numerical distance between the [True] and [Estimated] values. The key here is to assign these values along our "
+                  },
+                  {
+                    "value": "x-axis",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ":"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\"encoding\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "        ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"x\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"field\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"True\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  },
+                  {
+                    "value": "},",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "        ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"x2\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"field\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"Estimated\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  },
+                  {
+                    "value": "}",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "}",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "We can observe \"x\" as our starting point, and \"x2\" as the ending point of our line, distributed across each [Topic] in our "
+                  },
+                  {
+                    "value": "y-axis",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "keepLayerOrder": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'step1_description'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "00543a02469822c7d794",
+  "isHidden": true
+}

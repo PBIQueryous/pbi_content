@@ -1,0 +1,727 @@
+expression output_manual_input_json =
+		let
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wqo7JU1CIUcoqzs+Lz0stLklNiS9KTc4vSolRslIAS4IAqoKczOISkHQ0XB4GYpQ8S1JzgXIxSo4xSjqY0mGJOaWpIL1GFiiStToK+Axzwm+YqSkphjnjN8zEmBTDXPAbZmlIimGu+A2zIMkwNwJhRpI33fEbZmhJimEeBLxpTophngS8aYRqGJwXC2YB+bVKsbEA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [JSON_Data = _t])
+		in
+		    Source
+	lineageTag: b296b9f1-d8eb-40d3-95cc-31e83d5c50f1
+	queryGroup: development\dev_json_outputs
+
+	annotation PBI_ResultType = Table
+
+expression fn_JSONarrary_toTable_Parsable = ```
+		let 
+		  fn = (json_input as text) =>
+		
+		let
+		    json_source = Json.Document(Json.FromValue( json_input )),
+		    content = json_source,
+		    tbl = #table(
+		    type table[ JSON_Data = Text.Type ],
+		    {
+		      {
+		        content
+		      }
+		    }
+		  )
+		in
+		    tbl
+		
+		in
+		  fn
+		```
+	lineageTag: c3535264-23bb-49db-8836-dbcf606def8e
+	queryGroup: vega_import_functions
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression output_data_values_json = ```
+		let
+		    Source = fn_JSONarrary_toTable_Parsable("{
+		   ""data"": {
+		       ""values"": [{
+		               ""Item"":""A"",
+		               ""Value"": 28
+		            }, {
+		               ""Item"":""B"",
+		               ""Value"": 55
+		            }, {
+		               ""Item"":""C"",
+		               ""Value"": 43
+		            }, {
+		               ""Item"":""D"",
+		               ""Value"": 91
+		            }, {
+		               ""Item"":""E"",
+		               ""Value"": 81
+		            }, {
+		               ""Item"":""F"",
+		               ""Value"": 53
+		            }, {
+		               ""Item"":""G"",
+		               ""Value"": 19
+		            }, {
+		               ""Item"":""H"",
+		               ""Value"": 87
+		            }, {
+		               ""Item"":""I"",
+		               ""Value"": 52
+		            }
+		        ]
+		    }
+		}"),
+		    json_source = Source,
+		    column_header = Table.ColumnNames(json_source){0},
+		    expand_json = Table.TransformColumns( Table.TransformColumns(json_source,{  },Json.Document), { {column_header, each _??_, type  { Record.Type } } }
+		),
+		    expand_records = let
+		record_fields = Record.FieldNames( expand_json{0}[JSON_Data]),
+		result = Table.ExpandRecordColumn( expand_json, "JSON_Data", record_fields, {"nested_record"} )
+		in 
+		result,
+		    list_records = let
+		record_fields = Record.FieldNames( expand_records{0}[nested_record]),
+		expand_record = Table.ExpandRecordColumn( expand_records, "nested_record", record_fields, {"nested_list"} ),
+		result = expand_record[nested_list]{0}
+		in 
+		result,
+		    tbl_output = Table.FromRecords( list_records )
+		in
+		    tbl_output
+		```
+	lineageTag: 806f6fc6-ff8c-4c2f-8c96-e2be57749f5f
+	queryGroup: development\dev_json_outputs
+
+	annotation PBI_ResultType = Table
+
+expression json_table_built = ```
+		let
+		    Source = output_manual_input_json,
+		    json_source = Source,
+		    column_header = Table.ColumnNames(json_source){0},
+		    parsed_JSON = Table.TransformColumns( Table.TransformColumns(json_source,{  },Json.Document), { {column_header, each _??_, type  { Record.Type } } }
+		),
+		    is_record_test = Value.Is( parsed_JSON{0}, Record.Type ),
+		    json_record_list = let 
+		json_record = if is_record_test = true then parsed_JSON{0}[JSON_Data] else parsed_JSON,
+		json_nested_record = if Value.Is(json_record , Record.Type) then json_record[json_nested_record] else parsed_JSON,
+		json_nested_list = if Value.Is(json_nested_record , Record.Type) then json_nested_record[json_nested_list] else parsed_JSON,
+		tbl_from_records = if Value.Is( json_nested_list , List.Type ) then Table.FromRecords( json_nested_list ) else parsed_JSON,
+		result = tbl_from_records
+		in result
+		in
+		    json_record_list
+		```
+	lineageTag: a5e5e5c9-75b8-4488-8b6f-b85f94f36fd6
+	queryGroup: development\dev_json_outputs
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression output_jsonFunction_test = ```
+		let
+		    Source = fn_JSONarrary_toTable_Parsable("{  ""data"": {
+		    ""values"": [
+		      {""a"": ""A"", ""b"": 28},
+		      {""a"": ""B"", ""b"": 55},
+		      {""a"": ""C"", ""b"": 43},
+		      {""a"": ""G"", ""b"": 19},
+		      {""a"": ""H"", ""b"": 87},
+		      {""a"": ""I"", ""b"": 52},
+		      {""a"": ""D"", ""b"": 91},
+		      {""a"": ""E"", ""b"": 81},
+		      {""a"": ""F"", ""b"": 53}
+		    ]}
+		  }"),
+		    json_source = Source,
+		    column_header = Table.ColumnNames(json_source){0},
+		    expand_json = Table.TransformColumns( Table.TransformColumns(json_source,{  },Json.Document), { {column_header, each _??_, type  { Record.Type } } }
+		),
+		    expand_records = let
+		columns_list = {"nested_record"},
+		column_name = columns_list{0},
+		record_fields = Record.FieldNames( expand_json{0}[JSON_Data]),
+		result = Table.ExpandRecordColumn( expand_json, column_header, record_fields, columns_list ),
+		cleaned = Table.TransformColumns( result, { {column_name, each _??_, type  { Record.Type } } } )
+		in 
+		cleaned,
+		    column_name = Table.ColumnNames( expand_records ){0},
+		    list_records = let
+		columns_list = {"nested_list"},
+		column_header = column_name,
+		record_fields = Record.FieldNames( expand_records{0}[nested_record]),
+		expand_record = Table.ExpandRecordColumn( expand_records, column_header, record_fields, columns_list ),
+		result = expand_record[nested_list]{0}
+		in 
+		result,
+		    tbl_output = Table.FromRecords( list_records )
+		in
+		    tbl_output
+		```
+	lineageTag: 3f6b1058-3c8d-47da-82d6-179ab53e84fd
+	queryGroup: development\dev_json_outputs
+
+	annotation PBI_ResultType = Table
+
+expression fn_import_vega_dataset = ```
+		let
+		  customFunction =  // fnReplaceBlanksRemoveNulls                 
+		/* ------------------------------ 
+		  Author: Imran Haq - PBI QUERYOUS
+		  Description: fnReplaceBlanksRemoveNulls
+		 ---------------------------------*/
+		
+		// 1.0: invoke function & define parameter inputs
+		    let
+		      invokeFunction = (vega_dataset as text) =>
+		        
+		// ------------------------------------------------------------------
+		// 2.0: function transformations
+		    let
+		      web_source = Web.Contents("https://vega.github.io/vega-datasets/data/" & vega_dataset ),
+		      json_source  = Table.FromRecords(Json.Document(web_source), null, MissingField.UseNull ), 
+		      csv_source  = Csv.Document(web_source,  [Delimiter=",", Columns=null, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		      tsv_source = Csv.Document(web_source, [Delimiter="#(tab)", Columns=null, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		      source =  Table.FromRecords( Json.Document(Web.Contents("https://vega.github.io/vega-datasets/data/" & vega_dataset )) , null, MissingField.UseNull ),
+		      check_document = 
+		          if Text.EndsWith( vega_dataset , ".tsv") then Table.PromoteHeaders( tsv_source , [PromoteAllScalars=true]) else  
+		          if Text.EndsWith( vega_dataset , ".csv") then Table.PromoteHeaders( csv_source , [PromoteAllScalars=true]) else
+		          if Text.EndsWith( vega_dataset , ".json") then json_source else
+		          web_source
+		    in
+		      check_document
+		    , 
+		
+		// ------------------------------------------------------------------     
+		// 3.0: change parameter metadata here
+		      fnType = type function (
+		        // 3.0.1: first parameter
+		        choose_vega_dataset as (
+		          type text
+		            meta 
+		            [
+		              Documentation.FieldCaption     = " Choose dataset ", 
+		              Documentation.FieldDescription = " Choose dataset ",
+		              Documentation.AllowedValues    = {
+		                // "7zip.png",
+		                "airports.csv",
+		                "annual-precip.json",
+		                "anscombe.json",
+		                "barley.json",
+		                "birdstrikes.csv",
+		                "budget.json",
+		                "budgets.json",
+		                "burtin.json",
+		                "cars.json",
+		                "co2-concentration.csv",
+		                "countries.json",
+		                "crimea.json",
+		                "disasters.csv",
+		                "driving.json",
+		                "earthquakes.json",
+		                // "ffox.png",
+		                "flare-dependencies.json",
+		                "flare.json",
+		                "flights-10k.json",
+		                "flights-200k.arrow",
+		                "flights-200k.json",
+		                "flights-20k.json",
+		                "flights-2k.json",
+		                "flights-3m.csv",
+		                "flights-5k.json",
+		                "flights-airport.csv",
+		                "football.json",
+		                "gapminder-health-income.csv",
+		                "gapminder.json",
+		                // "gimp.png",
+		                "github.csv",
+		                "income.json",
+		                "iowa-electricity.csv",
+		                "jobs.json",
+		                "la-riots.csv",
+		                // "londonBoroughs.json",
+		                // "londonCentroids.json",
+		                // "londonTubeLines.json",
+		                "lookup_groups.csv",
+		                "lookup_people.csv",
+		                "miserables.json",
+		                "monarchs.json",
+		                "movies.json",
+		                "normal-2d.json",
+		                "obesity.json",
+		                "ohlc.json",
+		                // "patterns.json",
+		                "penguins.json",
+		                "platformer-terrain.json",
+		                "points.json",
+		                "political-contributions.json",
+		                "population.json",
+		                "population_engineers_hurricanes.csv",
+		                "seattle-weather-hourly-normals.csv",
+		                "seattle-weather.csv",
+		                "sp500-2000.csv",
+		                "sp500.csv",
+		                "stocks.csv",
+		                "udistrict.json",
+		                "unemployment-across-industries.json",
+		                "unemployment.tsv",
+		                "uniform-2d.json",
+		                "us-10m.json",
+		                "us-employment.csv",
+		                "us-state-capitals.json",
+		                // "volcano.json",
+		                "weather.csv",
+		                "weather.json",
+		                "wheat.json",
+		                "windvectors.csv",
+		                "world-110m.json"
+		
+		                
+		
+		                }
+		            ]
+		        )
+		       
+		        // 3.0.2: second parameter
+		        /* ,
+		         optional separator as (
+		          type text
+		            meta 
+		            [
+		              Documentation.FieldCaption     = " Choose Separator Type ", 
+		              Documentation.FieldDescription = " Recommended to use #(lf) forward slash / ", 
+		              Documentation.AllowedValues    = {"-", "/"}
+		            ]
+		        )
+		      )  */
+		   // 3.1: parameter return type   
+		    ) as list,
+		// ------------------------------------------------------------------
+		// 4.0: edit function metadata here
+		      documentation = 
+		      [  
+		
+		          Documentation.Name = " fn_import_vega_datasets ", 
+		          Documentation.Description = " Custom function to import vega datasets ", 
+		          Documentation.LongDescription = " Custom function to import vega datasets ", 
+		          Documentation.Category = " ETL Category ", 
+		          Documentation.Source = "  PBIQUERYOUS  ", 
+		          Documentation.Version = " 1.0 ", 
+		          Documentation.Author = " Imran Haq ", 
+		          Documentation.Examples = 
+		          {
+		            [
+		            Description = "  Custom function to import vega datasets   ",
+		            Code    = " fn_import_vega_datasets( vega_dataset ) ", 
+		            Result  = 
+		"
+		 1. Enjoy
+		 
+		"
+		
+		            ]
+		            /* ,
+		            [
+		            Description = "  description   ",
+		            Code    = " code ", 
+		            Result  = " result #(cr,lf) new line
+		                      #(cr,lf) new line #(cr,lf) 2 "
+		            ] */
+		          }
+		       
+		      ]
+		       ,
+		       
+		// ------------------------------------------------------------------
+		// 5.0: Choose between Parameter Documentation or Function Documentation
+		      functionDocumentation =      // -- function metadata
+		      Value.ReplaceType(invokeFunction, Value.ReplaceMetadata( Value.Type(invokeFunction), documentation)),
+		      
+		      parameterDocumentation =    // -- parameter metadata
+		      Value.ReplaceType(invokeFunction, fnType),
+		      
+		      replaceMeta =               // -- both metas
+		        Value.ReplaceType(
+		          Value.ReplaceType( invokeFunction, fnType ),
+		          Value.ReplaceMetadata( Value.Type(invokeFunction), documentation)
+		        ) 
+		    in
+		// ------------------------------------------------------------------
+		// select one of the above steps and paste below
+		      parameterDocumentation      /* <-- Choose final documentation type */
+		      
+		in
+		  customFunction
+		```
+	lineageTag: 0abbf3da-b370-436d-b103-a574e676921d
+	queryGroup: vega_import_functions
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression fn_import_json_array = ```
+		let
+		  customFunction =  // fn_convert_json_values                 
+		/* ------------------------------ 
+		  Author: Imran Haq - PBI QUERYOUS
+		  Description: fn_convert_json_values
+		 ---------------------------------*/
+		
+		// 1.0: invoke function & define parameter inputs
+		    let
+		      invokeFunction = (json_input ) =>
+		        
+		// ------------------------------------------------------------------
+		// 2.0: function transformations
+		    let
+		  // json_input = null (for manual inputs, necessary to use double-speech marks {[""text"": ""value"", ""item"", ""value""]}, 
+		  json_values = 
+		    if json_input = null then
+		      "[
+		      {""item"": ""A"", ""value"": 28},
+		      {""item"": ""B"", ""value"": 55},
+		      {""item"": ""C"", ""value"": 43},
+		      {""item"": ""D"", ""value"": 19},
+		      {""item"": ""E"", ""value"": 87},
+		      {""item"": ""F"", ""value"": 52}
+		    ]"
+		    else
+		      json_input, 
+		  json_parse = Json.Document(Json.FromValue(json_values)), 
+		  convert_to_table = #table(1, {{json_parse}}), 
+		  json_parsed = 
+		    let
+		      inputTable = Table.FromRecords(Table.TransformColumns(convert_to_table, {}, Json.Document)[Column1]{0}), 
+		      prep = Table.ToColumns(
+		        Table.Transpose(
+		          Table.SelectColumns(
+		            Table.AddColumn(
+		              Table.Transpose(Table.DemoteHeaders(Table.FirstN(inputTable, 1))), 
+		              "DataType", 
+		              each if [Column2] = null then Any.Type else Value.Type([Column2])
+		            ), 
+		            {"Column1", "DataType"}
+		          )
+		        )
+		      ), 
+		      outputTable = Table.TransformColumnTypes(inputTable, prep), 
+		      result = outputTable
+		    in
+		      result
+		in
+		  json_parsed
+		    , 
+		
+		// ------------------------------------------------------------------     
+		// 3.0: change parameter metadata here
+		      fnType = type function (
+		        // 3.0.1: first parameter
+		        function_documentation as (
+		          type text
+		            meta 
+		            [
+		              Documentation.FieldCaption     = " Paste dataset for Vega/Vega-Lite as JSON values ", 
+		              Documentation.FieldDescription = " Paste dataset for Vega/Vega-Lite as JSON values ",
+		              Documentation.SampleValues = {"Table/Step"}
+		            ]
+		        )
+		       
+		        // 3.0.2: second parameter
+		        /* ,
+		         optional separator as (
+		          type text
+		            meta 
+		            [
+		              Documentation.FieldCaption     = " Choose Separator Type ", 
+		              Documentation.FieldDescription = " Recommended to use #(lf) forward slash / ", 
+		              Documentation.AllowedValues    = {"-", "/"}
+		            ]
+		        )
+		      )  */
+		   // 3.1: parameter return type   
+		    ) as list,
+		// ------------------------------------------------------------------
+		// 4.0: edit function metadata here
+		      documentation = 
+		      [  
+		
+		          Documentation.Name = " fn_convert_json_values ", 
+		          Documentation.Description = " Paste dataset for Vega/Vega-Lite as JSON values ", 
+		          Documentation.LongDescription = " Paste dataset for Vega/Vega-Lite as JSON values ", 
+		          Documentation.Category = " ETL Category ", 
+		          Documentation.Source = "  PBIQUERYOUS  ", 
+		          Documentation.Version = " 1.0 ", 
+		          Documentation.Author = " Imran Haq ", 
+		          Documentation.Examples = 
+		          {
+		            [
+		            Description = "  Paste dataset for Vega/Vega-Lite as JSON values   ",
+		            Code    = " fn_convert_json_values( json_values ) ", 
+		            Result  = 
+		"
+		nb: requires double-speech marks (see code in Advanced Editor)
+		    [
+		      {""item"": ""A"", ""value"": 28},
+		      {""item"": ""B"", ""value"": 55},
+		      {""item"": ""C"", ""value"": 43},
+		      {""item"": ""D"", ""value"": 19},
+		      {""item"": ""E"", ""value"": 87},
+		      {""item"": ""F"", ""value"": 52}
+		    ]
+		 
+		"
+		
+		            ]
+		            /* ,
+		            [
+		            Description = "  description   ",
+		            Code    = " code ", 
+		            Result  = " result #(cr,lf) new line
+		                      #(cr,lf) new line #(cr,lf) 2 "
+		            ] */
+		          }
+		       
+		      ]
+		       ,
+		       
+		// ------------------------------------------------------------------
+		// 5.0: Choose between Parameter Documentation or Function Documentation
+		      functionDocumentation =      // -- function metadata
+		      Value.ReplaceType(invokeFunction, Value.ReplaceMetadata( Value.Type(invokeFunction), documentation)),
+		      
+		      parameterDocumentation =    // -- parameter metadata
+		      Value.ReplaceType(invokeFunction, fnType),
+		      
+		      replaceMeta =               // -- both metas (nb: doesn't work, can't show both at same time)
+		        Value.ReplaceType(
+		          Value.ReplaceType( invokeFunction, fnType ),
+		          Value.ReplaceMetadata( Value.Type(invokeFunction), documentation)
+		        ) 
+		    in
+		// ------------------------------------------------------------------
+		// select one of the above steps and paste below
+		      replaceMeta
+		in
+		    customFunction
+		```
+	lineageTag: 9fdf32d1-dc73-40c1-95f7-4a55d7b71f71
+	queryGroup: vega_import_functions
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression tbl_cities_dimension_prep =
+		let
+		    Source = average_monthly_temperatures_UK,
+		    #"Removed Other Columns" = Table.SelectColumns(Source,{"City",  "City Key", "Country", "Latitude", "Lat" , "Longitude",  "Long"}),
+		    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"City", "City Key"})
+		in
+		    #"Removed Duplicates"
+	lineageTag: 25b1a143-f72b-4be9-b8ff-53b8165b0458
+	queryGroup: powerbi_imported_datasets
+
+	annotation PBI_ResultType = Exception
+
+expression output_jsonFunction_test2 = ```
+		let
+		    pasteJSON = ( "[
+		      {""Category"": ""A"", ""Value"": 28},
+		      {""Category"": ""B"", ""Value"": 55},
+		      {""Category"": ""C"", ""Value"": 43},
+		      {""Category"": ""G"", ""Value"": 19},
+		      {""Category"": ""H"", ""Value"": 87},
+		      {""Category"": ""I"", ""Value"": 52},
+		      {""Category"": ""D"", ""Value"": 91},
+		      {""Category"": ""E"", ""Value"": 81},
+		      {""Category"": ""F"", ""Value"": 53}
+		    ]" ),
+		    dataWrapped = "{  ""data"": { ""values"":" & pasteJSON & "}}",
+		    Source = fn_JSONarrary_toTable_Parsable(dataWrapped),
+		    json_source = Source,
+		    column_header = Table.ColumnNames(json_source){0},
+		    expand_json = Table.TransformColumns( Table.TransformColumns(json_source,{  },Json.Document), { {column_header, each _??_, type  { Record.Type } } }
+		),
+		    expand_records = let
+		columns_list = {"nested_record"},
+		column_name = columns_list{0},
+		record_fields = Record.FieldNames( expand_json{0}[JSON_Data]),
+		result = Table.ExpandRecordColumn( expand_json, column_header, record_fields, columns_list ),
+		cleaned = Table.TransformColumns( result, { {column_name, each _??_, type  { Record.Type } } } )
+		in 
+		cleaned,
+		    column_name = Table.ColumnNames( expand_records ){0},
+		    list_records = let
+		columns_list = {"nested_list"},
+		column_header = column_name,
+		record_fields = Record.FieldNames( expand_records{0}[nested_record]),
+		expand_record = Table.ExpandRecordColumn( expand_records, column_header, record_fields, columns_list ),
+		result = expand_record[nested_list]{0}
+		in 
+		result,
+		    tbl_output = Table.FromRecords( list_records )
+		in
+		    tbl_output
+		```
+	lineageTag: ec87d854-9448-4742-a049-c93986e5e30a
+	queryGroup: development\dev_json_outputs
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression fn_import_json_array_TEST = ```
+		let
+		  customFunction =  // fn_convert_json_values                 
+		/* ------------------------------ 
+		  Author: Imran Haq - PBI QUERYOUS
+		  Description: fn_convert_json_values
+		 ---------------------------------*/
+		
+		// 1.0: invoke function & define parameter inputs
+		    let
+		      invokeFunction = (json_input ) =>
+		        
+		// ------------------------------------------------------------------
+		// 2.0: function transformations
+		    let
+		  // json_input = null, 
+		  json_values = 
+		    if json_input = null then
+		      "[
+		      {""item"": ""A"", ""value"": 28},
+		      {""item"": ""B"", ""value"": 55},
+		      {""item"": ""C"", ""value"": 43},
+		      {""item"": ""D"", ""value"": 19},
+		      {""item"": ""E"", ""value"": 87},
+		      {""item"": ""F"", ""value"": 52}
+		    ]"
+		    else
+		      json_input, 
+		  json_parse = Json.Document(Json.FromValue(json_values)), 
+		  convert_to_table = #table(1, {{json_parse}}), 
+		  json_parsed = 
+		    let
+		      inputTable = Table.FromRecords(Table.TransformColumns(convert_to_table, {}, Json.Document)[Column1]{0}), 
+		      prep = Table.ToColumns(
+		        Table.Transpose(
+		          Table.SelectColumns(
+		            Table.AddColumn(
+		              Table.Transpose(Table.DemoteHeaders(Table.FirstN(inputTable, 1))), 
+		              "DataType", 
+		              each if [Column2] = null then Any.Type else Value.Type([Column2])
+		            ), 
+		            {"Column1", "DataType"}
+		          )
+		        )
+		      ), 
+		      outputTable = Table.TransformColumnTypes(inputTable, prep), 
+		      result = outputTable
+		    in
+		      result
+		in
+		  json_parsed
+		    , 
+		
+		// ------------------------------------------------------------------     
+		// 3.0: change parameter metadata here
+		      fnType = type function (
+		        // 3.0.1: first parameter
+		        function_documentation as (
+		          type text
+		            meta 
+		            [
+		              Documentation.FieldCaption     = " Paste dataset for Vega/Vega-Lite as JSON values ", 
+		              Documentation.FieldDescription = " Paste dataset for Vega/Vega-Lite as JSON values ",
+		              Documentation.SampleValues = {"Table/Step"}
+		            ]
+		        )
+		       
+		        // 3.0.2: second parameter
+		        /* ,
+		         optional separator as (
+		          type text
+		            meta 
+		            [
+		              Documentation.FieldCaption     = " Choose Separator Type ", 
+		              Documentation.FieldDescription = " Recommended to use #(lf) forward slash / ", 
+		              Documentation.AllowedValues    = {"-", "/"}
+		            ]
+		        )
+		      )  */
+		   // 3.1: parameter return type   
+		    ) as list,
+		// ------------------------------------------------------------------
+		// 4.0: edit function metadata here
+		      documentation = 
+		      [  
+		
+		          Documentation.Name = " fn_convert_json_values ", 
+		          Documentation.Description = " Paste dataset for Vega/Vega-Lite as JSON values ", 
+		          Documentation.LongDescription = " Paste dataset for Vega/Vega-Lite as JSON values ", 
+		          Documentation.Category = " ETL Category ", 
+		          Documentation.Source = "  PBIQUERYOUS  ", 
+		          Documentation.Version = " 1.0 ", 
+		          Documentation.Author = " Imran Haq ", 
+		          Documentation.Examples = 
+		          {
+		            [
+		            Description = "  Paste dataset for Vega/Vega-Lite as JSON values   ",
+		            Code    = " fn_convert_json_values( json_values ) ", 
+		            Result  = 
+		"
+		nb: requires double-speech marks
+		    [
+		      {""item"": ""A"", ""value"": 28},
+		      {""item"": ""B"", ""value"": 55},
+		      {""item"": ""C"", ""value"": 43},
+		      {""item"": ""D"", ""value"": 19},
+		      {""item"": ""E"", ""value"": 87},
+		      {""item"": ""F"", ""value"": 52}
+		    ]
+		 
+		"
+		
+		            ]
+		            /* ,
+		            [
+		            Description = "  description   ",
+		            Code    = " code ", 
+		            Result  = " result #(cr,lf) new line
+		                      #(cr,lf) new line #(cr,lf) 2 "
+		            ] */
+		          }
+		       
+		      ]
+		       ,
+		       
+		// ------------------------------------------------------------------
+		// 5.0: Choose between Parameter Documentation or Function Documentation
+		      functionDocumentation =      // -- function metadata
+		      Value.ReplaceType(invokeFunction, Value.ReplaceMetadata( Value.Type(invokeFunction), documentation)),
+		      
+		      parameterDocumentation =    // -- parameter metadata
+		      Value.ReplaceType(invokeFunction, fnType),
+		      
+		      replaceMeta =               // -- both metas (nb: doesn't work, can't show both at same time)
+		        Value.ReplaceType(
+		          Value.ReplaceType( invokeFunction, fnType ),
+		          Value.ReplaceMetadata( Value.Type(invokeFunction), documentation)
+		        ) 
+		    in
+		// ------------------------------------------------------------------
+		// select one of the above steps and paste below
+		      replaceMeta
+		in
+		    customFunction
+		```
+	lineageTag: 2820019d-33a8-4541-9c8c-6e2da4e20698
+	queryGroup: development
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+

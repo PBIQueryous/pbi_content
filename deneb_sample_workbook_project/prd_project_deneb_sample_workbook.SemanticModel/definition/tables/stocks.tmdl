@@ -1,0 +1,44 @@
+table stocks
+	lineageTag: c05ad1de-7fe8-4ec6-9299-71e65ee1bd23
+
+	column symbol
+		dataType: string
+		lineageTag: d0d30b54-8c99-48d6-9aba-d171f2730015
+		summarizeBy: none
+		sourceColumn: symbol
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 665f1c22-41e6-4b4f-9870-0be17d63aa87
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column price
+		dataType: double
+		lineageTag: 2138e84e-e982-46d6-98ff-a9b77c591d2a
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition stocks = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("stocks.csv"),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"symbol", type text}, {"date", type date}, {"price", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

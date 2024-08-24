@@ -1,0 +1,84 @@
+table ohlc
+	lineageTag: 424b276a-3089-4137-a73b-24782682d842
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 40ef9f5d-0ae5-402f-96a0-ee6364bda593
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column open
+		dataType: double
+		lineageTag: 07728e96-fa4d-4974-b690-4350dca2d478
+		summarizeBy: sum
+		sourceColumn: open
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column high
+		dataType: double
+		lineageTag: d5a65594-3dc6-44d3-8471-0b40a140d261
+		summarizeBy: sum
+		sourceColumn: high
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column low
+		dataType: double
+		lineageTag: 2f243ccf-3931-4e59-b0ec-6e82822da112
+		summarizeBy: sum
+		sourceColumn: low
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column close
+		dataType: double
+		lineageTag: 812b439d-049e-479c-b085-d5acf51e83cc
+		summarizeBy: sum
+		sourceColumn: close
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column signal
+		dataType: string
+		lineageTag: a09bb2e2-16f2-48da-8e07-5adea2f2adc3
+		summarizeBy: none
+		sourceColumn: signal
+
+		annotation SummarizationSetBy = Automatic
+
+	column ret
+		dataType: double
+		lineageTag: 5c16a34c-1ff1-40eb-abb8-c5c5c8e41ed6
+		summarizeBy: sum
+		sourceColumn: ret
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition ohlc = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("ohlc.json"),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"date", type date}, {"open", type number}, {"high", type number}, {"low", type number}, {"close", type number}, {"signal", type text}, {"ret", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

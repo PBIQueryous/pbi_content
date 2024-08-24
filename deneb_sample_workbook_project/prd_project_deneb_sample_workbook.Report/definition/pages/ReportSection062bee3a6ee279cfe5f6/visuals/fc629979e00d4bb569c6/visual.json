@@ -1,0 +1,317 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "fc629979e00d4bb569c6",
+  "position": {
+    "x": 1449.5731138080287,
+    "y": 298.95272850717134,
+    "z": 0,
+    "height": 511.00059407621148,
+    "width": 450.16719001951964,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "BETAdeneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "penguins"
+                        }
+                      },
+                      "Property": "Body Mass (g)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(penguins.Body Mass (g))",
+              "nativeQueryRef": "Body Mass (g)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "penguins"
+                        }
+                      },
+                      "Property": "Flipper Length (mm)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(penguins.Flipper Length (mm))",
+              "nativeQueryRef": "Flipper Length (mm)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "penguins"
+                    }
+                  },
+                  "Property": "Index"
+                }
+              },
+              "queryRef": "penguins.Index",
+              "nativeQueryRef": "Index1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "penguins"
+                    }
+                  },
+                  "Property": "Species"
+                }
+              },
+              "queryRef": "penguins.Species",
+              "nativeQueryRef": "Species"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "penguins"
+                      }
+                    },
+                    "Property": "Body Mass (g)"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"description\": \"A scatterplot showing body mass and flipper lengths of penguins.\",\n  \"data\": {\"name\": \"dataset\"},\n  \"title\": {\"text\": \"Scatter plot with shape/colour legend\", \"fontSize\": 18},\n  \"mark\": \"point\",\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"Flipper Length (mm)\",\n      \"type\": \"quantitative\",\n      \"scale\": {\"zero\": false},\n      \"axis\": {\n        \"titleFontSize\": 14,\n        \"labelFontSize\": 14\n      }\n    },\n    \"y\": {\n      \"field\": \"Body Mass (g)\",\n      \"type\": \"quantitative\",\n      \"scale\": {\"zero\": false},\n      \"axis\": {\n        \"titleFontSize\": 14,\n        \"labelFontSize\": 14\n      }\n    },\n    \"color\": {\n      \"field\": \"Species\",\n      \"type\": \"nominal\",\n      \"legend\": {\n        \"titleFontSize\": 16,\n        \"labelFontSize\": 16\n      }\n    },\n    \"shape\": {\n      \"field\": \"Species\",\n      \"type\": \"nominal\"\n    }\n  }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.19.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.7.0.20240624#c94536d'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "476.0005940762115D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "440.16719001951964D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B3B3B3'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Deneb Visual'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF7CF'"
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#a38600'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

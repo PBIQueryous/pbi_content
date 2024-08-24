@@ -1,0 +1,50 @@
+table barley
+	lineageTag: f59e87fb-904b-48d6-9784-8875ff263b7c
+
+	column yield
+		dataType: double
+		lineageTag: 682386e3-43ba-4416-9cf7-29560425c060
+		summarizeBy: none
+		sourceColumn: yield
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column variety
+		dataType: string
+		lineageTag: 7df249dd-1669-48e9-bf50-04b149edf453
+		summarizeBy: none
+		sourceColumn: variety
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 38adc6e7-9911-4204-a2c6-379866bc720a
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column site
+		dataType: string
+		lineageTag: b69eb7cf-dbf3-4e75-bcb4-b166f481be46
+		summarizeBy: none
+		sourceColumn: site
+
+		annotation SummarizationSetBy = Automatic
+
+	partition barley = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("barley.json"),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"yield", type number}, {"variety", type text}, {"year", Int64.Type}, {"site", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

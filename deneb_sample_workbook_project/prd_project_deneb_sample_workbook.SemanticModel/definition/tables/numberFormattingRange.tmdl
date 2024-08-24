@@ -1,0 +1,75 @@
+table numberFormattingRange
+	lineageTag: 6cb6d293-35d3-4ee2-b37b-a4ccf5ff3349
+
+	column Value
+		dataType: int64
+		formatString: 0
+		lineageTag: 90b0c31b-97c1-487d-b468-7cec887f1b43
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: ecace4be-4651-4928-9664-ad8a16baa2f1
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 0462b780-547b-475e-a5d6-9dd884f84df2
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition numberFormattingRange = m
+		mode: import
+		queryGroup: development
+		source = ```
+				let
+				    // Function to generate random values within specified intervals for a given exponent of 10.
+				    GenerateRandomValuesForDenomination = (exponent as number) as list =>
+				        let
+				            baseValue = Number.Power(10, exponent),
+				            secondValue = 5 * baseValue,
+				            thirdValue = Number.Power(10, exponent + 1) - 1,
+				            // Generate a random value between the base and second value.
+				            randomBetweenBaseAndSecond = Number.RoundDown(Number.RandomBetween(baseValue, secondValue)),
+				            // Generate a random value between the second and third value.
+				            randomBetweenSecondAndThird = Number.RoundDown(Number.RandomBetween(secondValue + 1, thirdValue)),
+				            // Include the base value to ensure coverage of the lower bound of each range.
+				            values = {baseValue, randomBetweenBaseAndSecond, randomBetweenSecondAndThird}
+				        in
+				            values,
+				
+				    // Generate random values across the specified ranges.
+				    Denominations = List.Transform({2..16}, each GenerateRandomValuesForDenomination(_)),
+				    
+				    // Flatten the nested list into a single list.
+				    CombinedList = List.Combine(Denominations),
+				    
+				    // Convert the list to a table.
+				    ConvertToTable = Table.FromList(CombinedList, Splitter.SplitByNothing(), {"Value"}),
+				    
+				    // Format the "Value" column as Int64.Type.
+				    FormattedTable = Table.TransformColumnTypes(ConvertToTable, {{"Value", Int64.Type}}),
+				    #"Added Index" = Table.AddIndexColumn(FormattedTable, "Index", 1, 1, Int64.Type),
+				    FinalTable = Table.AddColumn(#"Added Index", "Category", each 
+				        if [Value] < Number.Power(10, 3) then "Hundred" 
+				        else if [Value] < Number.Power(10, 6) then "Thousand" 
+				        else if [Value] < Number.Power(10, 9) then "Million" 
+				        else if [Value] < Number.Power(10, 12) then "Billion" 
+				        else if [Value] < Number.Power(10, 15) then "Trillion" 
+				        else if [Value] < Number.Power(10, 18) then "Quadrillion" 
+				        else "Beyond Quadrillion")
+				in
+				    FinalTable
+				```
+
+	annotation PBI_ResultType = Table
+

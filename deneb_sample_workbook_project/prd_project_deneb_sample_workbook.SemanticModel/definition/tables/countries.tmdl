@@ -1,0 +1,80 @@
+table countries
+	lineageTag: 35841cf1-c589-4092-bb23-d04e9a2f139c
+
+	column _comment
+		dataType: string
+		lineageTag: ddea6047-e83c-4450-9d6d-d4b4b13ceb37
+		summarizeBy: none
+		sourceColumn: _comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 20ab9f16-4010-43c0-b13c-c78f7918fd6d
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column fertility
+		dataType: double
+		lineageTag: 5e4eb4c7-2e28-480b-9c3c-9292ab0bdaeb
+		summarizeBy: sum
+		sourceColumn: fertility
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column life_expect
+		dataType: double
+		lineageTag: d90a300b-62be-40d4-9187-7895dadba449
+		summarizeBy: sum
+		sourceColumn: life_expect
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column n_fertility
+		dataType: double
+		lineageTag: 2454618a-a7a4-42b3-b775-adb798a26141
+		summarizeBy: sum
+		sourceColumn: n_fertility
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column n_life_expect
+		dataType: double
+		lineageTag: 281aeac7-393b-4f3e-b63a-42ab8ed1ea51
+		summarizeBy: sum
+		sourceColumn: n_life_expect
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column country
+		dataType: string
+		lineageTag: bbc27b62-a734-46c6-92d5-494758f125d7
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition countries = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("countries.json"),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"_comment", type text}, {"year", Int64.Type}, {"fertility", type number}, {"life_expect", type number}, {"n_fertility", type number}, {"n_life_expect", type number}, {"country", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

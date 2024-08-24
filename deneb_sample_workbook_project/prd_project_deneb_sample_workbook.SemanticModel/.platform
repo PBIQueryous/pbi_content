@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "prd_project_deneb_sample_workbook"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "77570506-438f-47db-8f71-4abc3e322b5d"
+  }
+}

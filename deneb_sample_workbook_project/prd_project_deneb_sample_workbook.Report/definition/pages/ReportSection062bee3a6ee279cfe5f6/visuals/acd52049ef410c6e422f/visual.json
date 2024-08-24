@@ -1,0 +1,129 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "acd52049ef410c6e422f",
+  "position": {
+    "x": 10.560589318600368,
+    "y": 13.577900552486188,
+    "z": 1000,
+    "height": 214.22909760589317,
+    "width": 1897.8887661141805,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "There are a wealth of useful datasets and chart examples to practice "
+                  },
+                  {
+                    "value": "Vega-Lite",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    },
+                    "url": "https://vega.github.io/vega-lite/examples/"
+                  },
+                  {
+                    "value": " and "
+                  },
+                  {
+                    "value": "Vega",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    },
+                    "url": "https://vega.github.io/vega/examples/"
+                  },
+                  {
+                    "value": " visualisation with their online editors. Vega hosts a collection of common datasets in their "
+                  },
+                  {
+                    "value": "Github repository",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    },
+                    "url": "https://github.com/vega/vega-datasets/tree/main/data"
+                  },
+                  {
+                    "value": " from which their online editors can import and read the data object. Here is an example of a "
+                  },
+                  {
+                    "value": "Colored Scatterplot",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    },
+                    "url": "https://vega.github.io/editor/#/examples/vega-lite/point_color_with_shape"
+                  },
+                  {
+                    "value": " in the Vega-Lite online editor."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The Deneb visual is not permitted to access external URLs, but with the help of a Power Query custom function, you are able to import Vega datasets into Power BI and reuse the Vega-Lite and Vega code in your visual. The images below show how you can take an example from the Vega-Lite online editor and utilise it for your Deneb visual."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Importing Practice Datasets'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

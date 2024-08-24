@@ -1,0 +1,69 @@
+table unemployment_across_industries
+	lineageTag: 9ddf8542-df16-415f-bbd3-5400705053e2
+
+	column series
+		dataType: string
+		lineageTag: 4b88bf50-4903-472e-b6e9-c3e648eacf07
+		summarizeBy: none
+		sourceColumn: series
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 185a945d-ca01-40bb-a9c3-7c46003518df
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: cb3b20f9-ab94-4a7b-a4ab-5d84a11cedb3
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column count
+		dataType: int64
+		formatString: 0
+		lineageTag: 18439eda-105c-46fb-b7ab-cb9308330e87
+		summarizeBy: sum
+		sourceColumn: count
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate
+		dataType: double
+		lineageTag: 90efe28d-dcbe-41b7-a9d4-4114d28c28b8
+		summarizeBy: sum
+		sourceColumn: rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e5aa2357-3df0-4d2d-b464-5540bc5fd9d6
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition unemployment_across_industries = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("unemployment-across-industries.json"),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"series", type text}, {"year", Int64.Type}, {"month", Int64.Type}, {"count", Int64.Type}, {"rate", type number}, {"date", type datetime}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

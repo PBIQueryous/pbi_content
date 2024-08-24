@@ -1,0 +1,498 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 3080,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 7668,
+            "y": 297.5
+          },
+          "nodeIndex": "__dummy",
+          "nodeLineageTag": "328acdac-61c8-4db6-ac0a-84060c7368dd",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5680,
+            "y": 201.5
+          },
+          "nodeIndex": "worldpopulation_pq",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3681,
+            "y": 36
+          },
+          "nodeIndex": "__dim_cities",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3858.0000801086426,
+            "y": 451
+          },
+          "nodeIndex": "__dim_dates",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4828,
+            "y": 50
+          },
+          "nodeIndex": "__KK_KPI",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5112,
+            "y": 38
+          },
+          "nodeIndex": "__KK_KPITarget",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4544,
+            "y": 50
+          },
+          "nodeIndex": "__KK_KPIsDATA",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 62
+          },
+          "nodeIndex": "barley",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7952,
+            "y": 201.5
+          },
+          "nodeIndex": "cars",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6816,
+            "y": 225.5
+          },
+          "nodeIndex": "countries",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 62
+          },
+          "nodeIndex": "driving",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7384,
+            "y": 285.5
+          },
+          "nodeIndex": "dynamic_formatting",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 86
+          },
+          "nodeIndex": "intensity",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 0
+          },
+          "nodeIndex": "movies",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5964,
+            "y": 261.5
+          },
+          "nodeIndex": "nps_score",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7100,
+            "y": 225.5
+          },
+          "nodeIndex": "ohlc",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136,
+            "y": 62
+          },
+          "nodeIndex": "patterns",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2556,
+            "y": 26
+          },
+          "nodeIndex": "penguins",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3124,
+            "y": 62
+          },
+          "nodeIndex": "population",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6248,
+            "y": 249.5
+          },
+          "nodeIndex": "revenue",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2840,
+            "y": 38
+          },
+          "nodeIndex": "seattle_weather",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1988,
+            "y": 74
+          },
+          "nodeIndex": "sodapops",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2272,
+            "y": 74
+          },
+          "nodeIndex": "stocks",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704,
+            "y": 62
+          },
+          "nodeIndex": "themes_named",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420,
+            "y": 74
+          },
+          "nodeIndex": "themes",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3408,
+            "y": 38
+          },
+          "nodeIndex": "un_population_projections",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 8236,
+            "y": 237.5
+          },
+          "nodeIndex": "unemployment_across_industries",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3477.0000801086426,
+            "y": 337
+          },
+          "nodeIndex": "average_monthly_temperatures_UK",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6532,
+            "y": 237.5
+          },
+          "nodeIndex": "actual_vs_budget",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 8520,
+            "y": 237.5
+          },
+          "nodeIndex": "categorical_revenue",
+          "nodeLineageTag": "e3fa6943-b333-46e2-80a5-252d998297ba",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 8804,
+            "y": 249.5
+          },
+          "nodeIndex": "perception_gap",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 9088,
+            "y": 285.5
+          },
+          "nodeIndex": "__ukpopulation",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 9372,
+            "y": 273.5
+          },
+          "nodeIndex": "__americanEstimation",
+          "nodeLineageTag": "f248c739-9f80-456c-b400-c4bfd28bbbfa",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 9656,
+            "y": 273.5
+          },
+          "nodeIndex": "numberFormatting",
+          "nodeLineageTag": "71eeb0ee-377f-4020-a473-f60204345741",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 9940,
+            "y": 273.5
+          },
+          "nodeIndex": "basicnumberFormatting",
+          "nodeLineageTag": "956801b1-6ca1-4553-8e66-ca3a98984ef8",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 10224,
+            "y": 273.5
+          },
+          "nodeIndex": "numberFormattingRange",
+          "nodeLineageTag": "6cb6d293-35d3-4ee2-b37b-a4ccf5ff3349",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 10508,
+            "y": 273.5
+          },
+          "nodeIndex": "_tempAverage",
+          "nodeLineageTag": "f8f69800-bb07-4f97-9477-e70bfc611772",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 11076,
+            "y": 285.5
+          },
+          "nodeIndex": "__dim_stepstatus",
+          "nodeLineageTag": "92315413-72ed-491b-800b-e79984fecaf5",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 10792,
+            "y": 297.5
+          },
+          "nodeIndex": "__dim_bookmark",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

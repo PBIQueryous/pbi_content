@@ -1,0 +1,300 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "e86c9f374b67b10da9b2",
+  "position": {
+    "x": 2.3759617139680813,
+    "y": 3.0714212509874415,
+    "z": 2000,
+    "height": 241.1429679743708,
+    "width": 910.148112742063,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actual_vs_budget"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "newData.Date",
+              "nativeQueryRef": "Date"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "actual_vs_budget"
+                    }
+                  },
+                  "Property": "_AC"
+                }
+              },
+              "queryRef": "newData._AC",
+              "nativeQueryRef": "AC",
+              "displayName": "AC"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "actual_vs_budget"
+                  }
+                },
+                "Property": "Date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.6.2.1'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"data\": {\"name\": \"dataset\"},\n  \"params\": [\n    {\"name\": \"bwActual\", \"value\": 0.8},\n    {\"name\": \"bwBudget\", \"value\": 0.8},\n    {\"name\": \"bwPlan\", \"value\": 0.8},\n    {\"name\": \"bwDelta\", \"value\": 0.15},\n    {\n      \"name\": \"_strokeColour\",\n      \"value\": \"black\"\n    },\n    {\n      \"name\": \"_actualColour\",\n      \"value\": \"navy\"\n    },\n    {\n      \"name\": \"_forecastColour\",\n      \"value\": \"#f0eee9\"\n    },\n    {\n      \"name\": \"_forecastPlanColour\",\n      \"value\": \"url(#diagonal-stripe-1-30)\"\n    },\n    {\n      \"name\": \"_planColour\",\n      \"value\": \"white\"\n    },\n    {\n      \"name\": \"textMultiplier\",\n      \"value\": 4.5\n    },\n    {\n      \"name\": \"labelMultiplier\",\n      \"value\": 4\n    },\n    {\n      \"name\": \"_deltaOffsetNEG\",\n      \"value\": 1.1\n    }\n  ],\n  \"transform\": [\n    {\n      \"window\": [\n        {\n          \"op\": \"max\",\n          \"field\": \"AC\",\n          \"as\": \"max_AC\"\n        },\n        {\n          \"op\": \"min\",\n          \"field\": \"AC\",\n          \"as\": \"min_AC\"\n        }\n      ],\n      \"frame\": [null, null]\n    },\n    {\n      \"calculate\": \"now()\",\n      \"as\": \"_now\"\n    },\n    {\n      \"calculate\": \"datetime( now())\",\n      \"as\": \"_datetime\"\n    },\n    {\n      \"calculate\": \"year(utcFormat(datetime( now()), ''%d-%b-%y''))\",\n      \"as\": \"_currentYearUtc\"\n    },\n    {\n      \"calculate\": \"utcFormat(datetime( now()), ''%d-%b-%y'')\",\n      \"as\": \"_utcFormat\"\n    },\n    {\n      \"name\": \"_DATE_TODAY\",\n      \"calculate\": \"datetime( now()) \",\n      \"as\": \"_dateToday\"\n    },\n    {\n      \"name\": \"_DATE_TEST\",\n      \"calculate\": \"datum._dateToday > datum[''Date''] ? 0 : 1 \",\n      \"as\": \"_dateTest\"\n    },\n    {\n      \"calculate\": \"datum[''AC''] - datum[''PL'']\",\n      \"as\": \"__varianceToPlan\"\n    },\n    {\n      \"calculate\": \"datum.__varianceToPlan > 0 ? -1: 1\",\n      \"as\": \"__deltaOffsetMultiplier\"\n    },\n    {\n      \"calculate\": \"datum.__varianceToPlan > 0 ? 1.4 : 1.99\",\n      \"as\": \"__deltaOffsetDivider\"\n    },\n    {\n      \"calculate\": \"(( datum[''AC''] - datum[''PL''] ) / datum[''PL''])\",\n      \"as\": \"__variancePCT\"\n    },\n    {\n      \"calculate\": \"(bwDelta-(bwDelta*2))\",\n      \"as\": \"_deltaWidth\"\n    },\n    {\n      \"calculate\": \"(bwPlan - bwDelta)\",\n      \"as\": \"_offsetPlanDelta\"\n    },\n    {\n      \"calculate\": \"datum.__variancePCT > 0 ? -2 : 1\",\n      \"as\": \"_deltaOffset\"\n    },\n    {\n      \"calculate\": \"datum[''AC''] > datum[''PL''] ? ''#c3f550'' : ''tomato''\",\n      \"as\": \"_deltaColourFormat\"\n    },\n    {\n      \"calculate\": \"datum[''AC''] > datum[''PL''] ? _strokeColour : ''black''\",\n      \"as\": \"_deltaStrokeFormat\"\n    },\n    {\n      \"calculate\": \"(bwPlan) * -0.169\",\n      \"as\": \"_globalOffset\"\n    }\n  ],\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"Date\",\n      \"type\": \"nominal\",\n      \"axis\": {\n        \"title\": null,\n        \"domain\": true,\n        \"labels\": true,\n        \"formatType\": \"pbiFormat\",\n        \"format\": \"MMM-yy\",\n        \"labelAngle\": 0,\n        \"labelAlign\": \"center\",\n        \"labelPadding\": 5,\n        \"labelOffset\": 0,\n        \"labelFontSize\": {\n          \"expr\": \" (bandwidth(''x'') / textMultiplier ) * bwActual+3\"\n        }\n      }\n    },\n    \"y\": {\n      \"field\": \"AC\",\n      \"type\": \"quantitative\",\n      \"axis\": null,\n      \"scale\": {\"zero\": false}\n    },\n    \"color\": {\n      \"condition\": [\n        {\n          \"test\": \"datum._dateTest == 1\",\n          \"value\": \"whitesmoke\"\n        }\n      ],\n      \"value\": \"navy\"\n    }\n  },\n  \"description\": \"_LAYER_\",\n  \"layer\": [\n    {\n      \"description\": \"ACTUAL_BAR\",\n      \"mark\": {\n        \"type\": \"bar\",\n        \"width\": {\n          \"expr\": \"(bandwidth(''x'')) * (bwActual )\"\n        },\n        \"stroke\": {\n          \"expr\": \"_strokeColour\"\n        },\n        \"strokeWidth\": 0.6\n      }\n    },\n    {\n      \"description\": \"ACTUAL_BAR\",\n      \"mark\": {\n        \"type\": \"bar\",\n        \"width\": {\n          \"expr\": \"(bandwidth(''x'')) * (bwActual )\"\n        },\n        \"strokeWidth\": 0.6\n      }\n    },\n    {\n      \"description\": \"ACTUAL_DATA_LABELS\",\n      \"mark\": {\n        \"type\": \"text\",\n        \"color\": {\n          \"expr\": \"datum._dateTest == 0 ? ''white'' : ''black''\"\n        },\n        \"fontSize\": {\n          \"expr\": \" ( bandwidth(''x'')/ labelMultiplier ) * bwActual\"\n        },\n        \"yOffset\": 3,\n        \"xOffset\": -4,\n        \"baseline\": \"top\",\n        \"align\": \"left\",\n        \"fontWeight\": \"bold\"\n      },\n      \"encoding\": {\n        \"text\": {\n          \"field\": \"AC\",\n          \"type\": \"quantitative\",\n          \"format\": \".2s\"\n        },\n        \"color\": {\n          \"condition\": [\n            {\n              \"test\": \"datum._dateTest == 1\",\n              \"value\": \"black\"\n            }\n          ],\n          \"value\": \"white\"\n        }\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"background\": \"transparent\",\n  \"view\": {\"stroke\": \"transparent\"},\n  \"font\": \"Segoe UI\",\n  \"arc\": {},\n  \"area\": {\n    \"line\": true,\n    \"opacity\": 0.6\n  },\n  \"bar\": {},\n  \"line\": {\n    \"stroke\": \"dimgrey\",\n    \"strokeWidth\": 3,\n    \"strokeCap\": \"round\",\n    \"strokeJoin\": \"round\"\n  },\n  \"path\": {},\n  \"point\": {\n    \"filled\": true,\n    \"size\": 150\n  },\n  \"rect\": {},\n  \"shape\": {},\n  \"symbol\": {\n    \"strokeWidth\": 1.5,\n    \"size\": 50\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\",\n    \"fontSize\": 12,\n    \"fill\": \"#605E5C\"\n  },\n  \"axis\": {\n    \"ticks\": false,\n    \"grid\": false,\n    \"domain\": false,\n    \"labelColor\": \"#605E5C\",\n    \"labelFontSize\": 12,\n    \"titleFont\": \"wf_standard-font, helvetica, arial, sans-serif\",\n    \"titleColor\": \"#252423\",\n    \"titleFontSize\": 16,\n    \"titleFontWeight\": \"normal\"\n  },\n  \"axisQuantitative\": {\n    \"tickCount\": 3,\n    \"grid\": true,\n    \"gridColor\": \"#C8C6C4\",\n    \"gridDash\": [1, 5],\n    \"labelFlush\": false\n  },\n  \"axisX\": {\"labelPadding\": 5},\n  \"axisY\": {\"labelPadding\": 10},\n  \"header\": {\n    \"titleFont\": \"wf_standard-font, helvetica, arial, sans-serif\",\n    \"titleFontSize\": 16,\n    \"titleColor\": \"#252423\",\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 13.333333333333332,\n    \"labelColor\": \"#605E5C\"\n  },\n  \"legend\": {\n    \"titleFont\": \"Segoe UI\",\n    \"titleFontWeight\": \"bold\",\n    \"titleColor\": \"#605E5C\",\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 13.333333333333332,\n    \"labelColor\": \"#605E5C\",\n    \"symbolType\": \"circle\",\n    \"symbolSize\": 75\n  }\n}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.16.3'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B3B3B3'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'cf_encoding_chart'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF7CF'"
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "352b71493de97a5ca201",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter1b604732d8b536194ba0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "actual_vs_budget"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "RelativeDate",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "actual_vs_budget",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "a"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "Right": {
+                    "DateSpan": {
+                      "Expression": {
+                        "Now": {}
+                      },
+                      "TimeUnit": 3
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
+  },
+  "isHidden": true
+}

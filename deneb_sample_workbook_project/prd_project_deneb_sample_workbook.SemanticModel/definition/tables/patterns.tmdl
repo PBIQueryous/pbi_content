@@ -1,0 +1,282 @@
+table patterns
+	lineageTag: 5002c871-610b-4ce9-bcec-83d2e49c4f22
+
+	measure patternName = ```
+			
+			    VAR suffix = MAX('intensity'[Suffix])
+			    RETURN MAX('patterns'[id]) & suffix
+			```
+		lineageTag: fb30f243-754f-4dc9-b8d0-1a5d06ed2019
+
+	measure svgUrl = "url(#" & 'patterns'[patternName] & ")"
+		lineageTag: a91974f2-f7f8-4242-ad7b-8b5750ece3c1
+
+	column id
+		dataType: string
+		lineageTag: 52839684-9751-40e0-b95f-cf771a492333
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column group
+		dataType: string
+		lineageTag: 73334e92-bb4c-4333-b7f6-501b4439a7ac
+		summarizeBy: none
+		sourceColumn: group
+
+		annotation SummarizationSetBy = Automatic
+
+	column order
+		dataType: double
+		lineageTag: 66a58400-5ecd-4516-a943-dc115cf013f4
+		summarizeBy: sum
+		sourceColumn: order
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column groupOrder
+		dataType: double
+		lineageTag: 0d7e9692-210e-4309-9d48-21a0c8dfd20a
+		summarizeBy: sum
+		sourceColumn: groupOrder
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition patterns = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_json_array("[{
+				        ""id"": ""diagonal-stripe-1"",
+				        ""group"": ""diagonal-stripe"",
+				        ""order"": 1,
+				        ""groupOrder"": 1
+				    }, {
+				        ""id"": ""diagonal-stripe-2"",
+				        ""group"": ""diagonal-stripe"",
+				        ""order"": 2,
+				        ""groupOrder"": 1
+				    }, {
+				        ""id"": ""diagonal-stripe-3"",
+				        ""group"": ""diagonal-stripe"",
+				        ""order"": 3,
+				        ""groupOrder"": 1
+				    }, {
+				        ""id"": ""diagonal-stripe-4"",
+				        ""group"": ""diagonal-stripe"",
+				        ""order"": 4,
+				        ""groupOrder"": 1
+				    }, {
+				        ""id"": ""diagonal-stripe-5"",
+				        ""group"": ""diagonal-stripe"",
+				        ""order"": 5,
+				        ""groupOrder"": 1
+				    }, {
+				        ""id"": ""diagonal-stripe-6"",
+				        ""group"": ""diagonal-stripe"",
+				        ""order"": 6,
+				        ""groupOrder"": 1
+				    }, {
+				        ""id"": ""horizontal-stripe-1"",
+				        ""group"": ""horizontal-stripe"",
+				        ""order"": 1,
+				        ""groupOrder"": 2
+				    }, {
+				        ""id"": ""horizontal-stripe-2"",
+				        ""group"": ""horizontal-stripe"",
+				        ""order"": 2,
+				        ""groupOrder"": 2
+				    }, {
+				        ""id"": ""horizontal-stripe-3"",
+				        ""group"": ""horizontal-stripe"",
+				        ""order"": 3,
+				        ""groupOrder"": 2
+				    }, {
+				        ""id"": ""horizontal-stripe-4"",
+				        ""group"": ""horizontal-stripe"",
+				        ""order"": 4,
+				        ""groupOrder"": 2
+				    }, {
+				        ""id"": ""horizontal-stripe-5"",
+				        ""group"": ""horizontal-stripe"",
+				        ""order"": 5,
+				        ""groupOrder"": 2
+				    }, {
+				        ""id"": ""horizontal-stripe-6"",
+				        ""group"": ""horizontal-stripe"",
+				        ""order"": 6,
+				        ""groupOrder"": 2
+				    }, {
+				        ""id"": ""horizontal-stripe-7"",
+				        ""group"": ""horizontal-stripe"",
+				        ""order"": 7,
+				        ""groupOrder"": 2
+				    }, {
+				        ""id"": ""horizontal-stripe-8"",
+				        ""group"": ""horizontal-stripe"",
+				        ""order"": 8,
+				        ""groupOrder"": 2
+				    }, {
+				        ""id"": ""horizontal-stripe-9"",
+				        ""group"": ""horizontal-stripe"",
+				        ""order"": 9,
+				        ""groupOrder"": 2
+				    }, {
+				        ""id"": ""vertical-stripe-1"",
+				        ""group"": ""vertical-stripe"",
+				        ""order"": 1,
+				        ""groupOrder"": 3
+				    }, {
+				        ""id"": ""vertical-stripe-2"",
+				        ""group"": ""vertical-stripe"",
+				        ""order"": 2,
+				        ""groupOrder"": 3
+				    }, {
+				        ""id"": ""vertical-stripe-3"",
+				        ""group"": ""vertical-stripe"",
+				        ""order"": 3,
+				        ""groupOrder"": 3
+				    }, {
+				        ""id"": ""vertical-stripe-4"",
+				        ""group"": ""vertical-stripe"",
+				        ""order"": 4,
+				        ""groupOrder"": 3
+				    }, {
+				        ""id"": ""vertical-stripe-5"",
+				        ""group"": ""vertical-stripe"",
+				        ""order"": 5,
+				        ""groupOrder"": 3
+				    }, {
+				        ""id"": ""vertical-stripe-6"",
+				        ""group"": ""vertical-stripe"",
+				        ""order"": 6,
+				        ""groupOrder"": 3
+				    }, {
+				        ""id"": ""vertical-stripe-7"",
+				        ""group"": ""vertical-stripe"",
+				        ""order"": 7,
+				        ""groupOrder"": 3
+				    }, {
+				        ""id"": ""vertical-stripe-8"",
+				        ""group"": ""vertical-stripe"",
+				        ""order"": 8,
+				        ""groupOrder"": 3
+				    }, {
+				        ""id"": ""vertical-stripe-9"",
+				        ""group"": ""vertical-stripe"",
+				        ""order"": 9,
+				        ""groupOrder"": 3
+				    }, {
+				        ""id"": ""circles-1"",
+				        ""group"": ""circles"",
+				        ""order"": 1,
+				        ""groupOrder"": 4
+				    }, {
+				        ""id"": ""circles-2"",
+				        ""group"": ""circles"",
+				        ""order"": 2,
+				        ""groupOrder"": 4
+				    }, {
+				        ""id"": ""circles-3"",
+				        ""group"": ""circles"",
+				        ""order"": 3,
+				        ""groupOrder"": 4
+				    }, {
+				        ""id"": ""circles-4"",
+				        ""group"": ""circles"",
+				        ""order"": 4,
+				        ""groupOrder"": 4
+				    }, {
+				        ""id"": ""circles-5"",
+				        ""group"": ""circles"",
+				        ""order"": 5,
+				        ""groupOrder"": 4
+				    }, {
+				        ""id"": ""circles-6"",
+				        ""group"": ""circles"",
+				        ""order"": 6,
+				        ""groupOrder"": 4
+				    }, {
+				        ""id"": ""circles-7"",
+				        ""group"": ""circles"",
+				        ""order"": 7,
+				        ""groupOrder"": 4
+				    }, {
+				        ""id"": ""circles-8"",
+				        ""group"": ""circles"",
+				        ""order"": 8,
+				        ""groupOrder"": 4
+				    }, {
+				        ""id"": ""circles-9"",
+				        ""group"": ""circles"",
+				        ""order"": 9,
+				        ""groupOrder"": 4
+				    }, {
+				        ""id"": ""dots-1"",
+				        ""group"": ""dots"",
+				        ""order"": 1,
+				        ""groupOrder"": 5
+				    }, {
+				        ""id"": ""dots-2"",
+				        ""group"": ""dots"",
+				        ""order"": 2,
+				        ""groupOrder"": 5
+				    }, {
+				        ""id"": ""dots-3"",
+				        ""group"": ""dots"",
+				        ""order"": 3,
+				        ""groupOrder"": 5
+				    }, {
+				        ""id"": ""dots-4"",
+				        ""group"": ""dots"",
+				        ""order"": 4,
+				        ""groupOrder"": 5
+				    }, {
+				        ""id"": ""dots-5"",
+				        ""group"": ""dots"",
+				        ""order"": 5,
+				        ""groupOrder"": 5
+				    }, {
+				        ""id"": ""dots-6"",
+				        ""group"": ""dots"",
+				        ""order"": 6,
+				        ""groupOrder"": 5
+				    }, {
+				        ""id"": ""dots-7"",
+				        ""group"": ""dots"",
+				        ""order"": 7,
+				        ""groupOrder"": 5
+				    }, {
+				        ""id"": ""dots-8"",
+				        ""group"": ""dots"",
+				        ""order"": 8,
+				        ""groupOrder"": 5
+				    }, {
+				        ""id"": ""dots-9"",
+				        ""group"": ""dots"",
+				        ""order"": 9,
+				        ""groupOrder"": 5
+				    }, {
+				        ""id"": ""crosshatch"",
+				        ""group"": ""other"",
+				        ""order"": 1,
+				        ""groupOrder"": 6
+				    }, {
+				        ""id"": ""houndstooth"",
+				        ""group"": ""other"",
+				        ""order"": 2,
+				        ""groupOrder"": 6
+				    }
+				]
+				")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

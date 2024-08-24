@@ -1,0 +1,51 @@
+table driving
+	lineageTag: 0aa3ee50-c6f3-43c3-a0a1-5480960fb34d
+
+	column side
+		dataType: string
+		lineageTag: ae72d4f2-381a-47c3-a9e7-469e18d75d87
+		summarizeBy: none
+		sourceColumn: side
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: f15da99f-97b4-4900-9cb2-cf076cb7e3c8
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column miles
+		dataType: int64
+		formatString: 0
+		lineageTag: a486cc77-a403-46a7-a90d-5e3a873ed230
+		summarizeBy: sum
+		sourceColumn: miles
+
+		annotation SummarizationSetBy = Automatic
+
+	column gas
+		dataType: double
+		lineageTag: c7203a23-bc32-4641-93a2-a8144f344de5
+		summarizeBy: sum
+		sourceColumn: gas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition driving = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("driving.json"),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"side", type text}, {"year", Int64.Type}, {"miles", Int64.Type}, {"gas", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

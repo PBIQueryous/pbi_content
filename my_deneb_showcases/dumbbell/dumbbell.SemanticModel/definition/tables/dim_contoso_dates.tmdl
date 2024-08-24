@@ -1,0 +1,157 @@
+table dim_contoso_dates
+	lineageTag: 95e7c0b1-5cd2-4490-9a02-2f3321db5369
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 0103603e-f45a-49c0-af49-ce2646e48a23
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: c03d1907-5d29-4ab2-88fa-ac524e29a2d4
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter'
+		dataType: string
+		lineageTag: dede006f-027a-4f44-832e-49e0327b44a5
+		summarizeBy: none
+		sourceColumn: Year Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ceced84-ed45-4b8f-b5ed-4bdce9d6326b
+		summarizeBy: none
+		sourceColumn: Year Quarter Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: e92bd4ff-d03c-4cf7-81e7-04a0fccac6f7
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month'
+		dataType: string
+		lineageTag: 4aa27422-7c59-4c68-8cee-bb6e45d96472
+		summarizeBy: none
+		sourceColumn: Year Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Short'
+		dataType: string
+		lineageTag: 8acfd228-330a-4a50-b790-070c24d4c9e0
+		summarizeBy: none
+		sourceColumn: Year Month Short
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ae5ece4-37c4-4304-8104-fd4d0f98dd3f
+		summarizeBy: none
+		sourceColumn: Year Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 38c3c6b0-2d63-458d-923d-b35b3e4d532e
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Short'
+		dataType: string
+		lineageTag: 637c85d2-69f0-4520-87c6-58483e170f3c
+		summarizeBy: none
+		sourceColumn: Month Short
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d1a7ca0-f5d1-46a6-94fe-c0dd9c5a655b
+		summarizeBy: none
+		sourceColumn: Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		dataType: string
+		lineageTag: 0b0a9c26-1083-49de-8f81-19432b84ce8b
+		summarizeBy: none
+		sourceColumn: Day of Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week Short'
+		dataType: string
+		lineageTag: c2d7d417-a70a-4253-b662-548da3edb289
+		summarizeBy: none
+		sourceColumn: Day of Week Short
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8aaa9a8b-fa87-4820-8552-55b799ebaac8
+		summarizeBy: none
+		sourceColumn: Day of Week Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working Day'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 07cb1cd5-5369-45a7-bc7d-016da84c6bb6
+		summarizeBy: none
+		sourceColumn: Working Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working Day Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: fc270062-282b-4249-9c2b-3f9d71e79f7e
+		summarizeBy: none
+		sourceColumn: Working Day Number
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_contoso_dates = m
+		mode: import
+		queryGroup: tables
+		source =
+				let
+				    Source = Sql.Database(p_server , p_database),
+				    dbo_Date1 = Source{[Schema="dbo",Item="Date"]}[Data]
+				in
+				    dbo_Date1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

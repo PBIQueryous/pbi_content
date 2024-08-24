@@ -1,0 +1,187 @@
+table fct_sales
+	lineageTag: 27a6a549-eef5-4fe5-a8f0-d1e56dfa1373
+
+	column 'Order Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: a1be3287-5004-48bd-8246-5a4089610ddd
+		summarizeBy: sum
+		sourceColumn: Order Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: fae8e7e2-b0c6-4f9d-98ed-ee8a88ef2c38
+		summarizeBy: sum
+		sourceColumn: Line Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f47c9b5c-d434-4a7f-860d-6e2dbdbb7f1d
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Delivery Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 682ce6bf-51a6-46b8-8371-eccb842bc35e
+		summarizeBy: none
+		sourceColumn: Delivery Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: cf53a84f-d2c3-45a9-b419-85d59a9b32de
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 23436d2f-6d65-4e43-aee4-5dcb08553c83
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 809b26f5-e2bf-4910-a646-7e61a000247f
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: double
+		lineageTag: c6e5b56d-67ab-4bd2-b332-36bac6d26b53
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unit Price'
+		dataType: double
+		lineageTag: c7ff6d1e-3b9f-422a-93f0-b30f217440ff
+		summarizeBy: sum
+		sourceColumn: Unit Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Net Price'
+		dataType: double
+		lineageTag: f1f3b40f-6139-49d3-b6e6-a70a4ceb1e58
+		summarizeBy: sum
+		sourceColumn: Net Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unit Cost'
+		dataType: double
+		lineageTag: 696f03f4-e7a5-4d6f-9ae5-951dd72c2658
+		summarizeBy: sum
+		sourceColumn: Unit Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Currency Code'
+		dataType: string
+		lineageTag: 6b741dd3-4a6c-4311-8bc4-5d9bda33a952
+		summarizeBy: none
+		sourceColumn: Currency Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Exchange Rate'
+		dataType: double
+		lineageTag: c04b2f23-e167-4c17-b6fd-a80e49280a31
+		summarizeBy: sum
+		sourceColumn: Exchange Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Discount Amount'
+		dataType: double
+		lineageTag: 3b14fc35-8e8b-4122-a10a-c5606f03da16
+		summarizeBy: sum
+		sourceColumn: Discount Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Discount Percent'
+		dataType: double
+		lineageTag: 05127f22-e669-46d4-ba46-f831848f05ef
+		summarizeBy: sum
+		sourceColumn: Discount Percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Gross Profit'
+		dataType: double
+		lineageTag: 727635a3-737b-4707-9f09-4c3fc0aadb61
+		summarizeBy: sum
+		sourceColumn: Gross Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Profit Margin'
+		dataType: double
+		lineageTag: b05f0153-a189-444e-b6cc-e585552d3d9b
+		summarizeBy: sum
+		sourceColumn: Profit Margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fct_sales = m
+		mode: import
+		queryGroup: tables
+		source =
+				let
+				    Source = Sql.Database(p_server , p_database),
+				    dbo_Sales1 = Source{[Schema="dbo",Item="Sales"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_Sales1, each ([Currency Code] = "GBP")),
+				    etl_discount_amount = Table.AddColumn(#"Filtered Rows", "Discount Amount", each [Unit Price] - [Net Price], type number),
+				    etl_discount_percent = Table.AddColumn(etl_discount_amount, "Discount Percent", each [Discount Amount] / [Unit Price], Percentage.Type),
+				    etl_gross_margin = Table.AddColumn(etl_discount_percent, "Gross Profit", each [Net Price] - [Unit Cost], type number),
+				    etl_profit_margin = Table.AddColumn(etl_gross_margin, "Profit Margin", each Value.Divide( [Gross Profit] , [Net Price]), Percentage.Type)
+				in
+				    etl_profit_margin
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

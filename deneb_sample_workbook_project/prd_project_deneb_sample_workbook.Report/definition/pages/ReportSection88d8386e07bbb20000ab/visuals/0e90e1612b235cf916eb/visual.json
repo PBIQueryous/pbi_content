@@ -1,0 +1,256 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "0e90e1612b235cf916eb",
+  "position": {
+    "x": 1288.0599421934942,
+    "y": 134.50969742215338,
+    "z": 1000,
+    "height": 449.75583131330967,
+    "width": 613.48273481771628,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "barley"
+                    }
+                  },
+                  "Property": "site"
+                }
+              },
+              "queryRef": "tbl_barley.site",
+              "nativeQueryRef": "site"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "barley"
+                    }
+                  },
+                  "Property": "variety"
+                }
+              },
+              "queryRef": "tbl_barley.variety",
+              "nativeQueryRef": "variety"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "barley"
+                    }
+                  },
+                  "Property": "year"
+                }
+              },
+              "queryRef": "Sum(tbl_barley.year)",
+              "nativeQueryRef": "year1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "barley"
+                    }
+                  },
+                  "Property": "yield"
+                }
+              },
+              "queryRef": "Sum(tbl_barley.yield)",
+              "nativeQueryRef": "yield1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "barley"
+                  }
+                },
+                "Property": "site"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"name\": \"trellis_barley\",\n  \"transform\": [\n    {\n      \"filter\": {\n        \"field\": \"site\",\n        \"oneOf\": [\n          \"University Farm\",\n          \"Morris\",\n          \"Crookston\",\n          \"Waseca\",\n          \"Duluth\",\n          \"Grand Rapids\"\n        ]\n      }\n    }\n  ],\n  \"data\": {\"name\": \"dataset\"},\n  \"mark\": {\"type\": \"point\"},\n  \"height\": {\"step\": 9.5},\n  \"width\": 210,\n  \"resolve\": {\n    \"axis\": {\n      \"x\": \"shared\",\n      \"y\": \"shared\"\n    }\n  },\n  \"spacing\": 5,\n  \"encoding\": {\n    \"facet\": {\n      \"header\": {\n        \"title\": \"Barley Yield (median): 1931 vs 1932\",\n        \"titleFontSize\": 16\n      },\n      \"field\": \"site\",\n      \"type\": \"ordinal\",\n      \"columns\": 2,\n      \"sort\": {\n        \"op\": \"median\",\n        \"field\": \"yield\"\n      }\n    },\n    \"x\": {\n      \"aggregate\": \"median\",\n      \"field\": \"yield\",\n      \"type\": \"quantitative\",\n      \"scale\": {\"zero\": false},\n      \"axis\": {\n        \"title\": \"\"\n      }\n    },\n    \"y\": {\n      \"field\": \"variety\",\n      \"type\": \"ordinal\",\n      \"sort\": \"-x\",\n      \"axis\": {\"title\": null}\n    },\n    \"color\": {\n      \"field\": \"year\",\n      \"type\": \"nominal\",\n      \"title\": \"Year\",\n      \"legend\": {\n        \"titleFontSize\": 18,\n        \"labelFontSize\": 16\n      }\n    }\n  }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.16.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.6.2.1'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF7CF'"
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#a38600'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

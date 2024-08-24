@@ -1,0 +1,87 @@
+table penguins
+	lineageTag: 8c137aaf-3888-4caf-b1fc-7f26324738a0
+
+	column Species
+		dataType: string
+		lineageTag: 5f128624-c8e0-4b13-8844-f17782cb0446
+		summarizeBy: none
+		sourceColumn: Species
+
+		annotation SummarizationSetBy = Automatic
+
+	column Island
+		dataType: string
+		lineageTag: 535ccc62-721b-4886-b5c6-2eb2feb9619a
+		summarizeBy: none
+		sourceColumn: Island
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Beak Length (mm)'
+		dataType: double
+		lineageTag: 4ba7274a-3f98-4fdb-92e1-4c15c3732130
+		summarizeBy: sum
+		sourceColumn: Beak Length (mm)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Beak Depth (mm)'
+		dataType: double
+		lineageTag: 705a7fa9-f556-4435-86ef-341513433311
+		summarizeBy: sum
+		sourceColumn: Beak Depth (mm)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Flipper Length (mm)'
+		dataType: int64
+		formatString: 0
+		lineageTag: ce403817-eac9-427e-a2b7-33ce5a6ff5e9
+		summarizeBy: sum
+		sourceColumn: Flipper Length (mm)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Body Mass (g)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 267aaaa1-1028-4e81-ae15-89c570b83da6
+		summarizeBy: sum
+		sourceColumn: Body Mass (g)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sex
+		dataType: string
+		lineageTag: 406339ff-edd0-4759-9542-704953b7e5cb
+		summarizeBy: none
+		sourceColumn: Sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 467d45c3-2da4-4daa-95de-bb0ba6e0b987
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = User
+
+	partition penguins = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("penguins.json"),
+				    change_types = Table.TransformColumnTypes(Source,{{"Species", type text}, {"Island", type text}, {"Beak Length (mm)", type number}, {"Beak Depth (mm)", type number}, {"Flipper Length (mm)", Int64.Type}, {"Body Mass (g)", Int64.Type}, {"Sex", type text}}),
+				    #"Added Index" = Table.AddIndexColumn(change_types, "Index", 1, 1, Int64.Type)
+				in
+				    #"Added Index"
+
+	annotation PBI_ResultType = Table
+

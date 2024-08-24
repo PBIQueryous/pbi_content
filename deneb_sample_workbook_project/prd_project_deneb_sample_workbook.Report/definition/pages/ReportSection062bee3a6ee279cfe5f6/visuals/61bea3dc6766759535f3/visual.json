@@ -1,0 +1,129 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "61bea3dc6766759535f3",
+  "position": {
+    "x": 375.65524861878453,
+    "y": 850.88176795580114,
+    "z": 3000,
+    "height": 220.26372007366481,
+    "width": 494.83904235727442,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "You can copy the Vega-Lite JSON of a ",
+                    "textStyle": {
+                      "fontSize": "21.3333px"
+                    }
+                  },
+                  {
+                    "value": "Colored Scatterplot",
+                    "textStyle": {
+                      "fontSize": "21.3333px",
+                      "color": "#e044a7"
+                    },
+                    "url": "https://vega.github.io/editor/#/examples/vega-lite/point_color_with_shape"
+                  },
+                  {
+                    "value": ". Note the dataset (highlighted) refers to the Github-hosted data object:",
+                    "textStyle": {
+                      "fontSize": "21.3333px"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\"data\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas"
+                    }
+                  },
+                  {
+                    "value": "\"url\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas"
+                    }
+                  },
+                  {
+                    "value": "\"data/penguins.json\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "color": "#0451a5"
+                    }
+                  },
+                  {
+                    "value": "},",
+                    "textStyle": {
+                      "fontFamily": "Consolas"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

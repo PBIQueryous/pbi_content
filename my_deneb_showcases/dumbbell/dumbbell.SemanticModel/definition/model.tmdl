@@ -1,0 +1,56 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup vega_import_functions
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup powerbi_imported_datasets
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup database
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup functions
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup tables
+
+	annotation PBI_QueryGroupOrder = 5
+
+queryGroup parameters
+
+	annotation PBI_QueryGroupOrder = 5
+
+queryGroup variables
+
+	annotation PBI_QueryGroupOrder = 6
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.132.1053.0 (24.08)
+
+annotation PBI_QueryOrder = ["fn_import_vega_dataset","fn_import_json_array","fn_JSONarrary_toTable_Parsable","db_contoso","fn_dates","fct_sales","dim_store","dim_product","dim_contoso_dates","dim_dates","dim_customer","v_sales_max_year","v_sales_min_year","p_server","p_database","___measures"]
+
+annotation __TEdtr = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table fct_sales
+ref table dim_store
+ref table dim_product
+ref table dim_contoso_dates
+ref table dim_dates
+ref table dim_customer
+ref table ___measures
+
+ref cultureInfo en-US
+

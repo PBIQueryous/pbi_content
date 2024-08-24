@@ -1,0 +1,229 @@
+table dynamic_formatting
+	lineageTag: ba1fe199-cf9c-48d6-86c0-bffa34bb7e4b
+
+	measure formatted =
+			
+			SUM('dynamic_formatting'[value])
+		lineageTag: fc59b095-60a3-4c2a-af61-baae8170dcb5
+
+		formatStringDefinition = ```
+				//------- DYNAMIC FORMATTING ---------\\
+				------------------------------
+				var _selectedMeasure = SELECTEDMEASURE()
+				var _digitCount = 
+				    IFERROR(
+				        LEN( 
+				            CONVERT( 
+				                INT( _selectedMeasure ),
+				            STRING )
+				        )
+				    , 0)
+				
+				// define abbreviations
+				var _trillion = "T"
+				var _billion = "B"
+				var _million = "M"
+				var _thousand = "K"
+				
+				// derive suffix
+				var _suffix = 
+				    SWITCH(
+				        TRUE(),
+				        _digitCount >= 12, _trillion , // 13 to display 100 billions ( 0.9 Trillion vs 880 billion )
+				        _digitCount >= 9,  _billion, // 10 to display 100 millions ( 0.9 Billion vs 880 million )
+				        _digitCount >= 6,  _million, // 7 to display 100 thousands ( 0.9 Million vs 100 thousand )
+				        _digitCount >= 4,  _thousand,
+				        ""
+				    )
+				
+				// derive commas and decimals per abbreviation
+				var _dp = 0
+				var _dps = "." & REPT ( 0, _dp )
+				var commas =
+				    REPT( "," ,
+				        SWITCH( _suffix,
+				        _trillion, 4,     // "#,#0,,,,.# T"
+				        _billion, 3,     // "#,#0,,,.# B"
+				        _million, 2,     // "#,#0,,.# M"
+				        _thousand, 1      // "#,#0,.# K"
+				        ,0)         // "#,##0"
+				    )
+				
+				// derive formatting
+				var _decimalvalue = "#,##0.00"
+				var _baseFormat = "#,#0"
+				var _formattedNumber  = _baseFormat & commas & _dps & "# " & _suffix
+				var _result = 
+				    SWITCH(
+				        TRUE(),
+				        _digitCount >= 2, _formattedNumber
+				        , _decimalvalue
+				    )
+				RETURN
+				    _result
+				```
+
+	measure newFormat =
+			
+			SUM( 'dynamic_formatting'[value] )
+		lineageTag: 4b7f913e-8a38-45b3-b829-da6f5707b607
+
+		formatStringDefinition = ```
+				
+				//------- GLOBAL VARIABLES ---------\\
+				// var _default1 = "#,0;-#,0;#,0"
+				var _selectedMeasure = SELECTEDMEASURE()
+				
+				
+				var _GBP = "£"
+				var _None = ""
+				var _symbol = _None          -- select symbol
+				
+				var _prefix1 = "#,0.0"
+				var _prefix2 = "#,##0.00"
+				var _prefix3 = "#,##0"  
+				var _BasePrefix1 = _symbol & _prefix1
+				var _BasePrefix2 = _symbol & _prefix2
+				var _BasePrefix3 = _symbol & _prefix3
+				var _BaseMethod1 = _BasePrefix1 & ";-" & _BasePrefix1
+				var _BaseMethod2 = _BasePrefix2 & ";-" & _BasePrefix2
+				var _BaseMethod3 = _BasePrefix3 & ";-" & _BasePrefix3
+				
+				//------- METHOD 1 ---------\\
+				------------------------------
+				var _billions = _symbol & "#,,,.0 B"
+				var _millions = _symbol & "#,,.0 M"
+				var _thousands = _symbol & "#,.0 K"
+				var _hundreds = _symbol & "0,0"
+				
+				var _method1 = 
+				    SWITCH(
+				        TRUE(),
+				        _selectedMeasure < 1000, _hundreds,
+				        _selectedMeasure < 1000000, _thousands,
+				        _selectedMeasure < 1000000000, _millions,
+				        _selectedMeasure < 10000000000, _billions
+				    )
+				
+				//------- METHOD 2 ---------\\
+				------------------------------
+				
+				var _digits = 
+				    IFERROR(
+				        LEN( CONVERT( INT( _selectedMeasure ),
+				        STRING )), 0
+				    )
+				
+				var __Tn =  "#,#0,,,,.# T"
+				var _Tn = __Tn
+				var __Bn =  "#,#0,,,.# B"
+				var _Bn = __Bn 
+				var __M =  "#,#0,,.# M"
+				var _M = __M 
+				var __K =  "#,#0,.# K"
+				var _K = __K 
+				var __H =  "#,##0"
+				var _H = __H 
+				var _decimalvalue = "#,##0.00"
+				
+				var _method2 =
+				    SWITCH(
+				        TRUE(),
+				        _digits >= 12, _Tn ,
+				        _digits >= 9,  _Bn,
+				        _digits >= 6,  _M,
+				        _digits >= 4,  _K,
+				        _digits >=2, _H,
+				        _decimalvalue
+				    )
+				
+				//------- METHOD 3 ---------\\
+				------------------------------
+				
+				VAR dp = IF(SELECTEDMEASURE() >= 1000, 1, 0)
+				VAR dps = "." & REPT ( 0, dp )
+				VAR SafeLog =
+				    IF (
+				        _selectedMeasure = 0,
+				        0,
+				        INT ( LOG ( ABS ( _selectedMeasure ), 1000 ) )
+				    )
+				VAR Suffix =
+				    SWITCH ( Safelog, 1, " K", 2, " M", 3, " Bn", 4, " Tn", 5, " q" )
+				VAR Commas =
+				    REPT ( ",", ABS ( Safelog ) )
+				var _pos = _BasePrefix3 & Commas & dps & Suffix
+				var _neg = ";-" & _BasePrefix3 & Commas & dps & Suffix
+				var _numberFormat = _pos & _neg & ";"
+				
+				VAR _method3 =
+				    IF (
+				        dp > 0,
+				        _numberFormat,
+				        IF ( SELECTEDMEASURE() >= 1, _numberFormat,
+						"#,##0.00")
+				        
+				    )
+				//------- METHOD 4 ---------\\
+				------------------------------
+				var _baseFormat = "#,0"
+				var _baseDecimal = "0"
+				var _method4 = 
+					SWITCH(
+						TRUE(),
+						_selectedMeasure < 1000, ",",
+				        _selectedMeasure < 1000000, _baseFormat & ",." & _baseDecimal & " K",
+				        _selectedMeasure < 1000000000, _baseFormat & ",,." & _baseDecimal & " M",
+				        _selectedMeasure < 10000000000, _baseFormat & ",,,." & _baseDecimal & "B",
+						_baseFormat
+					)
+				
+				//------- CHOOSE FORMATTING METHOD ---------\\
+				----------------------------------------------
+				
+				var _finalFormat = _method2            -- Choose between _method1; _method2; _method3
+				RETURN
+				    _finalFormat
+				```
+
+	column item
+		dataType: string
+		lineageTag: 8c15edfe-043c-4587-a8d1-6274bc783706
+		summarizeBy: none
+		sourceColumn: item
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: 10bd4213-b993-49e9-bc95-076d1f18c344
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dynamic_formatting = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_json_array("[
+				      {""item"": ""A"", ""value"": 0.8},
+				      {""item"": ""AA"", ""value"": 98},
+				      {""item"": ""AB"", ""value"": 361},
+				      {""item"": ""AC"", ""value"": 1750},
+				      {""item"": ""C"", ""value"": 92650},
+				      {""item"": ""D"", ""value"": 150000},
+				      {""item"": ""E"", ""value"": 1300000},
+				      {""item"": ""F"", ""value"": 6500000},
+				      {""item"": ""G"", ""value"": 10000000},
+				      {""item"": ""H"", ""value"": 880000000},
+				      {""item"": ""I"", ""value"": 1239000000}
+				    ]")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

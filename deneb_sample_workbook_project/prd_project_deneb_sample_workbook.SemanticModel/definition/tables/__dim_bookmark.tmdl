@@ -1,0 +1,205 @@
+table __dim_bookmark
+	lineageTag: 655f5c9f-4480-4d66-92b7-f9cf2e66b7e1
+
+	measure '@ selected_step' =
+			
+			SELECTEDVALUE( __dim_bookmark[stepID] )
+		lineageTag: 986aae61-a3da-4796-90ae-06bbe49fcc9e
+
+	measure '@ step_progress2' = ```
+			
+			var _item = [@ selected_step]
+			var _leadcolour = [@@ lead_colour]
+			var _trailcolour = [@@ trail_colour]
+			
+			var _blue = 
+			    SWITCH(
+			        TRUE(),
+			        _item > 2, _trailcolour,
+			        "#FFFFFF"
+			    )
+			
+			RETURN
+			   _blue
+			```
+		lineageTag: a750e130-ab56-4cfb-8ba2-13e9bc27321b
+
+	measure '@ step_progress3' = ```
+			
+			var _item = [@ selected_step]
+			var _leadcolour = [@@ lead_colour]
+			var _trailcolour = [@@ trail_colour]
+			
+			var _measure = 
+			    SWITCH(
+			        TRUE(),
+			        _item > 3, _trailcolour,
+			        "#FFFFFF"
+			    )
+			
+			RETURN
+			   _measure
+			```
+		lineageTag: bce3b8e8-e802-44a6-a6b6-9636f825c5cc
+
+	measure '@ step_progress1' = ```
+			
+			var _item = [@ selected_step]
+			var _leadcolour = [@@ lead_colour]
+			var _trailcolour = [@@ trail_colour]
+			
+			var _measure = 
+			    SWITCH(
+			        TRUE(),
+			        _item = 1, "#FFFFFF",
+			        _trailcolour
+			    )
+			
+			RETURN
+			   _measure
+			```
+		lineageTag: 187933ed-c174-491b-8e81-2457b7047697
+
+	measure '@ step_progress_all' = ```
+			
+			var _item = SELECTEDVALUE( __dim_bookmark[stepID] )
+			var _leadcolour = [@@ lead_colour]
+			var _trailcolour = [@@ trail_colour]
+			
+			var _step3 =
+			    SWITCH(
+			        TRUE(),
+			        _item > 1 && _item <=3, _trailcolour,
+			        "#FFFFFF"
+			    )
+			
+			
+			var _blue = 
+			    SWITCH(
+			        TRUE(),
+			        // _item = 4 || _item = 3, _step3,
+			        _item = 3, _step3,
+			        _item = 1, [@ step_progress1],
+			        "#FFF"
+			    )
+			
+			RETURN
+			   _blue
+			```
+		lineageTag: ba4be189-7792-4c90-97df-1ca42f71ec8c
+
+	measure '@ step_circle1' = ```
+			
+			var _item = [@ selected_step]
+			var _leadcolour = [@@ lead_colour]
+			var _trailcolour = [@@ trail_colour]
+			
+			var _blue = 
+			    SWITCH(
+			        TRUE(),
+			        
+			        _item = 1, _leadcolour,
+			        _item = 2, _trailcolour,
+			        _item = 3, _trailcolour,
+			        _item = 4, _trailcolour,
+			        "#FFF"
+			    )
+			
+			RETURN
+			   _blue
+			```
+		lineageTag: 07a31aad-c95d-469d-bf0c-df80d8a20153
+
+	measure '@ step_circle2' = ```
+			
+			var _item = [@ selected_step]
+			var _leadcolour = [@@ lead_colour]
+			var _trailcolour = [@@ trail_colour]
+			
+			var _blue = 
+			    SWITCH(
+			        TRUE(),
+			        
+			        _item = 2, _leadcolour,
+			        _item = 3, _trailcolour,
+			        _item = 4, _trailcolour,
+			        "#FFF"
+			    )
+			
+			RETURN
+			   _blue
+			```
+		lineageTag: edf63235-7ca9-4249-8ae7-ba556c83fe8e
+
+	measure '@ step_circle3' = ```
+			
+			var _item = [@ selected_step]
+			var _leadcolour = [@@ lead_colour]
+			var _trailcolour = [@@ trail_colour]
+			
+			var _measure = 
+			    SWITCH(
+			        TRUE(),
+			        _item = 3, _leadcolour,
+			        _item = 4, _trailcolour,
+			        "#FFF"
+			    )
+			
+			RETURN
+			   _measure
+			```
+		lineageTag: 650affff-d708-4490-8a29-5bacc997e1ef
+
+	measure '@ step_circle4' = ```
+			
+			var _item = [@ selected_step]
+			var _leadcolour = [@@ lead_colour]
+			var _trailcolour = [@@ trail_colour]
+			
+			var _measure = 
+			    SWITCH(
+			        TRUE(),
+			
+			        _item = 4, _leadcolour,
+			        "#FFF"
+			    )
+			
+			RETURN
+			   _measure
+			```
+		lineageTag: 629b0b9b-2b55-40dd-b05a-d54ab94bb40c
+
+	measure '@@ lead_colour' = "crimson"
+		lineageTag: fa280d90-57ad-4535-9add-27649d27cc55
+
+	measure '@@ trail_colour' = "blue"
+		lineageTag: a0eb597d-c02c-43ae-ae4e-4db8ce466ffc
+
+	column stepID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f90e62a-e01f-4824-b367-7b699643fbfa
+		summarizeBy: count
+		sourceColumn: stepID
+
+		annotation SummarizationSetBy = Automatic
+
+	column step
+		dataType: string
+		lineageTag: a5e7d648-9393-4e1f-b703-2f4f176529d2
+		summarizeBy: none
+		sourceColumn: step
+
+		annotation SummarizationSetBy = Automatic
+
+	partition __dim_bookmark = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUQouSS1QMFSK1YlWMoJxjcBcYxjXGMw1gXFNlGJjAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [stepID = _t, step = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"stepID", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

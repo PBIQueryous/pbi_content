@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "144311ef6c9442ee0356",
+  "position": {
+    "x": 24.909390444810544,
+    "y": 306.02965403624387,
+    "z": 1000,
+    "height": 409.22570016474469,
+    "width": 1869.9835255354203,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "themes"
+                    }
+                  },
+                  "Property": "Index"
+                }
+              },
+              "queryRef": "Theme Colors.Index"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "themes"
+                    }
+                  },
+                  "Property": "Percentage"
+                }
+              },
+              "queryRef": "Theme Colors.Percentage"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "themes"
+                    }
+                  },
+                  "Property": "Description"
+                }
+              },
+              "queryRef": "Theme Colors.Description"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.6.2.1'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"data\": {\"name\": \"dataset\"},\n  \"transform\": [\n    {\n      \"calculate\": \"''pbiColor('' + toString(datum[''Index'']) + (datum[''Percentage''] !== 0 ? '', '' + toString(datum[''Percentage'']) : '''') + '')''\",\n      \"as\": \"expression\"\n    }\n  ],\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"xOffset\": -215,\n        \"yOffset\": 2.5,\n        \"font\": \"Consolas\"\n      },\n      \"encoding\": {\n        \"text\": {\"field\": \"expression\"}\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"rect\",\n        \"width\": 30,\n        \"height\": {\"band\": 0.75},\n        \"color\": {\n          \"expr\": \"pbiColor(datum[''Index''], datum[''Percentage''])\"\n        },\n        \"xOffset\": -30\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"yOffset\": 2.5\n      },\n      \"encoding\": {\n        \"text\": {\"field\": \"Description\"}\n      }\n    }\n  ],\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"Index\",\n      \"axis\": {\n        \"gridOpacity\": {\n          \"expr\": \"datum[''value''] === 0 ? 0 : 1\"\n        }\n      }\n    },\n    \"y\": {\n      \"field\": \"Percentage\",\n      \"axis\": {\n        \"gridOpacity\": {\n          \"expr\": \"datum[''value''] === -0.6 ? 0 : 1\"\n        }\n      }\n    }\n  }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"view\": {\"stroke\": \"transparent\"},\n  \"font\": \"Segoe UI\",\n  \"arc\": {},\n  \"area\": {\n    \"line\": true,\n    \"opacity\": 0.6\n  },\n  \"bar\": {},\n  \"line\": {\n    \"strokeWidth\": 3,\n    \"strokeCap\": \"round\",\n    \"strokeJoin\": \"round\"\n  },\n  \"path\": {},\n  \"point\": {\"filled\": true, \"size\": 75},\n  \"rect\": {},\n  \"shape\": {},\n  \"symbol\": {\n    \"strokeWidth\": 1.5,\n    \"size\": 50\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\",\n    \"fontSize\": 16,\n    \"fill\": \"#605E5C\"\n  },\n  \"axis\": {\n    \"ticks\": false,\n    \"grid\": true,\n    \"labels\": false,\n    \"title\": false,\n    \"bandPosition\": 0,\n    \"domain\": false,\n    \"labelColor\": \"#605E5C\",\n    \"labelFontSize\": 12,\n    \"titleFont\": \"wf_standard-font, helvetica, arial, sans-serif\",\n    \"titleColor\": \"#252423\",\n    \"titleFontSize\": 16,\n    \"titleFontWeight\": \"normal\"\n  },\n  \"axisQuantitative\": {\n    \"tickCount\": 3,\n    \"grid\": true,\n    \"gridColor\": \"#C8C6C4\",\n    \"gridDash\": [1, 5],\n    \"labelFlush\": false\n  },\n  \"axisX\": {\"labelPadding\": 5},\n  \"axisY\": {\"labelPadding\": 10},\n  \"header\": {\n    \"titleFont\": \"wf_standard-font, helvetica, arial, sans-serif\",\n    \"titleFontSize\": 16,\n    \"titleColor\": \"#252423\",\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 13.333333333333332,\n    \"labelColor\": \"#605E5C\"\n  },\n  \"legend\": {\n    \"titleFont\": \"Segoe UI\",\n    \"titleFontWeight\": \"bold\",\n    \"titleColor\": \"#605E5C\",\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 13.333333333333332,\n    \"labelColor\": \"#605E5C\",\n    \"symbolType\": \"circle\",\n    \"symbolSize\": 75\n  }\n}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.16.3'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

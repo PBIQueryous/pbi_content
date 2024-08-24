@@ -1,0 +1,123 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "c6143ea3c6545616a0a0",
+  "position": {
+    "x": 16.048632218844986,
+    "y": 7.2948328267477205,
+    "z": 13000,
+    "height": 290.33434650455928,
+    "width": 1884.9848024316109,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Whilst Deneb provides the awesome power of the Vega and Vega-Lite languages, the ability to include dynamic measures from your data model can greatly simplify the amount of additional JSON you might need for your specification. It also opens up many further opportunities for what you can do. "
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The KPI card visuals below are a great example of how you can use this flexibility to explore, prototype and iterate design ideas. Some of these are also tied to a parameter and illustrate dynamic formatting based on measure values tied to this."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "These designs have been kindly provided for this sample workbook "
+                  },
+                  {
+                    "value": "by Kerry Kolosko",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://kerrykolosko.com/conditional-kpi-cards-with-deneb/"
+                  },
+                  {
+                    "value": ", who is great at exploring the visual canvas in Power BI using both custom and core visuals - you can read more about these explorations "
+                  },
+                  {
+                    "value": "on Kerry's website",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://kerrykolosko.com/"
+                  },
+                  {
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Combining Vega and DAX = Even More Flexibility'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

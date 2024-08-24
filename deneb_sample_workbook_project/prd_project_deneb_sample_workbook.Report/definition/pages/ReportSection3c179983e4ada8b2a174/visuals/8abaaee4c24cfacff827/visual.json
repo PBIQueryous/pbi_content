@@ -1,0 +1,130 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "8abaaee4c24cfacff827",
+  "position": {
+    "x": 655.99565644295978,
+    "y": 422.78751801984913,
+    "z": 10000,
+    "height": 173.31452750352611,
+    "width": 605.24682651622,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Heatmap with gradient color scheme and legend:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Using the ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "rect ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "marks with discrete fields on ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "x ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "and ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "y ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "channels creates a ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "heatmap",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#e044a7"
+                    },
+                    "url": "https://vega.github.io/vega-lite/examples/line_color.html"
+                  },
+                  {
+                    "value": ".",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#000000"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,107 @@
+table __dim_dates
+	lineageTag: d9e4d324-41d5-48b2-8edc-221a95b6618e
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: dd/mm/yyyy
+		lineageTag: 6e3b7386-b806-4844-82d7-8ed93747a22d
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Calendar Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: e878e66c-de6d-4a4f-a0c0-413ae6fa2995
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Calendar Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: 3d99cecb-d791-4648-b48a-910d52b5560b
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Month Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name (Short)'
+		dataType: string
+		lineageTag: 570eae5b-b2af-4ee9-89e8-aacecbca2332
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Month Name (Short)]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0db88a09-476a-4640-bebd-3b00e9e3c433
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Start'
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 20cffe99-69a6-4c49-9a67-21da18a3e215
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Month Start]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Day of Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: c02c0b6c-ecc7-427b-bc1c-51b4ede1fd52
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Day of Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition __dim_dates = calculated
+		mode: import
+		source = ```
+				
+				VAR MinYear = YEAR ( MIN ( 'average_monthly_temperatures_UK'[Date] ) )
+				VAR MaxYear = YEAR ( MAX ( 'average_monthly_temperatures_UK'[Date] ) )
+				RETURN
+				ADDCOLUMNS (
+				    FILTER (
+				        CALENDARAUTO( ), 
+				        AND ( YEAR ( [Date] ) >= MinYear, YEAR ( [Date] ) <= MaxYear )
+				    ),
+				    "Calendar Year", YEAR ( [Date] ),
+				    "Month Name", FORMAT ( [Date], "mmmm" ),
+				    "Month Name (Short)", FORMAT( [Date], "mmm" ),
+				    "Month Number", MONTH ( [Date] ),
+				    "Month Start", DATE(YEAR([Date]), MONTH([Date]), 1),
+				    "Day of Year", DATEDIFF( DATE( YEAR([Date]), 1, 1), [Date], DAY) + 1
+				)
+				```
+
+	annotation PBI_Id = 3759d11c8ecb4758968818993d797fbc
+

@@ -1,0 +1,330 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "0bb4ed128a6d56670c05",
+  "position": {
+    "x": 558.30662499668642,
+    "y": 0.65374260055631073,
+    "z": 5000,
+    "height": 674.56042439475038,
+    "width": 793.26138799968612,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "perception_gap"
+                        }
+                      },
+                      "Property": "Diff"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(perception_gap.Diff)",
+              "nativeQueryRef": "Diff"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "perception_gap"
+                        }
+                      },
+                      "Property": "Estimated"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(perception_gap.Estimated)",
+              "nativeQueryRef": "Estimated"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "perception_gap"
+                        }
+                      },
+                      "Property": "Sign"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(perception_gap.Sign)",
+              "nativeQueryRef": "Sign"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "perception_gap"
+                    }
+                  },
+                  "Property": "Topic"
+                }
+              },
+              "queryRef": "perception_gap.Topic",
+              "nativeQueryRef": "Topic"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "perception_gap"
+                        }
+                      },
+                      "Property": "True"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(perception_gap.True)",
+              "nativeQueryRef": "True"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "perception_gap"
+                      }
+                    },
+                    "Property": "Diff"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"data\": {\"name\": \"dataset\"}, \n  \"transform\": [\n    {\n      \"name\": \"colourTest\",\n      \"calculate\": \"datum[''Sign''] == 1 ? ''#0D6ABF'' : ''#A1343C''  \",\n      \"as\": \"cf_colour\"\n    },\n    {\n      \"name\": \"actualTest\",\n      \"calculate\": \"datum[''Sign''] == 1 && datum[''True''] > 0.1 ? -44 : datum[''Sign''] == 1 && datum[''True''] <= 0.1 ? -34  : 12  \",\n      \"as\": \"cf_text\"\n    },\n    {\n      \"name\": \"estimateTest\",\n      \"calculate\": \"datum[''Sign''] == 1 ? 0 : 0  \",\n      \"as\": \"cf_estimate\"\n    }\n  ],\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"True\",\n      \"type\": \"quantitative\",\n      \"axis\": {\n        \"title\": null,\n        \"labels\": false,\n        \"grid\": false,\n        \"domain\": true,\n        \"domainOpacity\": 0.2\n      }\n    },\n    \"y\": {\n      \"field\": \"Topic\",\n      \"type\": \"nominal\",\n      \"axis\": {\n        \"labelFontSize\": 16,\n        \"labelLimit\": 0,\n        \"title\": null,\n        \"labelPadding\": 50,\n        \"bandPosition\": -0.03,\n        \"domain\": false,\n        \"gridColor\": {\n          \"condition\": {\n            \"test\": {\n              \"field\": \"index\",\n              \"equal\": 0\n            },\n            \"value\": \"transparent\"\n          },\n          \"value\": \"whitesmoke\"\n        }\n      },\n      \"title\": \"Actual\",\n      \"sort\": {\n        \"field\": \"Estimated\",\n        \"order\": \"ascending\"\n      }\n    }\n  },\n  \"description\": \"layer1\",\n  \"layer\": [\n    {\n      \"description\": \"Mark 1\",\n      \"mark\": {\n        \"type\": \"line\",\n        \"opacity\": 0.5,\n        \"tooltip\": true,\n        \"color\": \"black\"\n      },\n      \"encoding\": {\n        \"x\": {\"field\": \"True\"},\n        \"x2\": {\"field\": \"Estimated\"}\n      }\n    },\n    {\n      \"description\": \"Mark 2\",\n      \"mark\": {\n        \"type\": \"point\",\n        \"size\": 150,\n        \"filled\": true,\n        \"opacity\": 1,\n        \"color\": \"gainsboro\",\n        \"stroke\": \"black\",\n        \"strokeWidth\": 0.5\n      },\n      \"encoding\": {\n        \"x\": {\"field\": \"True\"}\n      }\n    },\n    {\n      \"description\": \"Mark 3\",\n      \"mark\": {\n        \"type\": \"point\",\n        \"size\": 150,\n        \"filled\": true,\n        \"opacity\": 1,\n        \"stroke\": \"black\",\n        \"strokeWidth\": 0.5\n      },\n      \"encoding\": {\n        \"x\": {\"field\": \"Estimated\"}\n        \n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"view\": {\"stroke\": \"transparent\"},\n  \"font\": \"Segoe UI\",\n  \"arc\": {},\n  \"area\": {\n    \"line\": true,\n    \"opacity\": 0.6\n  },\n  \"bar\": {},\n  \"line\": {\n    \"strokeWidth\": 3,\n    \"strokeCap\": \"round\",\n    \"strokeJoin\": \"round\"\n  },\n  \"path\": {},\n  \"point\": {\"filled\": true, \"size\": 75},\n  \"rect\": {},\n  \"shape\": {},\n  \"symbol\": {\n    \"strokeWidth\": 1.5,\n    \"size\": 50\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\",\n    \"fontSize\": 12,\n    \"fill\": \"#605E5C\"\n  },\n  \"axis\": {\n    \"ticks\": false,\n    \"grid\": true,\n    \"domain\": false,\n    \"labelColor\": \"#605E5C\",\n    \"labelFontSize\": 12,\n    \"titleFont\": \"wf_standard-font, helvetica, arial, sans-serif\",\n    \"titleColor\": \"#252423\",\n    \"titleFontSize\": 16,\n    \"titleFontWeight\": \"normal\"\n  },\n  \"axisQuantitative\": {\n    \"tickCount\": 3,\n    \"grid\": true,\n    \"gridColor\": \"#C8C6C4\",\n    \"gridDash\": [1, 5],\n    \"labelFlush\": false\n  },\n  \"axisX\": {\"labelPadding\": 5},\n  \"axisY\": {\"labelPadding\": 10},\n  \"header\": {\n    \"titleFont\": \"wf_standard-font, helvetica, arial, sans-serif\",\n    \"titleFontSize\": 16,\n    \"titleColor\": \"#252423\",\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 13.333333333333332,\n    \"labelColor\": \"#605E5C\"\n  },\n  \"legend\": {\n    \"titleFont\": \"Segoe UI\",\n    \"titleFontWeight\": \"bold\",\n    \"titleColor\": \"#605E5C\",\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 13.333333333333332,\n    \"labelColor\": \"#605E5C\",\n    \"symbolType\": \"circle\",\n    \"symbolSize\": 75\n  }\n}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.20.1'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.7.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "660.5604243947504D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "779.2613879996861D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'chart_2'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF7CF'"
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "00543a02469822c7d794"
+}

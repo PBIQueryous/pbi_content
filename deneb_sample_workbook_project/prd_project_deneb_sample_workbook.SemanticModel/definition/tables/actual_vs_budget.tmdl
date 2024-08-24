@@ -1,0 +1,92 @@
+table actual_vs_budget
+	lineageTag: 5c828cc9-fdc4-4191-bd0f-98462a03e7cb
+
+	measure _AC =
+			
+			SUM( 'actual_vs_budget'[AC] )
+		formatString: #,0
+		lineageTag: 39ef4e77-a312-4f3a-a9dd-aabeefa44b1c
+
+	measure _PL =
+			
+			SUM( 'actual_vs_budget'[PL] )
+		formatString: #,0
+		lineageTag: 70f417e2-601d-455a-8ed7-04e22b8645bd
+
+	measure _PY =
+			
+			SUM( 'actual_vs_budget'[PY] )
+		formatString: #,0
+		lineageTag: f87541cf-8f1a-4598-9b66-4d360b9640ad
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a0e01888-2cee-4c46-bcfe-03cbe226d8f8
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AC
+		dataType: int64
+		formatString: 0
+		lineageTag: 6da45eaa-3fe0-4ace-9c8c-71827099a055
+		summarizeBy: sum
+		sourceColumn: AC
+
+		annotation SummarizationSetBy = Automatic
+
+	column PL
+		dataType: int64
+		formatString: 0
+		lineageTag: 2263749c-2bf0-4c2b-9452-a33f9e3275fb
+		summarizeBy: sum
+		sourceColumn: PL
+
+		annotation SummarizationSetBy = Automatic
+
+	column PY
+		dataType: int64
+		formatString: 0
+		lineageTag: d252f094-8acc-49a4-bf05-d12c1d504882
+		summarizeBy: sum
+		sourceColumn: PY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PL2
+		dataType: double
+		lineageTag: 199b6e00-1520-440d-ae16-717de7a06688
+		summarizeBy: sum
+		sourceColumn: PL2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Gap
+		dataType: int64
+		formatString: 0
+		lineageTag: b6ecbadf-3be0-4936-bb1e-8a3cfd8a5a69
+		summarizeBy: sum
+		sourceColumn: Gap
+
+		annotation SummarizationSetBy = Automatic
+
+	partition actual_vs_budget = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("hZJLDsMgDAXvknWk2sbmc5Yo979GicEG0rSVIlgweryMOY4N8FU/AgrbvmWBuia41ljXc28AGRD1CIGkbmUighHUCA0iHAAbEBQICB02QAzAFhHk3iIawXpUFJMJSGvN3MsOIBsgepQ0J0xAMaDI6HBd1wEEV5XEr5hKorskD19K4nCpCcmrWgdNYK+HNLZlHuwO2u+K3MbBrqobhds4LiCTJkQzuoyDf7iMBnxzmTxBX8uHyzYNbq8FnmS2cfAPmeB3PMvE/zLRZeZyk3m+AQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Date = _t, AC = _t, PL = _t, PY = _t]),
+				    format_types = Table.TransformColumnTypes(Source,{{"AC", Int64.Type}, {"Date", type date}, {"PL", Int64.Type}, {"PY", Int64.Type}}),
+				    col_PL2 = Table.AddColumn(format_types, "PL2", each [AC] * 1.2, type number),
+				    col_gap = Table.AddColumn(col_PL2, "Gap", each [AC] - [PL], Int64.Type)
+				in
+				    col_gap
+
+	annotation PBI_ResultType = Table
+

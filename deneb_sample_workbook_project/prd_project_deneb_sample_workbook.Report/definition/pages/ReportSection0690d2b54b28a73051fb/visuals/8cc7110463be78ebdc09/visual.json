@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "8cc7110463be78ebdc09",
+  "position": {
+    "x": 541.2263837837296,
+    "y": 53.870858178049176,
+    "z": 0,
+    "height": 62.903277720580959,
+    "width": 162.24606502913784,
+    "tabOrder": 3000
+  },
+  "visualGroup": {
+    "displayName": "step3_bar",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "b114fb0b3c880a6a0ce5"
+}

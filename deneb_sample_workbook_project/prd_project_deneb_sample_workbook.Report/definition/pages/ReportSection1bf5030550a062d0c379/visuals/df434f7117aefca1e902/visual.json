@@ -1,0 +1,1006 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "df434f7117aefca1e902",
+  "position": {
+    "x": 15.924691911247777,
+    "y": 0,
+    "z": 1500,
+    "height": 537.29717822763621,
+    "width": 954.142344207767,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Step 1: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#000000"
+                    }
+                  },
+                  {
+                    "value": "We start with our base layer, a single bar mark with default colours.",
+                    "textStyle": {
+                      "color": "#000000"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Step 2: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#000000"
+                    }
+                  },
+                  {
+                    "value": "Next let's assign a single color to the bar mark.",
+                    "textStyle": {
+                      "color": "#000000"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Step 3: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#000000"
+                    }
+                  },
+                  {
+                    "value": "Here we will apply dynamic conditional formatting showing Year-To-Date and Future colors.",
+                    "textStyle": {
+                      "color": "#000000"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Step 4: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "21.3333px",
+                      "color": "#000000"
+                    }
+                  },
+                  {
+                    "value": "Lastly, dynamically highlight the highest and lowest values.",
+                    "textStyle": {
+                      "fontSize": "21.3333px",
+                      "color": "#000000"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Encoding method:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "textDecoration": "underline"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\"encoding\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "  ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"y\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"field\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"AC\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  },
+                  {
+                    "value": ", ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"type\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"quantitative\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  },
+                  {
+                    "value": ", ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"axis\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "null",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  },
+                  {
+                    "value": "},",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "  ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"color\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "    ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"condition\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": [",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "      {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "        ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"test\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"datum.AC === datum.max_AC\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  },
+                  {
+                    "value": ",",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "        ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"value\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"limegreen\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "      },",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "      {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "        ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"test\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"datum.AC === datum.min_AC\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  },
+                  {
+                    "value": ",",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "        ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"value\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"red\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "      },",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "      {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "        ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"test\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"datum._dateTest == 1\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  },
+                  {
+                    "value": ",",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "        ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"value\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"whitesmoke\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "      }",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "    ],",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "    ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"value\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"navy\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "  }",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "}",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Expression method:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "textDecoration": "underline"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\"mark\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "  ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"type\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"bar\",",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "  \"fill\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "    ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"expr\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"datum._dateToday > datum.Date ? _actual_colour : _forecast_colour\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "  ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": "},",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "  \"stroke\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "    ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"expr\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"datum.AC == datum.max_AC ? 'limegreen' : datum.AC == datum.min_AC ? 'tomato' : 'black'\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "  ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": "},",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "  \"strokeWidth\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "    ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"expr\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "\"datum.AC == datum.max_AC || datum.AC == datum.min_AC ? 2 : 0.5 \"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt",
+                      "color": "#0451a5"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "  }",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "}",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "keepLayerOrder": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'step4_description'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "ef9c9d2cbe64802534eb",
+  "isHidden": true
+}

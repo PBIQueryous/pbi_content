@@ -1,0 +1,53 @@
+table _tempAverage
+	lineageTag: f8f69800-bb07-4f97-9477-e70bfc611772
+
+	measure _tempSum =
+			
+			AVERAGE( _tempAverage[Value] )
+		formatString: 0
+		lineageTag: fa71848a-8c63-472d-9e5c-bc70915db738
+
+	column YEAR
+		dataType: string
+		lineageTag: c84c1b87-bb60-4fdc-99f9-5d55f15e407e
+		summarizeBy: none
+		sourceColumn: YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attribute
+		dataType: string
+		lineageTag: a22a5cc4-2bbd-418e-a401-779c732d36a8
+		summarizeBy: none
+		sourceColumn: Attribute
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: 8e27ffae-b50d-4827-acf9-8bd699300adf
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition _tempAverage = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [YEAR = _t, JAN = _t, FEB = _t, MAR = _t, APR = _t, MAY = _t, JUN = _t, JUL = _t, AUG = _t, SEP = _t, OCT = _t, NOV = _t, DEC = _t, AVERAGE = _t, WINTER = _t, SPRING = _t, SUMMER = _t, AUTUMN = _t, #"(blank)" = _t]),
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"WINTER", "SPRING", "SUMMER", "AUTUMN", "(blank)"}),
+				    unpivot = Table.UnpivotOtherColumns(#"Removed Columns", {"YEAR"}, "Attribute", "Value"),
+				    all = unpivot,
+				    #"Filtered Rows" = Table.SelectRows(all, each ([Attribute] <> "AVERAGE")),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows",{{"Value", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

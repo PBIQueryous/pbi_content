@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.1.0/schema.json",
+  "name": "ReportSection141d269cdecb38054ade",
+  "displayName": "Getting Started",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter43f7f3f7814482c09924",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "__dim_dates"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "RelativeDate",
+        "howCreated": "User"
+      }
+    ]
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'DenebBackground_v2.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "DenebBackground_v2277763047923157.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "23245ee01506b199bbaa",
+      "target": "facb8390b3c90b1ced1c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "23245ee01506b199bbaa",
+      "target": "ec70ae8d567eb7bc4934",
+      "type": "NoFilter"
+    },
+    {
+      "source": "23245ee01506b199bbaa",
+      "target": "e2ac749db56d00050a30",
+      "type": "NoFilter"
+    },
+    {
+      "source": "23245ee01506b199bbaa",
+      "target": "cd71064ce3a48edd6160",
+      "type": "NoFilter"
+    },
+    {
+      "source": "2c1b55ae70aba96d2730",
+      "target": "facb8390b3c90b1ced1c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "2c1b55ae70aba96d2730",
+      "target": "ec70ae8d567eb7bc4934",
+      "type": "NoFilter"
+    },
+    {
+      "source": "2c1b55ae70aba96d2730",
+      "target": "e2ac749db56d00050a30",
+      "type": "NoFilter"
+    },
+    {
+      "source": "2c1b55ae70aba96d2730",
+      "target": "cd71064ce3a48edd6160",
+      "type": "NoFilter"
+    },
+    {
+      "source": "23245ee01506b199bbaa",
+      "target": "2c1b55ae70aba96d2730",
+      "type": "HighlightFilter"
+    },
+    {
+      "source": "c309ab307b4e3a6d589c",
+      "target": "2c1b55ae70aba96d2730",
+      "type": "NoFilter"
+    }
+  ]
+}

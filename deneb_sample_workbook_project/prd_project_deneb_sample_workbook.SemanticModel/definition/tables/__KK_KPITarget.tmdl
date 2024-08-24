@@ -1,0 +1,28 @@
+table __KK_KPITarget
+	lineageTag: c8cdd5ef-16d1-4223-92e1-0ef611424a7f
+
+	measure 'KPITarget Value' = SELECTEDVALUE('__KK_KPITarget'[KPITarget])
+		formatString: 0
+		lineageTag: bb6f5bfa-f87d-499c-ac8f-7029e4f5ac93
+
+	column KPITarget
+		dataType: int64
+		formatString: 0
+		lineageTag: cd6be96c-4d2b-4292-8020-f21783c0f8c3
+		summarizeBy: none
+		isDataTypeInferred
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition __KK_KPITarget-8bbc14ed-67e3-4d71-b176-b0ce0560cd4a = calculated
+		mode: import
+		source = GENERATESERIES(0, 15000, 10)
+
+	annotation PBI_Id = baaf79db279d450998e8843a3cb2adab
+

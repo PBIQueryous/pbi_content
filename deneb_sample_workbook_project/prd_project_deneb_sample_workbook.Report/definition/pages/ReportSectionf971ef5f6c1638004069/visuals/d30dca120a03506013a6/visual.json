@@ -1,0 +1,293 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "d30dca120a03506013a6",
+  "position": {
+    "x": 29.234338747099766,
+    "y": 341.06728538283062,
+    "z": 1000,
+    "height": 778.19025522041761,
+    "width": 1866.8213457076565,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "patterns"
+                    }
+                  },
+                  "Property": "group"
+                }
+              },
+              "queryRef": "Patterns.group"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "patterns"
+                    }
+                  },
+                  "Property": "groupOrder"
+                }
+              },
+              "queryRef": "Patterns.groupOrder"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "patterns"
+                    }
+                  },
+                  "Property": "id"
+                }
+              },
+              "queryRef": "Patterns.id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "patterns"
+                    }
+                  },
+                  "Property": "order"
+                }
+              },
+              "queryRef": "Patterns.order"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "patterns"
+                    }
+                  },
+                  "Property": "patternName"
+                }
+              },
+              "queryRef": "Patterns.patternName"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "patterns"
+                    }
+                  },
+                  "Property": "svgUrl"
+                }
+              },
+              "queryRef": "Patterns.svgUrl"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"rect\",\n        \"fill\": {\n          \"expr\": \"''url(#'' + datum.patternName + '')''\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"dy\": 50,\n        \"fontSize\": 22\n      },\n      \"encoding\": {\n        \"text\": {\"field\": \"patternName\"}\n      }\n    }\n  ],\n  \"encoding\": {\n    \"tooltip\": [\n      {\n        \"field\": \"patternName\",\n        \"title\": \"ID\"\n      },\n      {\n        \"field\": \"svgUrl\",\n        \"title\": \"SVG URL\"\n      }\n    ],\n    \"x\": {\n      \"field\": \"order\",\n      \"sort\": \"x\"\n    },\n    \"y\": {\n      \"field\": \"group\",\n      \"sort\": {\"field\": \"groupOrder\"}\n    }\n  },\n  \"data\": {\"name\": \"dataset\"}\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"view\": {\"stroke\": \"transparent\"},\n  \"axis\": {\"disable\": true},\n  \"rect\": {\n    \"stroke\": \"#333\",\n    \"strokeWidth\": 2,\n    \"cornerRadius\": 5,\n    \"height\": {\"band\": 0.65},\n    \"width\": {\"band\": 0.80}\n  },\n  \"text\": {\n    \"align\": \"center\",\n    \"baseline\": \"top\",\n    \"dy\": 35,\n    \"font\": \"Segoe UI\",\n    \"fontSize\": 12\n  }\n}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.16.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.6.2.1'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "display": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Deneb: Pre-Defined (Default) SVG Fill Patterns'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "themedValueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            },
+            "themedTitleFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B3B3B3'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

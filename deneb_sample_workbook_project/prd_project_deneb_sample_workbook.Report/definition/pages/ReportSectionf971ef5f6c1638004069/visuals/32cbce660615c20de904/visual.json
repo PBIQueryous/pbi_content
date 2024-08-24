@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "32cbce660615c20de904",
+  "position": {
+    "x": 30.173112338858196,
+    "y": 72.415469613259674,
+    "z": 0,
+    "height": 114.65782688766114,
+    "width": 1858.6637200736648,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Deneb offers some pre-defined SVG fill patterns (and intensities) that can be applied to marks, and an example of these is provided below. To learn more about how to use them, you can refer to the "
+                  },
+                  {
+                    "value": "Pattern Fills",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#e23692"
+                    },
+                    "url": "https://deneb-viz.github.io/pattern-fills"
+                  },
+                  {
+                    "value": " page on the documentation website."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Patterns'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

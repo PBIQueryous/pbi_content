@@ -1,0 +1,32 @@
+table intensity
+	lineageTag: 5376b859-6fce-44f5-aa9a-da644e432523
+
+	column Intensity
+		dataType: string
+		lineageTag: df385cb5-f136-4810-847a-84b63929f2b5
+		summarizeBy: none
+		sourceColumn: Intensity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Suffix
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ad84a80-da28-4381-acee-f82baddad048
+		summarizeBy: sum
+		sourceColumn: Suffix
+
+		annotation SummarizationSetBy = Automatic
+
+	partition intensity = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("Jcw5CoAwFEXRrciHgEKEzEPvLkIKC60sdf+G3O4dLrzW5Lju83veZbXGqE20SNdNqlFj7tVMFVRQjlM5IlqmJZRQRBEFFJBHHjk+HZ+O5mgW2aH+Aw==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Intensity = _t, Suffix = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Intensity", type text}, {"Suffix", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

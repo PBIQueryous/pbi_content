@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "f8a7e1b49ee8c9a79467",
+  "position": {
+    "x": 17.97598771172715,
+    "y": 10.2719929781298,
+    "z": 4000,
+    "height": 139.95590432701852,
+    "width": 1887.4787097313508,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Layering",
+                    "textStyle": {
+                      "textDecoration": "underline",
+                      "color": "#e044a7"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    }
+                  },
+                  {
+                    "value": "in "
+                  },
+                  {
+                    "value": "Vega",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://vega.github.io/vega/docs/marks/"
+                  },
+                  {
+                    "value": " and "
+                  },
+                  {
+                    "value": "Vega-Lite",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://vega.github.io/vega-lite/docs/layer.html"
+                  },
+                  {
+                    "value": " allows you to build complex visualizations by stacking multiple graphical representations on top of one another within the same chart space. This technique is particularly useful when you want to combine different types of visual elements, such as lines, bars, points, or areas, to create a more informative and detailed visualization. "
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Multi-layered charts'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

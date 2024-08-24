@@ -1,0 +1,29 @@
+{
+  "version": "1.7.0.20240624#c94536d",
+  "author": {
+    "name": "Daniel Marsh-Patrick",
+    "email": "daniel@coacervo.co"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/BETAdeneb7E15AEF80B9E4D4F8E12924291ECE89A.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "guid": "BETAdeneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "name": "deneb",
+    "displayName": "Deneb (Beta Channel Build)",
+    "version": "1.7.0.20240624#c94536d",
+    "description": "NOT FOR PRODUCTION USE",
+    "supportUrl": "https://deneb-viz.github.io/",
+    "gitHubUrl": "https://github.com/deneb-viz/deneb",
+    "visualClassName": "Deneb"
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}

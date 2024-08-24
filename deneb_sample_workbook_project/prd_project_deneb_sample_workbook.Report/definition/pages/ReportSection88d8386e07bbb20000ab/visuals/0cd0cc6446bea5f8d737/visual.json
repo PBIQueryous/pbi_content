@@ -1,0 +1,304 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "0cd0cc6446bea5f8d737",
+  "position": {
+    "x": 1288.2246931377103,
+    "y": 602.09052321261788,
+    "z": 9000,
+    "height": 226.90503221217634,
+    "width": 611.80319796468291,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "seattle_weather"
+                    }
+                  },
+                  "Property": "date"
+                }
+              },
+              "queryRef": "seattle_weather.date",
+              "nativeQueryRef": "date1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "seattle_weather"
+                    }
+                  },
+                  "Property": "precipitation"
+                }
+              },
+              "queryRef": "Sum(seattle_weather.precipitation)",
+              "nativeQueryRef": "precipitation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "seattle_weather"
+                    }
+                  },
+                  "Property": "temp_max"
+                }
+              },
+              "queryRef": "Sum(seattle_weather.temp_max)",
+              "nativeQueryRef": "temp_max1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "seattle_weather"
+                    }
+                  },
+                  "Property": "weather"
+                }
+              },
+              "queryRef": "seattle_weather.weather",
+              "nativeQueryRef": "weather1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "seattle_weather"
+                    }
+                  },
+                  "Property": "temp_min"
+                }
+              },
+              "queryRef": "Sum(seattle_weather.temp_min)",
+              "nativeQueryRef": "temp_min1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "seattle_weather"
+                    }
+                  },
+                  "Property": "wind"
+                }
+              },
+              "queryRef": "Sum(seattle_weather.wind)",
+              "nativeQueryRef": "wind1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "seattle_weather"
+                  }
+                },
+                "Property": "date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"data\": {\"name\": \"dataset\"},\n  \"transform\": [\n    {\n      \"filter\": {\n        \"field\": \"weather\",\n        \"oneOf\": [\"sun\", \"rain\"]\n      }\n    }\n  ],\n  \"spacing\": 40,\n  \"columns\": 3,\n  \"repeat\": [\n    \"temp_max\",\n    \"precipitation\",\n    \"wind\"\n  ],\n  \"spec\": {\n    \"width\": 115,\n    \"height\": 150,\n    \"mark\": \"line\",\n    \"encoding\": {\n      \"x\": {\n        \"field\": \"date\",\n        \"timeUnit\": \"month\",\n        \"axis\": {\n          \"title\": \"\"\n        }\n      },\n      \"y\": {\n        \"field\": {\"repeat\": \"repeat\"},\n        \"aggregate\": \"mean\"\n      },\n      \"color\": {\"field\": \"weather\"}\n    }\n  }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.20.1'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.7.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "212.90503221217634D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "597.8031979646829D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF7CF'"
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#a38600'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

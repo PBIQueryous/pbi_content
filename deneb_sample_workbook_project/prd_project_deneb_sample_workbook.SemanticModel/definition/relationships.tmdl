@@ -1,0 +1,8 @@
+relationship fe7b20da-9c4f-425c-857b-60c8f65a96af
+	fromColumn: average_monthly_temperatures_UK.Date
+	toColumn: __dim_dates.Date
+
+relationship f4e5c2da-9cd7-48b5-9335-2c7457afc079
+	fromColumn: average_monthly_temperatures_UK.'City Key'
+	toColumn: __dim_cities.'City Key'
+

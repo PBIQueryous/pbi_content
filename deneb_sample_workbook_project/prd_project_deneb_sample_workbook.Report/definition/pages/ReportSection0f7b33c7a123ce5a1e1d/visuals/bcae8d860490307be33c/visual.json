@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "bcae8d860490307be33c",
+  "position": {
+    "x": 609.61805873806509,
+    "y": 645.58153410569946,
+    "z": 5000,
+    "height": 400.02516789998492,
+    "width": 532.80663119451776,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "D3 Formatting vs Customised Format",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#000000"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "D3's",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    },
+                    "url": "https://d3js.org/d3-format"
+                  },
+                  {
+                    "value": " number format "
+                  },
+                  {
+                    "value": "\",.3~s\"",
+                    "textStyle": {
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "value": " combines a thousands separator with precision and scaled shorthand notation. It rounds numbers to three significant digits offering suffixes such as 'k' for thousands, 'M' for millions 'G' for billions and T for trillions. We can further customise number formatting with calculate transforms and format expressions to return K, M, B and T for thousands, millions, billions and trillions, respectively."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "keepLayerOrder": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "4e731a9c068f6b1ab892",
+  "position": {
+    "x": 1299.1550358505763,
+    "y": 422.78751801984913,
+    "z": 11000,
+    "height": 173.31452750352611,
+    "width": 605.24682651622,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "NPS stacked bar chart:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Adding a ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "color ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "field to a bar chart creates a stacked bar chart by default. We can use ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "stack ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "transform to create ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "diverging stacked bar charts",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "textDecoration": "underline",
+                      "color": "#e044a7"
+                    }
+                  },
+                  {
+                    "value": ". ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

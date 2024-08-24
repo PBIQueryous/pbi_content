@@ -1,0 +1,141 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "c6b3ded55cc397751c79",
+  "position": {
+    "x": 7.5432780847145491,
+    "y": 18.103867403314919,
+    "z": 0,
+    "height": 282.11860036832411,
+    "width": 1902.4147329650093,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "You can also "
+                  },
+                  {
+                    "value": "access individual theme colors",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    },
+                    "url": "https://deneb-viz.github.io/schemes"
+                  },
+                  {
+                    "value": " in expressions by using the "
+                  },
+                  {
+                    "value": "pbiColor",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas"
+                    }
+                  },
+                  {
+                    "value": " expression. This uses a zero-based index, so for theme color 1, you would use 0; for theme color 2, you would use 1, and so on. "
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "This expression has an optional second parameter (decimal value between "
+                  },
+                  {
+                    "value": "-1",
+                    "textStyle": {
+                      "fontFamily": "Consolas"
+                    }
+                  },
+                  {
+                    "value": " and "
+                  },
+                  {
+                    "value": "1",
+                    "textStyle": {
+                      "fontFamily": "Consolas"
+                    }
+                  },
+                  {
+                    "value": ") that can specify Deneb darkens or lightens the color, similar to how Power BI provides these variations in its color picker. "
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Much like the schemes on the previous page, these remain bound to the theme and will update on any changes."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Individual Theme Colors'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

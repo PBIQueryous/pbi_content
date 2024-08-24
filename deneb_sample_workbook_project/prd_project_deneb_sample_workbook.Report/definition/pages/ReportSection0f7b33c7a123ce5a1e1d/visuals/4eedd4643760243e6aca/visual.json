@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "4eedd4643760243e6aca",
+  "position": {
+    "x": 14.589665653495441,
+    "y": 11.671732522796352,
+    "z": 1000,
+    "height": 128.38905775075989,
+    "width": 1889.3617021276596,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Number formatting in Vega and Vega-Lite is extremely versatile, with several methods and techniques at your disposal to enable varying degrees of precision. Deneb allows for "
+                  },
+                  {
+                    "value": "further customisation",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    },
+                    "url": "https://deneb-viz.github.io/formatting"
+                  },
+                  {
+                    "value": " by utilising Power BI's syntax and customised formatting strings."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Number Formatting (D3 and Custom Formatting)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

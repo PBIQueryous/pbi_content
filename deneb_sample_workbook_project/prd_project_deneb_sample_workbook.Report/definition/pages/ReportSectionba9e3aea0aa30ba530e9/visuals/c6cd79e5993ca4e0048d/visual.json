@@ -1,0 +1,410 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "c6cd79e5993ca4e0048d",
+  "position": {
+    "x": 1271.796685082873,
+    "y": 435.05122938585595,
+    "z": 5000,
+    "height": 490.31307550644567,
+    "width": 585.358379373849,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__dim_cities"
+                    }
+                  },
+                  "Property": "City"
+                }
+              },
+              "queryRef": "dim_cities.City",
+              "nativeQueryRef": "City"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "average_monthly_temperatures_UK"
+                    }
+                  },
+                  "Property": "Mean Temperature"
+                }
+              },
+              "queryRef": "tbl_average_monthly_temperatures_UK.Mean Temperature",
+              "nativeQueryRef": "Mean Temperature"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "average_monthly_temperatures_UK"
+                    }
+                  },
+                  "Property": "Sample"
+                }
+              },
+              "queryRef": "Sum(tbl_average_monthly_temperatures_UK.Sample)",
+              "nativeQueryRef": "Sample1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "__dim_cities"
+                  }
+                },
+                "Property": "City"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"data\": {\"name\": \"dataset\"},\n  \"spacing\": 34,\n  \"facet\": {\"row\": {\"field\": \"City\"}},\n  \"transform\": [\n    {\n      \"calculate\": \"random()*0.01\",\n      \"as\": \"Jitter\"\n    }\n  ],\n  \"spec\": {\n    \"resolve\": {\n      \"scale\": {\"y\": \"independent\"}\n    },\n    \"height\": 55,\n    \"width\": 550,\n    \"layer\": [\n      {\n        \"transform\": [\n          {\n            \"density\": \"Mean Temperature\"\n          }\n        ],\n        \"mark\": {\"type\": \"area\"},\n        \"encoding\": {\n          \"x\": {\n            \"field\": \"value\",\n            \"type\": \"quantitative\"\n          },\n          \"y\": {\n            \"field\": \"density\",\n            \"type\": \"quantitative\",\n            \"scale\": {\n              \"range\": [28, -20]\n            }\n          }\n        }\n      },\n      {\n        \"mark\": {\n          \"type\": \"boxplot\",\n          \"opacity\": 1\n        }\n      },\n      {\n        \"mark\": {\n          \"type\": \"point\",\n          \"tooltip\": true\n        },\n        \"encoding\": {\n          \"y\": {\n            \"field\": \"Jitter\",\n            \"type\": \"quantitative\",\n            \"scale\": {\"range\": [55, 40]}\n          }\n        }\n      }\n    ],\n    \"encoding\": {\n      \"x\": {\n        \"field\": \"Mean Temperature\",\n        \"type\": \"quantitative\",\n        \"axis\": {\n          \"title\": \"\",\n          \"labelExpr\": \"datum.label + (datum.value === 20 ? '' °C'' : '''')\"\n        }\n      }\n    }\n  }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"padding\": 0,\n  \"view\": {\"stroke\": \"transparent\"},\n  \"facet\": {\"spacing\": 2},\n  \"header\": {\n    \"title\": null,\n    \"labelAngle\": 0,\n    \"labelAnchor\": \"start\",\n    \"labelOrient\": \"top\",\n    \"labelPadding\": -19,\n    \"labelFontSize\": 12\n  },\n  \"font\": \"Segoe UI\",\n  \"area\": {\n    \"color\": \"#eaeaea\",\n    \"interpolate\": \"cardinal\",\n    \"stroke\": \"#605E5C\"\n  },\n  \"point\": {\n    \"size\": 5,\n    \"opacity\": 0.25,\n    \"color\": \"#eaeaea\",\n    \"stroke\": \"#605E5C\",\n    \"strokeWidth\": 0.5,\n    \"filled\": true\n  },\n  \"axis\": {\n    \"domain\": false,\n    \"grid\": false,\n    \"labelFontSize\": 12,\n    \"ticks\": false,\n    \"tickCount\": 5,\n    \"titleFontSize\": 12,\n    \"titleFontWeight\": 400,\n    \"titleColor\": \"#605E5C\"\n  },\n  \"boxplot\": {\n    \"size\": 6,\n    \"outliers\": false,\n    \"box\": {\n      \"color\": \"#eaeaea\",\n      \"stroke\": \"#605E5C\",\n      \"strokeWidth\": 1\n    },\n    \"rule\": {\n      \"stroke\": \"black\",\n      \"strokeWidth\": 2\n    },\n    \"median\": {\"color\": \"#605E5C\"}\n  },\n  \"axisY\": {\"disable\": true},\n  \"legend\": {\"title\": null}\n}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.20.1'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.7.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "451.31307550644567D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "571.358379373849D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Faceted and Layered Raincloud Plot'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B3B3B3'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF7CF'"
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#a38600'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter78bbbf505d6cd002330e",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "__dim_cities"
+              }
+            },
+            "Property": "City"
+          }
+        },
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "_",
+              "Entity": "__dim_cities",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "_"
+                          }
+                        },
+                        "Property": "City"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Belfast'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Cardiff'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Edinburgh'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Newcastle Upon Tyne'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Filterb1f041d26021920a34ee",
+        "ordinal": 1,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "average_monthly_temperatures_UK"
+              }
+            },
+            "Property": "Mean Temperature"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filterbf34687c80133004c50a",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "average_monthly_temperatures_UK"
+              }
+            },
+            "Property": "Sample"
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

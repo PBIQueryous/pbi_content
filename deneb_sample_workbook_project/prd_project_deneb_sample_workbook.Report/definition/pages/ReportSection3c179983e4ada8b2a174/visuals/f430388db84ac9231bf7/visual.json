@@ -1,0 +1,113 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "f430388db84ac9231bf7",
+  "position": {
+    "x": 20.21405206219811,
+    "y": 893.35324979927282,
+    "z": 6000,
+    "height": 173.31452750352611,
+    "width": 605.24682651622,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Scatterplot with rolling average line: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Mapping point marks to both the ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "x",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": " and ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "y",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": " channels creates a ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  },
+                  {
+                    "value": "scatter plot",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#e044a7"
+                    },
+                    "url": "https://vega.github.io/vega-lite/examples/layer_line_rolling_mean_point_raw.html"
+                  },
+                  {
+                    "value": ". A window transform creates a 30-day rolling average line.",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#373a3c"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

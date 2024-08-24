@@ -1,0 +1,22 @@
+table __dummy
+	lineageTag: 328acdac-61c8-4db6-ac0a-84060c7368dd
+
+	column placeholder
+		dataType: string
+		lineageTag: e26ca005-66d5-4fab-a694-3c3b2493be42
+		summarizeBy: none
+		sourceColumn: placeholder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition __dummy = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlSK1YlWMgKTxkqxsQA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [placeholder = _t])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

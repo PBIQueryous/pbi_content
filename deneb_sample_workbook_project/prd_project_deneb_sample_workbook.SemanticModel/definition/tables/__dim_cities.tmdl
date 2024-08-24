@@ -1,0 +1,116 @@
+table __dim_cities
+	lineageTag: 54751013-fc5c-4572-9988-503a02f11bc9
+
+	measure 'Seasonality Drillthrough Title' =
+			
+			"Historic Details for " & MIN ( '__dim_dates'[Month Name] ) & " from "
+			    & MIN ( '__dim_dates'[Calendar Year] ) & " to "
+			    & MAX ( '__dim_dates'[Calendar Year] ) & " by City (°C)"
+		lineageTag: cc35cc2b-dda7-4bfb-a242-314ed6ae113c
+
+	measure 'Seasonality Tooltip Title' = ```
+			
+			    MIN('__dim_dates'[Month Name]) & ": " & MIN('__dim_dates'[Calendar Year]) & " to " & MAX('__dim_dates'[Calendar Year]) & " by City"
+			```
+		lineageTag: 0a27373d-9157-476f-af79-08b979868a05
+
+	measure 'Mean Temperature (All Cities)' = ```
+			
+			    CALCULATE(
+			        [Mean Temperature],
+			        ALLSELECTED( __dim_cities[City] )
+			    )
+			```
+		formatString: 0.00
+		lineageTag: 16634a22-fb38-4316-9310-7576ecdbf8c3
+
+	measure 'Distinct Cities' = DISTINCTCOUNT(__dim_cities[City])
+		formatString: 0
+		lineageTag: 9e450a7d-9e7a-46d2-8888-cd2dbfdbc77f
+
+	column Country
+		dataType: string
+		lineageTag: 77778f87-2d70-441f-a9f0-bd23e703597c
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: string
+		lineageTag: 06532b6e-a163-4a84-b5d1-9ddd4d4be8bc
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: string
+		lineageTag: b45cc595-1443-4096-a243-d5bfc454ed7a
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'City Key'
+		dataType: double
+		lineageTag: cd34482b-d429-4f1d-b5b2-2eacd4503ead
+		summarizeBy: none
+		sourceColumn: City Key
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Lat
+		dataType: double
+		lineageTag: 1b70d082-3001-40e9-a0bb-fd411f7082f1
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: Lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Long
+		dataType: double
+		lineageTag: a4996067-a794-43c3-9b67-ebf26ebee70c
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: Long
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column City
+		dataType: string
+		lineageTag: 131f4d02-d382-4270-a8c9-dab6df100245
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 720f4e3d-a810-427e-acd5-057f772d3531
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition __dim_cities = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_json_array("[{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":2,""Lat"":51.58,""Long"":0.49,""City"":""Basildon"",""Location"":""Basildon, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":12,""Lat"":52.2053,""Long"":0.1192,""City"":""Cambridge"",""Location"":""Cambridge, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":14,""Lat"":51.73,""Long"":0.48,""City"":""Chelmsford"",""Location"":""Chelmsford, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":16,""Lat"":51.8917,""Long"":0.903,""City"":""Colchester"",""Location"":""Colchester, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":29,""Lat"":52.0594,""Long"":1.1556,""City"":""Ipswich"",""Location"":""Ipswich, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":32,""Lat"":52.6344,""Long"":-1.1319,""City"":""Leicester"",""Location"":""Leicester, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":34,""Lat"":51.5072,""Long"":-0.1275,""City"":""London"",""Location"":""London, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":35,""Lat"":51.8783,""Long"":-0.4147,""City"":""Luton"",""Location"":""Luton, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":40,""Lat"":52.2304,""Long"":-0.8938,""City"":""Northampton"",""Location"":""Northampton, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":41,""Lat"":52.6286,""Long"":1.2928,""City"":""Norwich"",""Location"":""Norwich, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":44,""Lat"":51.7519,""Long"":-1.2578,""City"":""Oxford"",""Location"":""Oxford, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":45,""Lat"":52.5662,""Long"":-0.2366,""City"":""Peterborough"",""Location"":""Peterborough, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":54,""Lat"":51.5084,""Long"":-0.5881,""City"":""Slough"",""Location"":""Slough, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":56,""Lat"":51.6316,""Long"":0.71,""City"":""Southend On Sea"",""Location"":""Southend On Sea, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""0.00W"",""Latitude"":""52.24N"",""City Key"":64,""Lat"":51.655,""Long"":-0.3957,""City"":""Watford"",""Location"":""Watford, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":67,""Lat"":52.1911,""Long"":-2.2206,""City"":""Worcester"",""Location"":""Worcester, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":66,""Lat"":52.5833,""Long"":-2.1333,""City"":""Wolverhampton"",""Location"":""Wolverhampton, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":65,""Lat"":52.519,""Long"":-1.995,""City"":""West Bromwich"",""Location"":""West Bromwich, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":63,""Lat"":52.58,""Long"":-1.98,""City"":""Walsall"",""Location"":""Walsall, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":62,""Lat"":51.56,""Long"":-1.78,""City"":""Swindon"",""Location"":""Swindon, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":60,""Lat"":52.563,""Long"":-1.822,""City"":""Sutton Coldfield"",""Location"":""Sutton Coldfield, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":58,""Lat"":53,""Long"":-2.548,""City"":""Stoke On Trent"",""Location"":""Stoke On Trent, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":39,""Lat"":51.5886,""Long"":-2.9978,""City"":""Newport"",""Location"":""Newport, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":27,""Lat"":51.8644,""Long"":-2.2444,""City"":""Gloucester"",""Location"":""Gloucester, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":20,""Lat"":52.508,""Long"":-2.089,""City"":""Dudley"",""Location"":""Dudley, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":17,""Lat"":52.4081,""Long"":-1.5106,""City"":""Coventry"",""Location"":""Coventry, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":15,""Lat"":51.9,""Long"":-2.0667,""City"":""Cheltenham"",""Location"":""Cheltenham, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":13,""Lat"":54.891,""Long"":1.08,""City"":""Cardiff"",""Location"":""Cardiff, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":11,""Lat"":51.4536,""Long"":-2.5975,""City"":""Bristol"",""Location"":""Bristol, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.63W"",""Latitude"":""52.24N"",""City Key"":4,""Lat"":52.48,""Long"":-1.9025,""City"":""Birmingham"",""Location"":""Birmingham, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""5.26W"",""Latitude"":""52.24N"",""City Key"":61,""Lat"":51.56,""Long"":-1.96,""City"":""Swansea"",""Location"":""Swansea, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""3.80W"",""Latitude"":""50.63N"",""City Key"":46,""Lat"":50.3714,""Long"":-4.1422,""City"":""Plymouth"",""Location"":""Plymouth, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""3.80W"",""Latitude"":""50.63N"",""City Key"":24,""Lat"":50.7256,""Long"":-3.5269,""City"":""Exeter"",""Location"":""Exeter, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.27E"",""Latitude"":""50.63N"",""City Key"":22,""Lat"":50.77,""Long"":0.28,""City"":""Eastbourne"",""Location"":""Eastbourne, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.27E"",""Latitude"":""50.63N"",""City Key"":25,""Lat"":51.385,""Long"":0.55,""City"":""Gillingham"",""Location"":""Gillingham, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.27W"",""Latitude"":""50.63N"",""City Key"":55,""Lat"":50.9025,""Long"":-1.4042,""City"":""Southampton"",""Location"":""Southampton, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.27W"",""Latitude"":""50.63N"",""City Key"":50,""Lat"":51.4542,""Long"":-0.9731,""City"":""Reading"",""Location"":""Reading, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.27W"",""Latitude"":""50.63N"",""City Key"":48,""Lat"":50.8058,""Long"":-1.0872,""City"":""Portsmouth"",""Location"":""Portsmouth, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.27W"",""Latitude"":""50.63N"",""City Key"":47,""Lat"":50.7167,""Long"":-1.9833,""City"":""Poole"",""Location"":""Poole, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.27W"",""Latitude"":""50.63N"",""City Key"":18,""Lat"":51.1092,""Long"":-0.1872,""City"":""Crawley"",""Location"":""Crawley, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.27W"",""Latitude"":""50.63N"",""City Key"":10,""Lat"":50.8208,""Long"":-0.1375,""City"":""Brighton"",""Location"":""Brighton, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.27W"",""Latitude"":""50.63N"",""City Key"":8,""Lat"":50.72,""Long"":-1.88,""City"":""Bournemouth"",""Location"":""Bournemouth, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.83W"",""Latitude"":""55.45N"",""City Key"":23,""Lat"":55.9533,""Long"":-3.1892,""City"":""Edinburgh"",""Location"":""Edinburgh, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.83W"",""Latitude"":""55.45N"",""City Key"":26,""Lat"":55.8611,""Long"":-4.25,""City"":""Glasgow"",""Location"":""Glasgow, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.83W"",""Latitude"":""55.45N"",""City Key"":38,""Lat"":50.8,""Long"":-2.2278,""City"":""Newcastle Upon Tyne"",""Location"":""Newcastle Upon Tyne, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""2.83W"",""Latitude"":""55.45N"",""City Key"":59,""Lat"":54.906,""Long"":-1.381,""City"":""Sunderland"",""Location"":""Sunderland, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""4.09W"",""Latitude"":""53.84N"",""City Key"":52,""Lat"":53.45,""Long"":-2.75,""City"":""Saint Helens"",""Location"":""Saint Helens, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""4.09W"",""Latitude"":""53.84N"",""City Key"":33,""Lat"":53.4075,""Long"":-2.9919,""City"":""Liverpool"",""Location"":""Liverpool, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""4.09W"",""Latitude"":""53.84N"",""City Key"":6,""Lat"":53.8142,""Long"":-3.0503,""City"":""Blackpool"",""Location"":""Blackpool, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.48W"",""Latitude"":""57.05N"",""City Key"":1,""Lat"":57.15,""Long"":-2.11,""City"":""Aberdeen"",""Location"":""Aberdeen, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""5.67W"",""Latitude"":""55.45N"",""City Key"":3,""Lat"":54.5964,""Long"":-5.93,""City"":""Belfast"",""Location"":""Belfast, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""4.43W"",""Latitude"":""57.05N"",""City Key"":21,""Lat"":56.462,""Long"":-2.9707,""City"":""Dundee"",""Location"":""Dundee, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":68,""Lat"":53.9601,""Long"":-1.078,""City"":""York"",""Location"":""York, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":57,""Lat"":53.4083,""Long"":-2.1494,""City"":""Stockport"",""Location"":""Stockport, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":53,""Lat"":53.3808,""Long"":-1.4703,""City"":""Sheffield"",""Location"":""Sheffield, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":51,""Lat"":53.43,""Long"":-1.357,""City"":""Rotherham"",""Location"":""Rotherham, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":49,""Lat"":53.759,""Long"":-2.699,""City"":""Preston"",""Location"":""Preston, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":43,""Lat"":53.5444,""Long"":-2.1169,""City"":""Oldham"",""Location"":""Oldham, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":42,""Lat"":52.9533,""Long"":-1.15,""City"":""Nottingham"",""Location"":""Nottingham, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":37,""Lat"":54.5767,""Long"":-1.2355,""City"":""Middlesbrough"",""Location"":""Middlesbrough, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":36,""Lat"":53.4794,""Long"":-2.2453,""City"":""Manchester"",""Location"":""Manchester, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":31,""Lat"":53.8003,""Long"":-1.5497,""City"":""Leeds"",""Location"":""Leeds, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":30,""Lat"":53.7444,""Long"":-0.3325,""City"":""Kingston Upon Hull"",""Location"":""Kingston Upon Hull, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":28,""Lat"":53.645,""Long"":-1.7798,""City"":""Huddersfield"",""Location"":""Huddersfield, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":19,""Lat"":52.9217,""Long"":-1.4767,""City"":""Derby"",""Location"":""Derby, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":9,""Lat"":53.8,""Long"":-1.75,""City"":""Bradford"",""Location"":""Bradford, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":7,""Lat"":53.578,""Long"":-2.429,""City"":""Bolton"",""Location"":""Bolton, United Kingdom""},{""Country"":""United Kingdom"",""Longitude"":""1.36W"",""Latitude"":""53.84N"",""City Key"":5,""Lat"":53.748,""Long"":-2.482,""City"":""Blackburn"",""Location"":""Blackburn, United Kingdom""}]")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,238 @@
+table average_monthly_temperatures_UK
+	lineageTag: 85b24316-d8a9-421f-bfc6-8a10649cf123
+
+	measure 'Mean Temperature' =
+			AVERAGEX(
+			    'average_monthly_temperatures_UK',
+			    'average_monthly_temperatures_UK'[Average Temperature] - 'average_monthly_temperatures_UK'[Average Temperature Uncertainty]
+			)
+		formatString: 0.0
+		lineageTag: 62a1bf3b-74c9-4b72-a398-e945ad968982
+
+	measure '10 Year Average by Month (C)' = ```
+			
+			    CALCULATE(
+			        [Mean Temperature],
+			        DATESINPERIOD(
+			            '__dim_dates'[Date],
+			            LASTDATE('__dim_dates'[Date]),
+			            -10,
+			            YEAR
+			        ),
+			        TREATAS(VALUES('__dim_dates'[Month Name]), '__dim_dates'[Month Name])
+			    )
+			```
+		formatString: #,0.0
+		lineageTag: 40a6c8ed-4525-454e-a13e-b82e89c6feae
+
+	measure '12 Month Average by Month (C)' = ```
+			
+			    CALCULATE(
+			        'average_monthly_temperatures_UK'[Mean Temperature],
+			        DATESINPERIOD(
+			            '__dim_dates'[Date],
+			            LASTDATE('__dim_dates'[Date]),
+			            -12,
+			            MONTH
+			        ),
+			        TREATAS(VALUES('__dim_dates'[Month Name]), '__dim_dates'[Month Name])
+			    )
+			```
+		formatString: #,0.00
+		lineageTag: 4e180988-fb0c-4c37-a300-04eb1c7177db
+
+	measure 'Seasonality Range Title' = ```
+			
+			    "Average Land Temperature from " & MIN('__dim_dates'[Calendar Year]) & " to " & MAX('__dim_dates'[Calendar Year]) & " by Month (°C)"
+			```
+		lineageTag: 02b1f06b-715e-4650-b658-074c91585553
+
+	measure 'Highest Mean Temperature' =
+			MAXX(
+			    'average_monthly_temperatures_UK',
+			    'average_monthly_temperatures_UK'[Average Temperature] - 'average_monthly_temperatures_UK'[Average Temperature Uncertainty]
+			)
+		lineageTag: b6809430-6161-4263-9aac-3400122f3037
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lowest Mean Temperature' =
+			MINX(
+			    'average_monthly_temperatures_UK',
+			    'average_monthly_temperatures_UK'[Average Temperature] - 'average_monthly_temperatures_UK'[Average Temperature Uncertainty]
+			)
+		lineageTag: 52a4cd90-a9dc-4841-85da-cef80809f0ee
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Highest Mean Temperature Year Month' = ```
+			
+			    CALCULATE(
+			        MAX('__dim_dates'[Month Start]),
+			        FILTER(
+			            ALLSELECTED('average_monthly_temperatures_UK'),
+			            [Mean Temperature] = [Highest Mean Temperature])
+			        )
+			```
+		formatString: General Date
+		lineageTag: d93136a0-cfe6-4f78-92d7-7b2e60e7c71b
+
+	measure 'Lowest Mean Temperature Year Month' = ```
+			
+			    CALCULATE(
+			        MIN('__dim_dates'[Month Start]),
+			        FILTER(
+			            ALLSELECTED('average_monthly_temperatures_UK'),
+			            [Mean Temperature] = [Lowest Mean Temperature])
+			        )
+			```
+		formatString: General Date
+		lineageTag: 07b387d2-240a-4fd6-a775-3ea1ff455d5c
+
+	measure 'Lowest Reading' = FORMAT([Lowest Mean Temperature Year Month], "MMM yyyy") & ": " & FORMAT([Lowest Mean Temperature], "#0.00°C")
+		lineageTag: 07c1b1c0-85ae-4bdf-a49c-49012cf7c2ed
+
+	measure 'Highest Reading' = FORMAT([Highest Mean Temperature Year Month], "MMM yyyy") & ": " & FORMAT([Highest Mean Temperature], "#0.00°C")
+		lineageTag: 95770fac-9556-4384-bf97-5fed5ac9354d
+
+	measure 'Selected Cities' = IF ( ISFILTERED( __dim_cities[City] ) , CONCATENATEX( VALUES ( __dim_cities[City] ) , __dim_cities[City], ", " ), "[No Active Selection - Showing All Values]" )
+		lineageTag: 4306357f-652b-4292-91a8-46c57a906c7e
+
+	measure 'Mean Temperature 1951-1980' =
+			CALCULATE(
+			    [Mean Temperature],
+			    DATESINPERIOD(
+			            '__dim_dates'[Date],
+			            DATE(1951, 1, 1),
+			            30,
+			            YEAR
+			        ),
+			        TREATAS(VALUES('__dim_dates'[Month Name]), '__dim_dates'[Month Name])
+			)
+		formatString: 0.00
+		lineageTag: 5865f7af-9470-4c50-9102-8b528d0afedf
+
+	measure 'Mean Temperature Deviation from 1951-1980' = IF(ISBLANK([Mean Temperature]), BLANK(), [Mean Temperature] - [Mean Temperature 1951-1980])
+		lineageTag: d1dc8d04-917a-4782-aa78-781f21d81139
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 62be7782-7914-438e-8ec3-db606f234bc6
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Average Temperature'
+		dataType: double
+		lineageTag: 21359ee6-728a-47bc-a23b-557240037ae6
+		summarizeBy: sum
+		sourceColumn: Average Temperature
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Average Temperature Uncertainty'
+		dataType: double
+		lineageTag: 44065c13-d402-4cc5-b2ea-7cfc90e3815d
+		summarizeBy: sum
+		sourceColumn: Average Temperature Uncertainty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column City
+		dataType: string
+		lineageTag: 4abd8eef-96a1-4d20-9f4d-d4a68ba80022
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 23ab6f8e-7393-4a3b-8c5d-a4d6636c68e8
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: string
+		lineageTag: f8dae356-c4e8-4882-a427-f39eca5e8372
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: string
+		lineageTag: cee97aa7-9ace-4046-8e57-c1826b809955
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sample
+		dataType: int64
+		formatString: 0
+		lineageTag: 77f1b498-8d53-41d4-ae77-95a3dff0c9ad
+		summarizeBy: sum
+		sourceColumn: Sample
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'City Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: dafea343-19e0-46d3-9279-dffa62fd7f86
+		summarizeBy: none
+		sourceColumn: City Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Long
+		dataType: double
+		lineageTag: ab2f83d4-6d66-44ae-994e-d047a91eb9a5
+		summarizeBy: sum
+		sourceColumn: Long
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Lat
+		dataType: double
+		lineageTag: cc04ab08-2ece-471f-b881-5c852bb3b07f
+		summarizeBy: sum
+		sourceColumn: Lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition average_monthly_temperatures_UK = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Json.Document(File.Contents("C:\Users\pbiqu\OneDrive\Documents\PowerBI\Deneb_Showcases\Deneb_Vega_Playground\Average_temperature_UK.json")),
+				    table_to_records = Table.FromRecords( Source ),
+				    #"Changed Type" = Table.TransformColumnTypes(table_to_records,{{"Date", type date}, {"AverageTemperature", type number}, {"AverageTemperatureUncertainty", type number}, {"City", type text}, {"Country", type text}, {"Latitude", type text}, {"Longitude", type text}, {"Sample", Int64.Type}, {"City Key", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"AverageTemperature", "Average Temperature"}, {"AverageTemperatureUncertainty", "Average Temperature Uncertainty"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Long", each if Text.EndsWith( [Longitude] , "E" ) then Number.From(Text.Replace([Longitude],"E", "" ))*-1 else Number.From(Text.Replace([Longitude],"W", "" )), type number),
+				    Custom1 = Table.AddColumn(#"Added Custom", "Lat", each if Text.EndsWith( [Longitude] , "S" ) then Number.From(Text.Replace([Latitude],"S", "" ))*-1 else Number.From(Text.Replace([Latitude],"N", "" )), type number)
+				in
+				    Custom1
+
+	annotation PBI_ResultType = Table
+

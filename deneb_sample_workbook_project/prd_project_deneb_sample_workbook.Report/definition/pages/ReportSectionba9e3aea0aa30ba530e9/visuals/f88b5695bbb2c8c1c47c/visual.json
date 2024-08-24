@@ -1,0 +1,280 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "f88b5695bbb2c8c1c47c",
+  "position": {
+    "x": 55.820257826887662,
+    "y": 435.05122938585595,
+    "z": 1000,
+    "height": 490.31307550644567,
+    "width": 585.358379373849,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "BETAdeneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__dim_dates"
+                    }
+                  },
+                  "Property": "Month Start"
+                }
+              },
+              "queryRef": "__dim_dates.Month Start",
+              "nativeQueryRef": "Month Start"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "average_monthly_temperatures_UK"
+                    }
+                  },
+                  "Property": "Mean Temperature"
+                }
+              },
+              "queryRef": "average_monthly_temperatures_UK.Mean Temperature",
+              "nativeQueryRef": "Mean Temperature"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "__dim_dates"
+                  }
+                },
+                "Property": "Month Start"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"data\": {\"name\": \"dataset\"},\n  \"mark\": \"rect\",\n  \"encoding\": {\n    \"y\": {\n      \"field\": \"Month Start\",\n      \"timeUnit\": \"month\",\n      \"type\": \"ordinal\"\n    },\n    \"x\": {\n      \"field\": \"Month Start\",\n      \"timeUnit\": \"year\",\n      \"axis\": {\n        \"tickCount\": {\n          \"interval\": \"year\",\n          \"step\": 10\n        }\n      }\n    },\n    \"color\": {\n      \"field\": \"Mean Temperature\",\n      \"type\": \"quantitative\",\n      \"scale\": {\n        \"domain\": [0, 20],\n        \"scheme\": \"blueorange\"\n      },\n      \"legend\": {\n        \"padding\": 5,\n        \"title\": \"\",\n        \"titleAlign\": \"center\",\n        \"titleBaseline\": \"top\",\n        \"titleAnchor\": \"middle\",\n        \"titlePadding\": 5,\n        \"type\": \"gradient\",\n        \"format\": \".3~s\",\n        \"orient\": \"right\",\n        \"offset\": 10,\n        \"direction\": \"vertical\",\n        \"fillColor\": \"transparent\",\n        \"tickCount\": 5,\n        \"gradientLength\": 300,\n        \"gradientOpacity\": 1,\n        \"gradientStrokeColor\": \"black\",\n        \"gradientStrokeWidth\": 0.2,\n        \"gradientThickness\": 20,\n        \"labelOffset\": 10,\n        \"labelExpr\": \"datum.label + (datum.value === 20 ? '' °C'' : '''')\"\n      }\n    }\n  }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"view\": {\"stroke\": \"transparent\"},\n  \"font\": \"Segoe UI\",\n  \"axis\": {\n    \"title\": \"\",\n    \"labelFontSize\": 12,\n    \"ticks\": false,\n    \"domain\": false,\n    \"labelPadding\": 10\n  },\n  \"legend\": {\n    \"title\": \"\",\n    \"gradientHorizontalMaxLength\": 50,\n    \"labelFontSize\": 12\n  }\n}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.19.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "editor": [
+        {
+          "properties": {
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'left'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showViewportMarker": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.7.0.20240624#c94536d'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "451.31307550644567D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "571.358379373849D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Single Mark Heatmap'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B3B3B3'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF7CF'"
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#a38600'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

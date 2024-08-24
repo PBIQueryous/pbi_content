@@ -1,0 +1,225 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "b7d7af3136b08c8e8eb9",
+  "position": {
+    "x": 825.59619791224645,
+    "y": 438.00050920818131,
+    "z": 12000,
+    "height": 281.57175591954513,
+    "width": 1063.715522362726,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__dim_dates"
+                    }
+                  },
+                  "Property": "Calendar Year"
+                }
+              },
+              "queryRef": "dim_dates.Calendar Year",
+              "nativeQueryRef": "CalendarYear",
+              "displayName": "CalendarYear"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "average_monthly_temperatures_UK"
+                    }
+                  },
+                  "Property": "Mean Temperature"
+                }
+              },
+              "queryRef": "tbl_average_monthly_temperatures_UK.Mean Temperature",
+              "nativeQueryRef": "Mean Temperature"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"data\": {\"name\": \"dataset\"},\n  \"transform\": [\n    {\n      \"window\": [\n        {\n          \"field\": \"Mean Temperature\",\n          \"op\": \"mean\",\n          \"as\": \"10-year Mean\"\n        }\n      ],\n      \"frame\": [-9, 0]\n    },\n    {\n      \"fold\": [\n        \"Mean Temperature\",\n        \"10-year Mean\"\n      ],\n      \"as\": [\"Measure\", \"Value\"]\n    }\n  ],\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"CalendarYear\",\n      \"type\": \"quantitative\",\n      \"axis\": {\n        \"labels\": false,\n        \"format\": \"#\",\n        \"formatType\": \"pbiFormat\"\n      }\n    },\n    \"y\": {\n      \"field\": \"Mean Temperature\",\n      \"type\": \"quantitative\",\n      \"axis\": {\n        \"labelFont\": \"DIN\",\n        \"labelFontSize\": 16,\n        \"tickCount\": 3,\n        \"gridOpacity\": 0.3\n      },\n      \"scale\": {\"zero\": false}\n    },\n    \"color\": {\n      \"field\": \"Measure\",\n      \"type\": \"nominal\",\n      \"scale\": {\n        \"domain\": [\n          \"Mean Temperature\",\n          \"10-year Mean\"\n        ],\n        \"range\": [\"#B3B3B3\", \"#404040\"]\n      },\n      \"legend\": {\n        \"disable\": true,\n        \"title\": \"Measure\",\n        \"orient\": \"top-right\",\n        \"labelFont\": \"DIN\",\n        \"labelFontSize\": 12,\n        \"titleFont\": \"DIN\",\n        \"titleFontSize\": 14\n      }\n    },\n    \"tooltip\": [\n      {\"field\": \"CalendarYear\"},\n      {\n        \"field\": \"Mean Temperature\",\n        \"type\": \"quantitative\",\n        \"format\": \",.1~f\"\n      },\n      {\n        \"field\": \"10-year Mean\",\n        \"type\": \"quantitative\",\n        \"format\": \",.1~f\"\n      }\n    ]\n  },\n  \"layer\": [\n    {\n      \"encoding\": {\n        \"y\": {\n          \"field\": \"Value\",\n          \"type\": \"quantitative\",\n          \"scale\": {\"zero\": false}\n        }\n      },\n      \"height\": 200,\n      \"layer\": [\n        {\n          \n          \"mark\": {\n            \"type\": \"line\",\n            \"strokeWidth\": 1,\n            \"interpolate\": \"monotone\"\n          }\n        },\n        {\n          \"params\": [\n            {\n              \"name\": \"hover\",\n              \"select\": {\n                \"type\": \"point\",\n                \"fields\": [\n                  \"CalendarYear\"\n                ],\n                \"nearest\": true,\n                \"on\": \"pointerover\",\n                \"clear\": \"pointerout\"\n              }\n            }\n          ],\n          \"mark\": {\"type\": \"rule\"},\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"CalendarYear\",\n              \"type\": \"quantitative\"\n            },\n            \"y\": {},\n            \"opacity\": {\n              \"condition\": {\n                \"value\": 1,\n                \"param\": \"hover\",\n                \"empty\": false\n              },\n              \"value\": 0\n            },\n            \"tooltip\": [\n              {\n                \"field\": \"CalendarYear\",\n                \"type\": \"quantitative\",\n                \"format\": \"\"\n              },\n              {\n                \"field\": \"Mean Temperature\",\n                \"type\": \"quantitative\",\n                \"format\": \",.1~f\"\n              },\n              {\n                \"field\": \"10-year Mean\",\n                \"type\": \"quantitative\",\n                \"format\": \",.1~f\"\n              }\n            ]\n          }\n        },\n        {\n          \"transform\": [\n            {\n              \"filter\": {\n                \"param\": \"hover\",\n                \"empty\": false\n              }\n            }\n          ],\n          \"mark\": {\n            \"type\": \"point\",\n            \"filled\": true,\n            \"opacity\": 1,\n            \"size\": 25\n          }\n        }\n      ]\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"view\": {\"stroke\": \"transparent\"},\n  \"autosize\": \"fit\",\n  \"padding\": {\n    \"top\": 20\n  },\n  \"tooltip\": true,\n  \"font\": \"Segoe UI\",\n  \"line\": {\"color\": \"#404040\"},\n  \"area\": {\n    \"color\": \"#eaeaea\",\n    \"opacity\": 0.75\n  },\n  \"axis\": {\n    \"title\": \"\",\n    \"labelFontSize\": 12,\n    \n    \"ticks\": false,\n    \"domain\": false\n  },\n  \"axisX\": {\"grid\": false},\n  \"axisY\": {\n    \"gridDash\": [1, 5],\n    \"gridColor\": \"#605E5C\",\n    \"labelAlign\": \"left\",\n    \"labelPadding\": 0\n  }\n}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.16.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.6.2.1'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "display": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'I''m a Deneb Visual - Cross-Filter also works on me!'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B3B3B3'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF7CF'"
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#a38600'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

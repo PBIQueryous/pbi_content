@@ -1,0 +1,74 @@
+table basicnumberFormatting
+	lineageTag: 956801b1-6ca1-4553-8e66-ca3a98984ef8
+
+	column Value
+		dataType: int64
+		formatString: 0
+		lineageTag: 9687e2ef-ec64-47d7-af99-710c59b7d5a2
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: double
+		lineageTag: 5c0a7703-d137-4345-99dd-6418bf735c36
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Category
+		dataType: string
+		lineageTag: c104d45d-bc7c-4661-b08c-e0f40f53764e
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition basicnumberFormatting = m
+		mode: import
+		queryGroup: development
+		source = ```
+				let
+				    GenerateRandomValues = (min as number, max as number) as list =>
+				        let
+				            halfway = (min + max) / 2,
+				            firstHalf = Number.RoundDown(Number.RandomBetween(min, halfway)),
+				            secondHalf = Number.RoundDown(Number.RandomBetween(halfway + 1, max))
+				        in
+				            {firstHalf, secondHalf},
+				    
+				    GenerateThousandValues = () as list =>
+				        let
+				            firstRange = Number.RoundDown(Number.RandomBetween(1000, 99999)),
+				            secondRange = Number.RoundDown(Number.RandomBetween(100000, 500000)),
+				            thirdRange = Number.RoundDown(Number.RandomBetween(500001, 999999))
+				        in
+				            {firstRange, secondRange, thirdRange},
+				    
+				    HundredValues = GenerateRandomValues(100, 999),
+				    ThousandValues = GenerateThousandValues(),
+				    MillionValues = GenerateRandomValues(1000000, 999999999),
+				    BillionValues = GenerateRandomValues(1000000000, 999999999999),
+				    TrillionValues = GenerateRandomValues(1000000000000, 999999999999999),
+				
+				    CombinedList = List.Combine({HundredValues, ThousandValues, MillionValues, BillionValues, TrillionValues}),
+				    ConvertToTable = Table.FromList(CombinedList, Splitter.SplitByNothing(), {"Value"}), // Specify column name here
+				    AddIndex = Table.AddIndexColumn(ConvertToTable, "Index", 1, 1),
+				    CategorizedTable = Table.AddColumn(AddIndex, "Category", each 
+				        if [Index] <= 2 then "Hundred" 
+				        else if [Index] <= 5 then "Thousand"
+				        else if [Index] <= 7 then "Million" 
+				        else if [Index] <= 9 then "Billion" 
+				        else "Trillion"),
+				    // Format the "Value" column as Int64.Type
+				    FormattedTable = Table.TransformColumnTypes(CategorizedTable, {{"Value", Int64.Type}})
+				in
+				    FormattedTable
+				```
+
+	annotation PBI_ResultType = Table
+

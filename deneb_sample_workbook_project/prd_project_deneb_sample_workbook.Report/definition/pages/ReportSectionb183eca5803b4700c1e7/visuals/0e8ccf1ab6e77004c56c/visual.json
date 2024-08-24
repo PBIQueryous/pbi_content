@@ -1,0 +1,457 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "0e8ccf1ab6e77004c56c",
+  "position": {
+    "x": 1015.3252302025783,
+    "y": 343.97348066298343,
+    "z": 2000,
+    "height": 706.05082872928176,
+    "width": 828.25193370165744,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "penguins"
+                    }
+                  },
+                  "Property": "Index"
+                }
+              },
+              "queryRef": "Sum(tbl_penguins.Index)",
+              "nativeQueryRef": "Index1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "penguins"
+                    }
+                  },
+                  "Property": "Sex"
+                }
+              },
+              "queryRef": "tbl_penguins.Sex",
+              "nativeQueryRef": "Sex"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "penguins"
+                    }
+                  },
+                  "Property": "Species"
+                }
+              },
+              "queryRef": "tbl_penguins.Species",
+              "nativeQueryRef": "Species"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "penguins"
+                    }
+                  },
+                  "Property": "Island"
+                }
+              },
+              "queryRef": "tbl_penguins.Island",
+              "nativeQueryRef": "Island"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "penguins"
+                        }
+                      },
+                      "Property": "Beak Depth (mm)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tbl_penguins.Beak Depth (mm))",
+              "nativeQueryRef": "Beak Depth (mm)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "penguins"
+                        }
+                      },
+                      "Property": "Beak Length (mm)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tbl_penguins.Beak Length (mm))",
+              "nativeQueryRef": "Beak Length (mm)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "penguins"
+                        }
+                      },
+                      "Property": "Body Mass (g)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tbl_penguins.Body Mass (g))",
+              "nativeQueryRef": "Body Mass (g)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "penguins"
+                        }
+                      },
+                      "Property": "Flipper Length (mm)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tbl_penguins.Flipper Length (mm))",
+              "nativeQueryRef": "Flipper Length (mm)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "penguins"
+                        }
+                      },
+                      "Property": "Index"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(tbl_penguins.Index)",
+              "nativeQueryRef": "Rows Grouped (Verification)",
+              "displayName": "Rows Grouped (Verification)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "penguins"
+                  }
+                },
+                "Property": "Index"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E23692'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "85.18031307380247D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(tbl_penguins.Beak Depth (mm))"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87.59249181163315D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(tbl_penguins.Beak Length (mm))"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "71.09135116359847D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(tbl_penguins.Body Mass (g))"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "94.21079850256648D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(tbl_penguins.Flipper Length (mm))"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "121.04580567542584D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "tbl_penguins.Island"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "tbl_penguins.Sex"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "tbl_penguins.Species"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "57D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(tbl_penguins.Index)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "122.33018787081424D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "CountNonNull(tbl_penguins.Index)"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(tbl_penguins.Index)"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Adding an Index Column Generates Uniqueness'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

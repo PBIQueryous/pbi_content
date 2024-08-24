@@ -1,0 +1,112 @@
+table population
+	lineageTag: 5f0a6402-7484-40ee-9d71-5515166d301a
+
+	measure pct_female =
+			
+			var _num = CALCULATE( SUM( 'population'[people] ) , 'population'[sex] == 2, 'population'[year] == 1990)
+			var _den = CALCULATE( SUM( 'population'[people] ) , REMOVEFILTERS( 'population'[age], 'population'[sex] ))
+			var _result = DIVIDE( _num , _den  )
+			RETURN
+			    _result
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b8cbc1ac-6fc6-499b-8a0e-c8ff482959bd
+
+	measure pct_male =
+			
+			var _num = CALCULATE( SUM( 'population'[people] ) , 'population'[sex] == 2, 'population'[year] == 1990)
+			var _den = CALCULATE( SUM( 'population'[people] ) , REMOVEFILTERS(  'population'[age], 'population'[sex] ))
+			var _result = DIVIDE( _num , _den )
+			RETURN
+			    _result
+		lineageTag: 0ca9b6a0-6567-40a5-a2f2-7ce125933ef5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# Males 1990' =
+			
+			var _num = CALCULATE( SUM( 'population'[people] ) , 'population'[sex] == 1, 'population'[year] == 1990)
+			var _den = CALCULATE( SUM( 'population'[people] ) , REMOVEFILTERS(  'population'[age], 'population'[sex] ))
+			var _result = DIVIDE( _num , _den , BLANK() )
+			RETURN
+			    _num
+		formatString: 0
+		lineageTag: c26ea1e2-0d09-4bc9-9626-cc7790699565
+
+	measure '# Males 1980' =
+			
+			var _num = CALCULATE( SUM( 'population'[people] ) , 'population'[sex] == 1, 'population'[year] == 1980)
+			var _den = CALCULATE( SUM( 'population'[people] ) , REMOVEFILTERS(  'population'[age], 'population'[sex] ))
+			var _result = DIVIDE( _num , _den , BLANK() )
+			RETURN
+			    _num
+		formatString: 0
+		lineageTag: cd2bc8f4-aaf0-4e9b-97c3-2b20552a94a1
+
+	measure '# Females 1990' =
+			
+			var _num = CALCULATE( SUM( 'population'[people] ) , 'population'[sex] == 2, 'population'[year] == 1990)
+			var _den = CALCULATE( SUM( 'population'[people] ) , REMOVEFILTERS(  'population'[age], 'population'[sex] ))
+			var _result = DIVIDE( _num , _den , BLANK() )
+			RETURN
+			    _num
+		formatString: 0
+		lineageTag: 7c66c535-1c40-4ade-9e12-7fe749e0b97a
+
+	measure '# Females 1980' =
+			
+			var _num = CALCULATE( SUM( 'population'[people] ) , 'population'[sex] == 2, 'population'[year] == 1980)
+			var _den = CALCULATE( SUM( 'population'[people] ) , REMOVEFILTERS(  'population'[age], 'population'[sex] ))
+			var _result = DIVIDE( _num , _den , BLANK() )
+			RETURN
+			    _num
+		formatString: 0
+		lineageTag: 0dcd5fc7-5c11-46d0-abd7-cd6dd18a402e
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: c648ab28-fe3a-4c16-ae7f-cbe7b704268b
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column age
+		dataType: int64
+		formatString: 0
+		lineageTag: 7af438ae-49af-4c83-b7ca-bcbb9ba24502
+		summarizeBy: none
+		sourceColumn: age
+
+		annotation SummarizationSetBy = User
+
+	column sex
+		dataType: int64
+		formatString: 0
+		lineageTag: 982719ab-12b5-4a78-bc6f-28e292cc3be8
+		summarizeBy: sum
+		sourceColumn: sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column people
+		dataType: int64
+		formatString: 0
+		lineageTag: 71374442-92b5-4533-9fe1-383f55d1b9b0
+		summarizeBy: sum
+		sourceColumn: people
+
+		annotation SummarizationSetBy = Automatic
+
+	partition population = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("population.json"),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"year", Int64.Type}, {"age", Int64.Type}, {"sex", Int64.Type}, {"people", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

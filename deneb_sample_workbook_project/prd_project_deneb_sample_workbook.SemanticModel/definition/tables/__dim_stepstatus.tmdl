@@ -1,0 +1,31 @@
+table __dim_stepstatus
+	lineageTag: 92315413-72ed-491b-800b-e79984fecaf5
+
+	column stepID
+		dataType: int64
+		formatString: 0
+		lineageTag: 69d0cfa6-3e22-4bfa-bb6a-3f954ba19cae
+		summarizeBy: count
+		sourceColumn: stepID
+
+		annotation SummarizationSetBy = Automatic
+
+	column step
+		dataType: string
+		lineageTag: aab6e08d-8aca-4416-a351-15082100aff9
+		summarizeBy: none
+		sourceColumn: step
+
+		annotation SummarizationSetBy = Automatic
+
+	partition __dim_stepstatus = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUQouSS1QMFSK1YlWMoJxjcBcYxjXGMw1gXFNlGJjAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [stepID = _t, step = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"stepID", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

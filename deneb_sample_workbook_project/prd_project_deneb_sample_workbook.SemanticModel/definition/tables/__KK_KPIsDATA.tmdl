@@ -1,0 +1,106 @@
+table __KK_KPIsDATA
+	lineageTag: 2d43267b-dc3e-4112-9064-e6d403db5dcf
+
+	measure 'Format Actual' = ```
+			"7.4m" 
+			```
+		lineageTag: 3fe37b0e-13b9-4d47-a7b2-7d9483c29952
+
+	measure 'Format Variance' =
+			
+			var a = calculate(DIVIDE(MAX('__KK_KPIsDATA'[Actual]),'__KK_KPITarget'[KPITarget Value])-1,'__KK_KPIsDATA'[Date]=MAX('__KK_KPIsDATA'[Date]))
+			var b = FORMAT(ABS(a),"#%")
+			Var c = IF(a>0,"▲ " , "▼ ")
+			Var d = IF(a>0," above target" , " below target")
+			var e = DIVIDE(MAX('__KK_KPIsDATA'[Actual]),'__KK_KPITarget'[KPITarget Value])
+			Return
+			c & b & d
+		lineageTag: d0d38b92-814f-490c-9130-9b08f63af4c8
+
+	measure KPI =
+			
+			Var KPIs = CALCULATE(IF([Variance]>0,3,2),'__KK_KPIsDATA'[Date]=MAX('__KK_KPIsDATA'[Date]))
+			Return
+			KPIs
+		lineageTag: 749778bc-76d9-4b4f-985f-a689bba62849
+
+	measure MaxDate =
+			
+			VAR a = CALCULATE(MAX('__KK_KPIsDATA'[Date]),ALLSELECTED('__KK_KPIsDATA'[Date]))
+			Return
+			IF(MAX('__KK_KPIsDATA'[Date])=a,1,0)
+		formatString: 0
+		lineageTag: 6b72f048-ce92-403f-8f6f-7b3598297483
+
+	measure Plan = 15000
+		formatString: 0
+		lineageTag: 50fc013c-6dcc-455a-b42b-79073a289712
+
+	measure 'Target Label' = "6.7m"
+		lineageTag: a15c805d-bdc2-434f-bbe1-013e9a3f955f
+
+	measure 'Value Actual' = 5700000000
+		formatString: 0
+		lineageTag: 4dae53f6-ea75-4e42-a678-210187a71de2
+
+	measure Variance = SUM('__KK_KPIsDATA'[Value]) - '__KK_KPITarget'[KPITarget Value]
+		formatString: 0
+		lineageTag: 4cb1956e-dafb-41e1-baad-97a97f4dab5b
+
+	column Target
+		dataType: int64
+		formatString: 0
+		lineageTag: a29ab5e0-7bfa-4cf7-bb64-2cb6f8020bb3
+		summarizeBy: sum
+		sourceColumn: Target
+
+		annotation SummarizationSetBy = Automatic
+
+	column Actual
+		dataType: int64
+		formatString: 0
+		lineageTag: d1300e71-365d-4ad0-a087-8d3b1a124c3b
+		summarizeBy: sum
+		sourceColumn: Actual
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e20a727-ef87-4672-9725-7542d1fbc9b2
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5149286a-1add-46e5-9d46-59f387625e82
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Forecast
+		dataType: int64
+		formatString: 0
+		lineageTag: a24f3bcf-ecf5-4889-b2a1-93427a5f38e4
+		summarizeBy: sum
+		sourceColumn: Forecast
+
+		annotation SummarizationSetBy = Automatic
+
+	partition __KK_KPIsDATA = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("bdLLCcMwDADQVYLPhUjWv6uEHDpA97/WoSk1lsAgMDxbv+NoagDt0YJ7HwHZQa64A+4dIDbsT4Bxttf7ugdwaecjOwv7O4TkJKJyhN94O0wOhSs3UpvyxL66jqaFC7Q5TVoZQlTfiatPjFdG5lAwdtKJSSrOrWLkARPTlbF61UtGoYlZasn1bFnb3ElPjKhiv0HcLC0KKY9FOT8=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Target = _t, Actual = _t, Value = _t, Date = _t, Forecast = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Target", Int64.Type}, {"Actual", Int64.Type}, {"Value", Int64.Type}, {"Date", type datetime}, {"Forecast", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

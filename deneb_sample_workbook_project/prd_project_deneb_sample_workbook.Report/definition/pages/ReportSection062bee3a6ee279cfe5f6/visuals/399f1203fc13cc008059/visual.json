@@ -1,0 +1,114 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "399f1203fc13cc008059",
+  "position": {
+    "x": 903.684714548803,
+    "y": 850.88176795580114,
+    "z": 4000,
+    "height": 217.246408839779,
+    "width": 531.04677716390427,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Once you have imported the "
+                  },
+                  {
+                    "value": "penguins.json",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " dataset and added the necessary fields for the visual, we can paste the Vega-Lite JSON code into the Deneb editor, making the following adjustments:"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\"data\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": {",
+                    "textStyle": {
+                      "fontFamily": "Consolas"
+                    }
+                  },
+                  {
+                    "value": "\"name\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": ": ",
+                    "textStyle": {
+                      "fontFamily": "Consolas"
+                    }
+                  },
+                  {
+                    "value": "\"dataset\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas",
+                      "color": "#0451a5"
+                    }
+                  },
+                  {
+                    "value": "}",
+                    "textStyle": {
+                      "fontFamily": "Consolas"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

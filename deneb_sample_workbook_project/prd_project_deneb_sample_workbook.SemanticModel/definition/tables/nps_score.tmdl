@@ -1,0 +1,101 @@
+table nps_score
+	lineageTag: e010a331-ef42-47b9-8669-3d462d040a07
+
+	column question
+		dataType: string
+		lineageTag: 4d71ecf3-a3b9-49e9-b485-333705431712
+		summarizeBy: none
+		sourceColumn: question
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 41b88d2b-8a61-413a-8374-7dfefde2e871
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: a9a905b2-dd50-4ec6-8ea3-8507da942000
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column percentage
+		dataType: double
+		lineageTag: 9531b71f-0475-4a5d-9e2b-71974260bf6c
+		summarizeBy: sum
+		sourceColumn: percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: e9284c31-6b82-4e22-843b-a29056779924
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nps_score = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_json_array("[
+				   {""question"": ""Question 1"", ""type"": ""Strongly disagree"", ""value"": 24, ""percentage"": 0.7},
+				   {""question"": ""Question 1"", ""type"": ""Disagree"", ""value"": 294, ""percentage"": 9.1},
+				   {""question"": ""Question 1"", ""type"": ""Neither agree nor disagree"", ""value"": 594, ""percentage"": 18.5},
+				   {""question"": ""Question 1"", ""type"": ""Agree"", ""value"": 1927, ""percentage"": 59.9},
+				   {""question"": ""Question 1"", ""type"": ""Strongly agree"", ""value"": 376, ""percentage"": 11.7},
+				   {""question"": ""Question 2"", ""type"": ""Strongly disagree"", ""value"": 2, ""percentage"": 18.2},
+				   {""question"": ""Question 2"", ""type"": ""Disagree"", ""value"": 2, ""percentage"": 18.2},
+				   {""question"": ""Question 2"", ""type"": ""Neither agree nor disagree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 2"", ""type"": ""Agree"", ""value"": 7, ""percentage"": 63.6},
+				   {""question"": ""Question 2"", ""type"": ""Strongly agree"", ""value"": 11, ""percentage"": 0},
+				   {""question"": ""Question 3"", ""type"": ""Strongly disagree"", ""value"": 2, ""percentage"": 20},
+				   {""question"": ""Question 3"", ""type"": ""Disagree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 3"", ""type"": ""Neither agree nor disagree"", ""value"": 2, ""percentage"": 20},
+				   {""question"": ""Question 3"", ""type"": ""Agree"", ""value"": 4, ""percentage"": 40},
+				   {""question"": ""Question 3"", ""type"": ""Strongly agree"", ""value"": 2, ""percentage"": 20},
+				   {""question"": ""Question 4"", ""type"": ""Strongly disagree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 4"", ""type"": ""Disagree"", ""value"": 2, ""percentage"": 12.5},
+				   {""question"": ""Question 4"", ""type"": ""Neither agree nor disagree"", ""value"": 1, ""percentage"": 6.3},
+				   {""question"": ""Question 4"", ""type"": ""Agree"", ""value"": 7, ""percentage"": 43.8},
+				   {""question"": ""Question 4"", ""type"": ""Strongly agree"", ""value"": 6, ""percentage"": 37.5},
+				   {""question"": ""Question 5"", ""type"": ""Strongly disagree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 5"", ""type"": ""Disagree"", ""value"": 1, ""percentage"": 4.2},
+				   {""question"": ""Question 5"", ""type"": ""Neither agree nor disagree"", ""value"": 3, ""percentage"": 12.5},
+				   {""question"": ""Question 5"", ""type"": ""Agree"", ""value"": 16, ""percentage"": 66.7},
+				   {""question"": ""Question 5"", ""type"": ""Strongly agree"", ""value"": 4, ""percentage"": 16.7},
+				   {""question"": ""Question 6"", ""type"": ""Strongly disagree"", ""value"": 1, ""percentage"": 6.3},
+				   {""question"": ""Question 6"", ""type"": ""Disagree"", ""value"": 1, ""percentage"": 6.3},
+				   {""question"": ""Question 6"", ""type"": ""Neither agree nor disagree"", ""value"": 2, ""percentage"": 12.5},
+				   {""question"": ""Question 6"", ""type"": ""Agree"", ""value"": 9, ""percentage"": 56.3},
+				   {""question"": ""Question 6"", ""type"": ""Strongly agree"", ""value"": 3, ""percentage"": 18.8},
+				   {""question"": ""Question 7"", ""type"": ""Strongly disagree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 7"", ""type"": ""Disagree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 7"", ""type"": ""Neither agree nor disagree"", ""value"": 1, ""percentage"": 20},
+				   {""question"": ""Question 7"", ""type"": ""Agree"", ""value"": 4, ""percentage"": 80},
+				   {""question"": ""Question 7"", ""type"": ""Strongly agree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 8"", ""type"": ""Strongly disagree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 8"", ""type"": ""Disagree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 8"", ""type"": ""Neither agree nor disagree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 8"", ""type"": ""Agree"", ""value"": 0, ""percentage"": 0},
+				   {""question"": ""Question 8"", ""type"": ""Strongly agree"", ""value"": 2, ""percentage"": 100}
+				 ]"),
+				    #"Added Index" = Table.AddIndexColumn(Source, "Index", 1, 1, Int64.Type)
+				in
+				    #"Added Index"
+
+	annotation PBI_ResultType = Table
+

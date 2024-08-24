@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "89b7f34ed885d900ad6c",
+  "position": {
+    "x": 8.8962108731466234,
+    "y": 730.37891268533781,
+    "z": 2000,
+    "height": 86.293245469522248,
+    "width": 1902.009884678748,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "The ",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    },
+                    "url": "https://deneb-viz.github.io/schemes#expression-based-access-using-pbicolor"
+                  },
+                  {
+                    "value": "pbiColor",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas",
+                      "color": "#e044a7"
+                    },
+                    "url": "https://deneb-viz.github.io/schemes#expression-based-access-using-pbicolor"
+                  },
+                  {
+                    "value": " expression",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    },
+                    "url": "https://deneb-viz.github.io/schemes#expression-based-access-using-pbicolor"
+                  },
+                  {
+                    "value": " also supports named color values from the current theme. You can specify any of the following values below (in single quotes) to access the color you need. The sentiment colors also have some alternatives that can be used, and these are also listed for completeness:"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Individual Colors'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

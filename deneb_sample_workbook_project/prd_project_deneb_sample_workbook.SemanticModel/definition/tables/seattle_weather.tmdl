@@ -1,0 +1,74 @@
+table seattle_weather
+	lineageTag: 0aacb018-233d-405a-ace6-4c38995e9c96
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b9367cb5-9895-41b7-9293-75d4ff93d5cb
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column precipitation
+		dataType: double
+		lineageTag: 5fa7e7e5-7371-4fd9-aede-ba5f32d1f9cb
+		summarizeBy: sum
+		sourceColumn: precipitation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column temp_max
+		dataType: double
+		lineageTag: ba394ca7-3875-4e55-8ace-fee912db94c1
+		summarizeBy: sum
+		sourceColumn: temp_max
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column temp_min
+		dataType: double
+		lineageTag: 7f975228-fafe-4bbd-8dc9-4e2d654cae1b
+		summarizeBy: sum
+		sourceColumn: temp_min
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column wind
+		dataType: double
+		lineageTag: a8042782-2173-4d68-8af2-3c911d8f37be
+		summarizeBy: sum
+		sourceColumn: wind
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column weather
+		dataType: string
+		lineageTag: bdad931c-3b93-4ff2-8ec1-ec7e75b4ec23
+		summarizeBy: none
+		sourceColumn: weather
+
+		annotation SummarizationSetBy = Automatic
+
+	partition seattle_weather = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = fn_import_vega_dataset("seattle-weather.csv"),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"date", type date}, {"precipitation", type number}, {"temp_max", type number}, {"temp_min", type number}, {"wind", type number}, {"weather", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

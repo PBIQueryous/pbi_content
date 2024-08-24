@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "10658e395651452dc3b9",
+  "position": {
+    "x": 16.641357983656437,
+    "y": 838.89395160997958,
+    "z": 8000,
+    "height": 219.19868618512331,
+    "width": 598.44720672763822,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Concat: hconcat and vconcat",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#000000"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Concatenation",
+                    "textStyle": {
+                      "color": "#e044a7"
+                    },
+                    "url": "https://vega.github.io/vega-lite/docs/concat.html"
+                  },
+                  {
+                    "value": " allows charts to be placed next to each other, either horizontally ("
+                  },
+                  {
+                    "value": "hconcat",
+                    "textStyle": {
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "value": ") or vertically ("
+                  },
+                  {
+                    "value": "vconcat",
+                    "textStyle": {
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "value": "). You can think of "
+                  },
+                  {
+                    "value": "concat ",
+                    "textStyle": {
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "value": "as simply sticking charts side by side or one on top of the other without linking their data or axes. It's like putting pictures side by side on a poster; they stay separate but share the same space."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "keepLayerOrder": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

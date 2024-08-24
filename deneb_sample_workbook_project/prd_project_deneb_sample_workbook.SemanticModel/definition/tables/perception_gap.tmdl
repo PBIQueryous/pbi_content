@@ -1,0 +1,62 @@
+table perception_gap
+	lineageTag: d298f1d9-96a8-48c7-ae23-e9012f25dc0c
+
+	column Topic
+		dataType: string
+		lineageTag: d19ca111-7fc9-417e-81ff-2a2e41d82d38
+		summarizeBy: none
+		sourceColumn: Topic
+
+		annotation SummarizationSetBy = Automatic
+
+	column True
+		dataType: double
+		lineageTag: 630f8667-cc7d-4aed-a70f-986104134ebb
+		summarizeBy: sum
+		sourceColumn: True
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Estimated
+		dataType: double
+		lineageTag: 80873bde-e124-4355-b467-ec1fc3b560fc
+		summarizeBy: sum
+		sourceColumn: Estimated
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Diff
+		dataType: double
+		lineageTag: 1544a3c1-a5d9-4149-bdf7-00ec8d533901
+		summarizeBy: sum
+		sourceColumn: Diff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Sign
+		dataType: int64
+		formatString: 0
+		lineageTag: 0871c021-c6a8-4873-9c9c-bccc89911392
+		summarizeBy: sum
+		sourceColumn: Sign
+
+		annotation SummarizationSetBy = Automatic
+
+	partition perception_gap = m
+		mode: import
+		queryGroup: powerbi_imported_datasets
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("bVK7coMwEPwVDbXtEW8oM0mRVK6SxnFxhrPRRJEYIXD89xGcHGzi6mC0e7e7d7td8AoDsqPUZ8W0YsBaCQqDVcA3RTGVtHRlzTfRVMNgv/Ikg1A7wkHrLyYUsw2yFjrLLghmYuY5NfD8fMEHyySOBGDvSgxoOmEvrMaTQS+gnEp2bZDMDbbnUWvlB3mlWeaB0RLY6L7DuRnfJN5UmC1FsdqMWj57zqO8Y1JUqDy3iKlF4bnpckz3Dca2jb4GSLNyL4vfBPhkXOi9lBc2QFUJBRZdlicQyuXxvP14e1mH5Wxq3gL/lyJr0RKS4s4ij0zvxw14ArdjM36gBSNATXhOKslbNP7MnIPo8KcHScCEIOUjpMSjXTegaqyn5zCkrp4T34H1AX2kSUTuyGSY/MGWF1JpKZ3u2/OISXKSP+aOx9i12lA4MaESMsuLOz1ubUZ44SkJT9PZ8yNFbsesaoT0JH/pdIc8JNL+Fw==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Topic = _t, True = _t, Estimated = _t, Diff = _t, Sign = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Topic", type text}, {"True", type number}, {"Estimated", type number}, {"Diff", type number}, {"Sign", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

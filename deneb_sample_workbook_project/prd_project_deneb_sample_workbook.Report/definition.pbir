@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../prd_project_deneb_sample_workbook.SemanticModel"
+    },
+    "byConnection": null
+  }
+}

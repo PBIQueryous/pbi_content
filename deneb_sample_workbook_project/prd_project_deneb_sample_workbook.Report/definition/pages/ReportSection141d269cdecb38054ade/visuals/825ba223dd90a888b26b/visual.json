@@ -1,0 +1,210 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "825ba223dd90a888b26b",
+  "position": {
+    "x": 19.40700808625337,
+    "y": 11.64420485175202,
+    "z": 2000,
+    "height": 384.25876010781667,
+    "width": 1882.4797843665767,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "To get started, navigate to the Build a Visual tab and add the columns and measures you want in your visual dataset to the "
+                  },
+                  {
+                    "value": "Values",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " field."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Once Deneb has data, you can open the "
+                  },
+                  {
+                    "value": "Advanced Editor",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " by clicking on the \"More Options\" ellipsis ("
+                  },
+                  {
+                    "value": "•••",
+                    "textStyle": {
+                      "color": "#999999"
+                    }
+                  },
+                  {
+                    "value": ") under the visual header,  and selecting 'Edit'. You can then choose from a simple template and assign your data to it, import someone else's template or just jump straight to editing  your specification. To understand the editing interface, this is explained in much more detail "
+                  },
+                  {
+                    "value": "on the Deneb website",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://deneb-viz.github.io/visual-editor"
+                  },
+                  {
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The bar chart and multi-line below have been built using Deneb. You can open the editor to see how it has been made using the Vega-Lite language. The walkthrough process to create the bar chart can be viewed and followed-through "
+                  },
+                  {
+                    "value": "on the Deneb website",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://deneb-viz.github.io/simple-worked-example"
+                  },
+                  {
+                    "value": ", and will also provide you with a short introduction on how to integrate some of the other functionality. "
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The charts also includes examples of all currently supported interactivity features: "
+                  },
+                  {
+                    "value": "tooltips",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ", "
+                  },
+                  {
+                    "value": "context menu",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ", and "
+                  },
+                  {
+                    "value": "cross filtering",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " other visuals"
+                  },
+                  {
+                    "value": "., ",
+                    "textStyle": {
+                      "fontSize": "13.3333px"
+                    }
+                  },
+                  {
+                    "value": "Note that interactivity features may not always be possible to achieve, depending on how your design's data can reconcile back to the data model. This is a broad and deep topic and is explained in much more detail here "
+                  },
+                  {
+                    "value": "on the Deneb website",
+                    "textStyle": {
+                      "color": "#e23692"
+                    },
+                    "url": "https://deneb-viz.github.io/interactivity-features-overview"
+                  },
+                  {
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Getting Started'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,267 @@
+table __americanEstimation
+	lineageTag: f248c739-9f80-456c-b400-c4bfd28bbbfa
+
+	column Characteristic
+		dataType: string
+		lineageTag: 01a21a3e-0623-4ae9-9b27-781b1f83e27c
+		summarizeBy: none
+		sourceColumn: Characteristic
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'True Proportion'
+		dataType: double
+		lineageTag: 2f728679-c30a-4671-87df-442a5c052243
+		summarizeBy: sum
+		sourceColumn: True Proportion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Estimated Proportion'
+		dataType: double
+		lineageTag: 090b973e-3619-4a92-ad35-4005aec79acb
+		summarizeBy: sum
+		sourceColumn: Estimated Proportion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition __americanEstimation = m
+		mode: import
+		source =
+				let
+				    Source = fn_import_json_array("[
+				  {
+				    ""Characteristic"": ""Have a household income over $1 million"",
+				    ""True Proportion"": 0,
+				    ""Estimated Proportion"": 20
+				  },
+				  {
+				    ""Characteristic"": ""Are transgender"",
+				    ""True Proportion"": 1,
+				    ""Estimated Proportion"": 21
+				  },
+				  {
+				    ""Characteristic"": ""Have a household income over $500,000"",
+				    ""True Proportion"": 1,
+				    ""Estimated Proportion"": 26
+				  },
+				  {
+				    ""Characteristic"": ""Are Muslim"",
+				    ""True Proportion"": 1,
+				    ""Estimated Proportion"": 27
+				  },
+				  {
+				    ""Characteristic"": ""Are Native American"",
+				    ""True Proportion"": 1,
+				    ""Estimated Proportion"": 27
+				  },
+				  {
+				    ""Characteristic"": ""Are Jewish"",
+				    ""True Proportion"": 2,
+				    ""Estimated Proportion"": 30
+				  },
+				  {
+				    ""Characteristic"": ""Live in New York City"",
+				    ""True Proportion"": 3,
+				    ""Estimated Proportion"": 30
+				  },
+				  {
+				    ""Characteristic"": ""Are gay or lesbian"",
+				    ""True Proportion"": 3,
+				    ""Estimated Proportion"": 30
+				  },
+				  {
+				    ""Characteristic"": ""Are atheists"",
+				    ""True Proportion"": 3,
+				    ""Estimated Proportion"": 33
+				  },
+				  {
+				    ""Characteristic"": ""Are bisexual"",
+				    ""True Proportion"": 4,
+				    ""Estimated Proportion"": 29
+				  },
+				  {
+				    ""Characteristic"": ""Are members of a union"",
+				    ""True Proportion"": 4,
+				    ""Estimated Proportion"": 36
+				  },
+				  {
+				    ""Characteristic"": ""Are vegan or vegetarian"",
+				    ""True Proportion"": 5,
+				    ""Estimated Proportion"": 30
+				  },
+				  {
+				    ""Characteristic"": ""Are Asian"",
+				    ""True Proportion"": 6,
+				    ""Estimated Proportion"": 29
+				  },
+				  {
+				    ""Characteristic"": ""Are a military veteran"",
+				    ""True Proportion"": 6,
+				    ""Estimated Proportion"": 40
+				  },
+				  {
+				    ""Characteristic"": ""Live in Texas"",
+				    ""True Proportion"": 9,
+				    ""Estimated Proportion"": 30
+				  },
+				  {
+				    ""Characteristic"": ""Are left-handed"",
+				    ""True Proportion"": 11,
+				    ""Estimated Proportion"": 34
+				  },
+				  {
+				    ""Characteristic"": ""Live in California"",
+				    ""True Proportion"": 12,
+				    ""Estimated Proportion"": 32
+				  },
+				  {
+				    ""Characteristic"": ""Are Black"",
+				    ""True Proportion"": 12,
+				    ""Estimated Proportion"": 41
+				  },
+				  {
+				    ""Characteristic"": ""Have an advanced degree"",
+				    ""True Proportion"": 12,
+				    ""Estimated Proportion"": 37
+				  },
+				  {
+				    ""Characteristic"": ""Are first-generation immigrants"",
+				    ""True Proportion"": 14,
+				    ""Estimated Proportion"": 33
+				  },
+				  {
+				    ""Characteristic"": ""Are Hispanic"",
+				    ""True Proportion"": 17,
+				    ""Estimated Proportion"": 39
+				  },
+				  {
+				    ""Characteristic"": ""Are Catholic"",
+				    ""True Proportion"": 22,
+				    ""Estimated Proportion"": 49
+				  },
+				  {
+				    ""Characteristic"": ""Own a gun"",
+				    ""True Proportion"": 32,
+				    ""Estimated Proportion"": 54
+				  },
+				  {
+				    ""Characteristic"": ""Have at least a college degree"",
+				    ""True Proportion"": 33,
+				    ""Estimated Proportion"": 47
+				  },
+				  {
+				    ""Characteristic"": ""Have a household income over $100,000"",
+				    ""True Proportion"": 34,
+				    ""Estimated Proportion"": 38
+				  },
+				  {
+				    ""Characteristic"": ""Have a passport"",
+				    ""True Proportion"": 37,
+				    ""Estimated Proportion"": 45
+				  },
+				  {
+				    ""Characteristic"": ""Are Democrats"",
+				    ""True Proportion"": 42,
+				    ""Estimated Proportion"": 51
+				  },
+				  {
+				    ""Characteristic"": ""Are obese"",
+				    ""True Proportion"": 42,
+				    ""Estimated Proportion"": 56
+				  },
+				  {
+				    ""Characteristic"": ""Are Republicans"",
+				    ""True Proportion"": 47,
+				    ""Estimated Proportion"": 50
+				  },
+				  {
+				    ""Characteristic"": ""Are married"",
+				    ""True Proportion"": 51,
+				    ""Estimated Proportion"": 55
+				  },
+				  {
+				    ""Characteristic"": ""Have at least one child"",
+				    ""True Proportion"": 57,
+				    ""Estimated Proportion"": 58
+				  },
+				  {
+				    ""Characteristic"": ""Voted in the 2020 election"",
+				    ""True Proportion"": 62,
+				    ""Estimated Proportion"": 61
+				  },
+				  {
+				    ""Characteristic"": ""Have a household income over $50,000"",
+				    ""True Proportion"": 62,
+				    ""Estimated Proportion"": 50
+				  },
+				  {
+				    ""Characteristic"": ""Are white"",
+				    ""True Proportion"": 64,
+				    ""Estimated Proportion"": 59
+				  },
+				  {
+				    ""Characteristic"": ""Own a house"",
+				    ""True Proportion"": 65,
+				    ""Estimated Proportion"": 49
+				  },
+				  {
+				    ""Characteristic"": ""Are fully vaccinated against COVID-19"",
+				    ""True Proportion"": 66,
+				    ""Estimated Proportion"": 55
+				  },
+				  {
+				    ""Characteristic"": ""Have a pet"",
+				    ""True Proportion"": 67,
+				    ""Estimated Proportion"": 62
+				  },
+				  {
+				    ""Characteristic"": ""Are Christian"",
+				    ""True Proportion"": 70,
+				    ""Estimated Proportion"": 58
+				  },
+				  {
+				    ""Characteristic"": ""Have read a book in the past year"",
+				    ""True Proportion"": 77,
+				    ""Estimated Proportion"": 50
+				  },
+				  {
+				    ""Characteristic"": ""Have a household income over $25,000"",
+				    ""True Proportion"": 82,
+				    ""Estimated Proportion"": 62
+				  },
+				  {
+				    ""Characteristic"": ""Have a driver's license"",
+				    ""True Proportion"": 83,
+				    ""Estimated Proportion"": 68
+				  },
+				  {
+				    ""Characteristic"": ""Own a smartphone"",
+				    ""True Proportion"": 85,
+				    ""Estimated Proportion"": 76
+				  },
+				  {
+				    ""Characteristic"": ""Have flown on a plane"",
+				    ""True Proportion"": 88,
+				    ""Estimated Proportion"": 59
+				  },
+				  {
+				    ""Characteristic"": ""Own a car"",
+				    ""True Proportion"": 88,
+				    ""Estimated Proportion"": 65
+				  },
+				  {
+				    ""Characteristic"": ""Have at least a high school degree"",
+				    ""True Proportion"": 89,
+				    ""Estimated Proportion"": 66
+				  }
+				]")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

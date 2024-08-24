@@ -1,0 +1,430 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "efda8585e4edbc3c0682",
+  "position": {
+    "x": 941.21911037891266,
+    "y": 770.41186161449673,
+    "z": 5000,
+    "height": 189.48929159802307,
+    "width": 299.80230642504119,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__KK_KPIsDATA"
+                    }
+                  },
+                  "Property": "Format Variance"
+                }
+              },
+              "queryRef": "Country by Year.Format Variance"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__KK_KPIsDATA"
+                    }
+                  },
+                  "Property": "Value Actual"
+                }
+              },
+              "queryRef": "Country by Year.Value Actual"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "__KK_KPIsDATA"
+                        }
+                      },
+                      "Property": "Actual"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(KPIsDATA.Actual)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__KK_KPIsDATA"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "KPIsDATA.Attribute"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__KK_KPIsDATA"
+                    }
+                  },
+                  "Property": "Plan"
+                }
+              },
+              "queryRef": "KPIsDATA.Plan"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "__KK_KPIsDATA"
+                        }
+                      },
+                      "Property": "Value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(KPIsDATA.Value)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__KK_KPITarget"
+                    }
+                  },
+                  "Property": "KPITarget Value"
+                }
+              },
+              "queryRef": "KPITarget.KPITarget Value"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "__KK_KPIsDATA"
+                  }
+                },
+                "Property": "Format Variance"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"data\": {\"name\": \"dataset\"},\n  \"encoding\": {\n    \"x\": {\n      \"type\": \"quantitative\",\n      \"scale\": {\"nice\": false},\n      \"title\": null,\n      \"axis\": null\n    }\n  },\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"bar\",\n        \"color\": \"#ccc\",\n        \"size\": 40,\n        \"yOffset\": 10,\n        \"tooltip\": true\n      },\n      \"encoding\": {\n        \"x\": {\"field\": \"Plan\"},\n        \"y\": {\n          \"field\": null,\n          \"title\": null\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"bar\",\n        \"color\": \"black\",\n        \"size\": 20,\n        \"yOffset\": 10,\n        \"tooltip\": true\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"Value\",\n          \"title\": null\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"tick\",\n        \"color\": \"orange\",\n        \"size\": 50,\n        \"yOffset\": 10,\n        \"thickness\": 2,\n        \"tooltip\": true\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"KPITarget Value\",\n          \"title\": null\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"color\": \"orange\",\n        \"dx\": -5,\n        \"dy\": 0,\n        \"xOffset\": 0,\n        \"yOffset\": 50,\n        \"angle\": 0,\n        \"align\": \"right\",\n        \"baseline\": \"bottom\",\n        \"fontSize\": 14,\n        \"fontWeight\": \"normal\",\n        \"limit\": 0\n      },\n      \"encoding\": {\n        \"text\": {\n          \"field\": \"KPITarget Value\",\n          \"format\": \".2s\"\n        },\n        \"x\": {\n          \"field\": \"KPITarget Value\",\n          \"type\": \"quantitative\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"dx\": 0,\n        \"dy\": 0,\n        \"xOffset\": 0,\n        \"yOffset\": -40,\n        \"angle\": 0,\n        \"align\": \"right\",\n        \"baseline\": \"bottom\",\n        \"font\": \"sans-serif\",\n        \"fontSize\": 20,\n        \"fontStyle\": \"normal\",\n        \"fontWeight\": \"normal\",\n        \"limit\": 0\n      },\n      \"encoding\": {\n        \"x\": {\n          \"aggregate\": \"max\",\n          \"field\": \"Plan\",\n          \"type\": \"quantitative\"\n        },\n        \"text\": {\n          \"field\": \"Actual\",\n          \"format\": \".2s\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"dx\": 0,\n        \"dy\": 0,\n        \"xOffset\": 0,\n        \"yOffset\": -40,\n        \"angle\": 0,\n        \"align\": \"right\",\n        \"baseline\": \"top\",\n        \"font\": \"sans-serif\",\n        \"fontSize\": 14,\n        \"fontStyle\": \"normal\",\n        \"fontWeight\": \"normal\",\n        \"limit\": 0\n      },\n      \"encoding\": {\n        \"x\": {\n          \"aggregate\": \"max\",\n          \"field\": \"Plan\",\n          \"type\": \"quantitative\"\n        },\n        \"text\": {\n          \"field\": \"Format Variance\"\n        }\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"autosize\": {\n    \"type\": \"fit\",\n    \"contains\": \"padding\"\n  },\n  \"view\": {\"stroke\": \"transparent\"},\n  \"font\": \"Segoe UI\",\n  \"bar\": {\"color\": \"#CE6C47\"},\n  \"axis\": {\n    \"domain\": false,\n    \"labelColor\": \"#605E5C\",\n    \"labelFontSize\": 12,\n    \"labelPadding\": 5,\n    \"ticks\": false,\n    \"tickCount\": 5,\n    \"titleFontSize\": 14,\n    \"titleFontWeight\": \"bold\",\n    \"titleColor\": \"#605E5C\",\n    \"gridDash\": [1, 5],\n    \"gridColor\": null\n  }\n}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.16.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.6.2.1'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "display": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "15L"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "3L"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "70L"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter7b0a2132e1ee0296a01d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "__KK_KPIsDATA"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "k",
+                        "Entity": "__KK_KPIsDATA",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "k"
+                            }
+                          },
+                          "Property": "Date"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Aggregation": {
+                            "Expression": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "k"
+                                  }
+                                },
+                                "Property": "Date"
+                              }
+                            },
+                            "Function": 4
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 1
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "k",
+              "Entity": "__KK_KPIsDATA",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "k"
+                          }
+                        },
+                        "Property": "Date"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

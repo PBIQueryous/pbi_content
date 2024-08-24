@@ -1,0 +1,248 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "625047e5ac68805ad3e4",
+  "position": {
+    "x": 1184.9485015524765,
+    "y": 235.30892229410878,
+    "z": 3000,
+    "height": 394.9828338508255,
+    "width": 707.60754489871283,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "BETAdeneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "numberFormatting"
+                    }
+                  },
+                  "Property": "Index"
+                }
+              },
+              "queryRef": "numberFormatting.Index",
+              "nativeQueryRef": "Index1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "numberFormatting"
+                    }
+                  },
+                  "Property": "Value"
+                }
+              },
+              "queryRef": "numberFormatting.Value",
+              "nativeQueryRef": "Value1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "numberFormatting"
+                  }
+                },
+                "Property": "Index"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"params\": [\n    {\n      \"name\": \"_quintillions\",\n      \"value\": \"#,0,,,,,,.#\"\n    },\n    {\n      \"name\": \"_quadrillions\",\n      \"value\": \"#,0,,,,,.#\"\n    },\n    {\n      \"name\": \"_trillions\",\n      \"value\": \"#,0,,,,.#\"\n    },\n    {\n      \"name\": \"_billions\",\n      \"value\": \"#,0,,,.#\"\n    },\n    {\n      \"name\": \"_millions\",\n      \"value\": \"#,0,,.#\"\n    },\n    {\n      \"name\": \"_thousands\",\n      \"value\": \"#,0,.#\"\n    }\n  ],\n  \"transform\": [\n    {\n      \"calculate\": \"length(toString(datum.Value))-1\",\n      \"as\": \"_zeros\"\n    },\n    {\n      \"calculate\": \"format(datum.Value, '',.0f'')\",\n      \"as\": \"thousandSeparator\"\n    },\n    {\n      \"calculate\": \"datum._zeros >= 18 ? ''quintillions'' : datum._zeros >= 15 ? ''quadrillions'' : datum._zeros >= 12 ? ''trillions'' : datum._zeros >= 9 ? ''billions'' : datum._zeros >= 6 ? ''millions'' : datum._zeros >= 3 ? ''thousands'' : ''hundreds''  \",\n      \"as\": \"denominations\"\n    },\n    {\n      \"calculate\": \"datum.Value >= 1e18 ? format((datum.Value / 1e18),'',.1f'') + ''Q''  : datum.Value >= 1e16 ? format((datum.Value / 1e15), '',.1~f'') + ''q''  : datum.Value >= 1e12 ? format((datum.Value / 1e12), '',.1~f'') + ''T'' : datum.Value >= 1e9 ? format((datum.Value / 1e9), '',.1~f'') + ''B'' : datum.Value >= 1e6 ? format((datum.Value / 1e6), '',.1~f'') + ''M'' : datum.Value >= 1e3 ? format((datum.Value / 1e3), '',.1~f'') + ''K'' : format(datum.Value, '',.1~f'')\",\n      \"as\": \"Custom_Format_v1\"\n    },\n    {\n      \"calculate\": \"datum.Value >= 1e17 ? format((datum.Value / 1e18),'',.1f'') + ''Q''  : datum.Value >= 1e14 ? format((datum.Value / 1e15), '',.1~f'') + ''q''  : datum.Value >= 1e11 ? format((datum.Value / 1e12), '',.1~f'') + ''T'' : datum.Value >= 5e8 ? format((datum.Value / 1e9), '',.1~f'') + ''B'' : datum.Value >= 5e5 ? format((datum.Value / 1e6), '',.1~f'') + ''M'' : datum.Value >= 5e3 ? format((datum.Value / 1e3), '',.1~f'') + ''K'' : format(datum.Value, '',.1~f'')\",\n      \"as\": \"Custom_Format_v2\"\n    },\n    {\n      \"calculate\": \"datum.Value >= 1e17 ? round((datum.Value / 1e18) * 100) / 100 + ''Q''  : datum.Value >= 1e14 ? format(round((datum.Value / 1e15) * 100) / 100, '',.1~f'') + ''q''  : datum.Value >= 1e11 ? round((datum.Value / 1e12) * 10) / 10 + ''T'' : datum.Value >= 5e8 ? round((datum.Value / 1e9) * 10) / 10 + ''B'' : datum.Value >= 5e5 ? round((datum.Value / 1e6) * 10) / 10 + ''M'' : datum.Value >= 5e3 ? round((datum.Value / 1e3) * 10) / 10 + ''K'' : format(round(datum.Value * 10) / 10, '',.0f'')\",\n      \"as\": \"Custom_Format_v3\"\n    },\n    {\n      \"calculate\": \"datum.Value >= 1e16 ? round((datum.Value / 1e18) * 100) / 100 + ''Q''  : datum.Value >= 1e13 ? round((datum.Value / 1e15) * 100) / 100 + ''q''  : datum.Value >= 5e10 ? round((datum.Value / 1e12) * 10) / 10 + ''T'' : datum.Value >= 1e8 ? round((datum.Value / 1e9) * 10) / 10 + ''B'' : datum.Value >= 1e5 ? round((datum.Value / 1e6) * 10) / 10 + ''M'' : datum.Value >= 1e2 ? round((datum.Value / 1e3) * 10) / 10 + ''K'' : round(datum.Value * 10) / 10\",\n      \"as\": \"Custom_Format_v4\"\n    },\n    {\n      \"calculate\": \"datum.Value >= 5e17 ? format((datum.Value / 1e17),'',.1f'') + ''Q''  : datum.Value >= 5e14 ? format((datum.Value / 1e14), '',.1~f'') + ''q''  : datum.Value >= 5e11 ? format((datum.Value / 1e12), '',.1~f'') + ''T'' : datum.Value >= 1e8 ? format((datum.Value / 1e9), '',.1~f'') + ''B'' : datum.Value >= 1e5 ? format((datum.Value / 1e6), '',.1~f'') + ''M'' : datum.Value >= 5e3 ? format((datum.Value / 1e3), '',.1~f'') + ''K'' : format(datum.Value, '',.1~f'')\",\n      \"as\": \"Custom_Format_v5\"\n    },\n    {\n      \"calculate\": \"datum.Value >= 5e17 ? pbiFormat(datum.Value,_quintillions) + ''Q''  : datum.Value >= 5e14 ? pbiFormat(datum.Value,_quadrillions) + ''q''  : datum.Value >= 5e11 ? pbiFormat(datum.Value,_trillions) + ''T'' : datum.Value >= 5e8 ? pbiFormat(datum.Value,_billions) + ''B'' : datum.Value >= 5e5 ? pbiFormat(datum.Value,_millions) + ''M'' : datum.Value >= 1e3 ? pbiFormat(datum.Value,_thousands) + ''K'' : pbiFormat(datum.Value,''#,#'')\",\n      \"as\": \"PBI_Formatting\"\n    }\n  ],\n  \"encoding\": {\n    \"y\": {\n      \"field\": \"__row__\",\n      \"type\": \"ordinal\",\n      \"axis\": null\n    },\n    \"color\": {},\n    \"fill\": {}\n  },\n  \"spacing\": 25,\n  \"hconcat\": [\n    {\n      \"width\": 50,\n      \"height\": 300,\n      \"title\": {\n        \"text\": [\n          \"PBI Format\",\n          \"Denominations\"\n        ],\n        \"fontSize\": 25\n      },\n      \"mark\": {\n        \"type\": \"text\",\n        \"fontSize\": 20,\n        \"align\": \"center\"\n      },\n      \"encoding\": {\n        \"text\": {\n          \"field\": \"denominations\",\n          \"type\": \"nominal\"\n        },\n        \"y\": {\n          \"field\": \"__row__\",\n          \"type\": \"ordinal\",\n          \"axis\": null\n        }\n      }\n    },\n    {\n      \"width\": 50,\n      \"height\": 300,\n      \"title\": {\n        \"text\": [\n          \"PBI Format\",\n          \"Custom 1\"\n        ],\n        \"fontSize\": 25,\n        \"align\": \"right\"\n      },\n      \"mark\": {\n        \"type\": \"text\",\n        \"fontSize\": 20,\n        \"align\": \"right\",\n        \"dx\": 10\n      },\n      \"encoding\": {\n        \"text\": {\n          \"field\": \"PBI_Formatting\",\n          \"formatType\": \"pbiFormat\",\n          \"type\": \"nominal\"\n        },\n        \"y\": {\n          \"field\": \"Index\",\n          \"type\": \"ordinal\",\n          \"axis\": null\n        }\n      }\n    },\n    {\n      \"width\": 50,\n      \"height\": 300,\n      \"title\": {\n        \"text\": [\n          \"PBI Format\",\n          \"Custom 2\"\n        ],\n        \"fontSize\": 25\n      },\n      \"mark\": {\n        \"type\": \"text\",\n        \"fontSize\": 20,\n        \"align\": \"right\"\n      },\n      \"encoding\": {\n        \"text\": {\n          \"field\": \"Custom_Format_v2\",\n          \"format\": \"#,0\",\n          \"formatType\": \"pbiFormat\",\n          \"type\": \"nominal\"\n        },\n        \"y\": {\n          \"field\": \"__row__\",\n          \"type\": \"ordinal\",\n          \"axis\": null\n        }\n      }\n    },\n    {\n      \"width\": 50,\n      \"height\": 300,\n      \"title\": {\n        \"text\": [\n          \"PBI Format\",\n          \"Auto Unit\"\n        ],\n        \"fontSize\": 25\n      },\n      \"mark\": {\n        \"type\": \"text\",\n        \"fontSize\": 20,\n        \"align\": \"right\"\n      },\n      \"encoding\": {\n        \"text\": {\n          \"field\": \"Value\",\n          \"type\": \"nominal\",\n          \"formatType\": \"pbiFormatAutoUnit\"\n        },\n        \"y\": {\n          \"field\": \"__row__\",\n          \"type\": \"ordinal\",\n          \"axis\": null\n        }\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"view\": {\"stroke\": null}}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.19.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.7.0.20240624#c94536d'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "380.9828338508255D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "693.6075448987128D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF7CF'"
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#a38600'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
