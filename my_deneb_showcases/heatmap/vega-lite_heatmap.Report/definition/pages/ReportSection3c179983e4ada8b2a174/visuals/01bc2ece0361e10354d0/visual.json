@@ -179,6 +179,26 @@
             }
           }
         }
+      ],
+      "editor": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "theme": {
+              "expr": {
+                "Literal": {
+                  "Value": "'light'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
