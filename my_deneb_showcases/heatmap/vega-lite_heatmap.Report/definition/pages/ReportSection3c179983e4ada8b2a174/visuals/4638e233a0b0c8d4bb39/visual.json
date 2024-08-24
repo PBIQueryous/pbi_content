@@ -1,0 +1,274 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "4638e233a0b0c8d4bb39",
+  "position": {
+    "x": 1420.5929919137466,
+    "y": 221.23989218328839,
+    "z": 2001,
+    "height": 636.54986522911054,
+    "width": 452.83018867924528,
+    "tabOrder": 2001
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "seattle_weather"
+                    }
+                  },
+                  "Property": "date"
+                }
+              },
+              "queryRef": "tbl_seattle_weather.date",
+              "nativeQueryRef": "date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "seattle_weather"
+                    }
+                  },
+                  "Property": "temp_max"
+                }
+              },
+              "queryRef": "Sum(tbl_seattle_weather.temp_max)",
+              "nativeQueryRef": "temp_max1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "seattle_weather"
+                  }
+                },
+                "Property": "date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  // \"data\": { \"url\": \"data/seattle-weather.csv\" },\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"title\": {\n    \"text\": \"Daily Max Temperatures (C) in Seattle, WA\",\n    \"fontSize\": 20,\n    \"dy\": -10,\n    \"zindex\": 0\n  },\n  \"config\": {\n    \"view\": {\n      \"strokeWidth\": 0,\n      \"step\": 13\n    },\n    \"axis\": {\n      \"domain\": false\n    }\n  },\n  \"height\": 400,\n  \"width\": 300,\n  \"mark\": \"rect\",\n  \"encoding\": {\n    // X-axis encoding: day of the month\n    \"x\": {\n      \"field\": \"date\",\n      \"timeUnit\": \"day\", // Change to ''day'' to get day names\n      \"type\": \"ordinal\",\n      \"title\": \"Day\",\n      \"axis\": {\n        \"orient\": \"top\",\n        \"title\": null,\n        \"labelAngle\": 0,\n        \"format\": \"%a\"\n      },\n      \"scale\": {\n        \"paddingInner\": 0.08, // Adjusts the inner padding between rectangles\n        \"paddingOuter\": 0.0 // Adjusts the outer padding on the edges\n      },\n      \"sort\": [ // Custom sort order\n        \"Mon\",\n        \"Tue\",\n        \"Wed\",\n        \"Thu\",\n        \"Fri\",\n        \"Sat\",\n        \"Sun\"\n      ]\n    },\n    // Y-axis encoding: month of the year\n    \"y\": {\n      \"field\": \"date\",\n      \"timeUnit\": \"month\",\n      \"type\": \"ordinal\",\n      \"title\": \"Month\",\n      \"axis\": {\n        \"title\": null\n      },\n      \"scale\": {\n        \"paddingInner\": 0.08, // Adjusts the inner padding between rectangles\n        \"paddingOuter\": 0.0 // Adjusts the outer padding on the edges\n      }\n    },\n    // Color encoding: maximum temperature, used to color the squares\n    \"color\": {\n      \"field\": \"temp_max\",\n      \"aggregate\": \"max\",\n      \"type\": \"quantitative\",\n      \"scale\": {\n        \"reverse\": true,\n        \"scheme\": {\n          \"expr\": \"colour_scheme_selection\"\n        }\n      },\n      \"legend\": {\n        \"title\": null,\n        \"labelFontSize\": 20,\n        \"labelOffset\": 10,\n        \"gradientLength\": 350\n      }\n    },\n    // Stroke encoding: adds a black border around the square on hover\n    \"stroke\": {\n      \"condition\": {\n        \"param\": \"hover\", // Apply stroke on hover\n        \"empty\": false,\n        \"value\": \"red\"\n      },\n      \"value\": null\n    },\n    \"strokeWidth\": {\n      \"condition\": {\n        \"param\": \"hover\", // Apply strokeWidth on hover\n        \"empty\": false,\n        \"value\": 3\n      },\n      \"value\": 0\n    },\n    // Opacity encoding: changes opacity on click\n    \"opacity\": {\n      \"condition\": {\n        \"param\": \"click\", // Apply opacity on click\n        \"value\": 1\n      },\n      \"value\": 0.01\n    },\n    // Order encoding: ensures the selected square is drawn on top\n    \"order\": {\n      \"condition\": [\n        {\n          \"param\": \"hover\", // Maintain order on hover\n          \"value\": 1\n        },\n        {\n          \"param\": \"click\", // Maintain order on click\n          \"value\": 1\n        }\n      ],\n      \"value\": 0\n    },\n    // Tooltip encoding: displays the date and max temperature on hover\n    \"tooltip\": [\n      {\n        \"field\": \"date\",\n        \"timeUnit\": \"yearmonthdate\",\n        \"title\": \"Date\"\n      },\n      {\n        \"field\": \"temp_max\",\n        \"aggregate\": \"max\",\n        \"type\": \"quantitative\",\n        \"title\": \"Max Temp (C)\"\n      }\n    ]\n  },\n  // Interactive selection parameters\n  \"params\": [\n    {\n      \"name\": \"hover\",\n      \"select\": {\n        \"type\": \"point\",\n        \"on\": \"mouseover\", // Trigger the stroke on mouse hover\n        \"clear\": \"mouseout\" // Remove the stroke when the mouse leaves\n      }\n    },\n    {\n      \"name\": \"click\",\n      \"select\": {\n        \"type\": \"point\",\n        \"on\": \"click\", // Trigger the opacity change on click\n        \"clear\": \"dblclick\" // Reset opacity on double-click\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"padding\": {\n    \"top\": 50\n  },\n  \"view\": {\n    \"stroke\": \"transparent\"\n  },\n  \n  \"axis\": {\n    \"grid\": false,\n    \"labelFontSize\": 15\n  },\n  \"params\": [\n    {\n      // colour schemes widget\n      \"name\": \"colour_scheme_selection\",\n      \"value\": \"spectral\",\n      \"bind\": {\n        \"input\": \"select\",\n        \"options\": [\n          \"spectral\",\n          \"purpleorange\",\n          \"blueorange\",\n          \"yellowgreen\",\n          \"darkmulti\",\n          \"lightgreyteal\",\n          \"lightorange\",\n          \"lighttealblue\",\n          \"plasma\"\n        ],\n        \"name\": \"Colour Schemes: \"\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "isNewDialogOpen": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'5.20.1'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.7.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "602.5498652291105D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "438.8301886792453D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B3B3B3'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Heatmap'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF7CF'"
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#a38600'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

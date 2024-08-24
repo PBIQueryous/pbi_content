@@ -1,0 +1,524 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "3.5.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "tbl_seattle_weather": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "seattle_weather"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "seattle weather": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "seattle_weather": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "seattle climate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        }
+			      ]
+			    },
+			    "tbl_seattle_weather.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "seattle_weather",
+			          "ConceptualProperty": "date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "tbl_seattle_weather.precipitation": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "seattle_weather",
+			          "ConceptualProperty": "precipitation"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "precipitation": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "rainfall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "rain": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "snow": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "sleet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "hail": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "drizzle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "tbl_seattle_weather.temp_max": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "seattle_weather",
+			          "ConceptualProperty": "temp_max"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "temp max": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "temp_max": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "temp maximum": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "tbl_seattle_weather.temp_min": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "seattle_weather",
+			          "ConceptualProperty": "temp_min"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "temp min": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "temp_min": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "temp minimum": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "tbl_seattle_weather.wind": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "seattle_weather",
+			          "ConceptualProperty": "wind"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wind": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "airstream": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "gale": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "breeze": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "squall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "gust": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "storm": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    },
+			    "tbl_seattle_weather.weather": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "seattle_weather",
+			          "ConceptualProperty": "weather"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "weather": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "climate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "tbl_seattle_weather_has_weather": {
+			      "Binding": {
+			        "ConceptualEntity": "seattle_weather"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tbl_seattle_weather": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather"
+			          }
+			        },
+			        "tbl_seattle_weather.weather": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather.weather"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tbl_seattle_weather"
+			            },
+			            "Object": {
+			              "Role": "tbl_seattle_weather.weather"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "seattle_weathers_have_weathers"
+			        }
+			      ]
+			    },
+			    "tbl_seattle_weather_has_wind": {
+			      "Binding": {
+			        "ConceptualEntity": "seattle_weather"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tbl_seattle_weather": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather"
+			          }
+			        },
+			        "tbl_seattle_weather.wind": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather.wind"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tbl_seattle_weather"
+			            },
+			            "Object": {
+			              "Role": "tbl_seattle_weather.wind"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "seattle_weathers_have_winds"
+			        }
+			      ]
+			    },
+			    "tbl_seattle_weather_has_temp_min": {
+			      "Binding": {
+			        "ConceptualEntity": "seattle_weather"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tbl_seattle_weather": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather"
+			          }
+			        },
+			        "tbl_seattle_weather.temp_min": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather.temp_min"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tbl_seattle_weather"
+			            },
+			            "Object": {
+			              "Role": "tbl_seattle_weather.temp_min"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "seattle_weathers_have_temp_mins"
+			        }
+			      ]
+			    },
+			    "tbl_seattle_weather_has_temp_max": {
+			      "Binding": {
+			        "ConceptualEntity": "seattle_weather"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tbl_seattle_weather": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather"
+			          }
+			        },
+			        "tbl_seattle_weather.temp_max": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather.temp_max"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tbl_seattle_weather"
+			            },
+			            "Object": {
+			              "Role": "tbl_seattle_weather.temp_max"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "seattle_weathers_have_temp_maxes"
+			        }
+			      ]
+			    },
+			    "tbl_seattle_weather_has_precipitation": {
+			      "Binding": {
+			        "ConceptualEntity": "seattle_weather"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tbl_seattle_weather": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather"
+			          }
+			        },
+			        "tbl_seattle_weather.precipitation": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather.precipitation"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tbl_seattle_weather"
+			            },
+			            "Object": {
+			              "Role": "tbl_seattle_weather.precipitation"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "seattle_weathers_have_precipitations"
+			        }
+			      ]
+			    },
+			    "tbl_seattle_weather_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "seattle_weather"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tbl_seattle_weather": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather"
+			          }
+			        },
+			        "tbl_seattle_weather.date": {
+			          "Target": {
+			            "Entity": "tbl_seattle_weather.date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tbl_seattle_weather"
+			            },
+			            "Object": {
+			              "Role": "tbl_seattle_weather.date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "seattle_weathers_have_dates"
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

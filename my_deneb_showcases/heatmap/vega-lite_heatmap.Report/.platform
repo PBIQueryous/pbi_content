@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "vega-lite_heatmap"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c312407f-107d-407e-9db6-f6c7ac47f948"
+  }
+}
