@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
-  "name": "16d2250d1e730b1d9ac0",
+  "name": "770dfe3628782b57374e",
   "position": {
-    "x": 177.54838709677421,
-    "y": 601.83152067193839,
-    "z": 7,
-    "height": 440.43010752688173,
-    "width": 722.58064516129036,
-    "tabOrder": 7
+    "x": 77.975040541493343,
+    "y": 134.29034759923852,
+    "z": 0,
+    "height": 808.63005005993091,
+    "width": 858,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
@@ -89,14 +89,14 @@
             "viewportHeight": {
               "expr": {
                 "Literal": {
-                  "Value": "430.4301075268817D"
+                  "Value": "798.6300500599309D"
                 }
               }
             },
             "viewportWidth": {
               "expr": {
                 "Literal": {
-                  "Value": "712.5806451612904D"
+                  "Value": "848D"
                 }
               }
             }
@@ -116,7 +116,7 @@
             "jsonSpec": {
               "expr": {
                 "Literal": {
-                  "Value": "'{\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"transform\": [\n    // Filter the data to include only the years 2022 and 2023\n    {\n      \"filter\": {\n        \"field\": \"calendar_year\",\n        \"oneOf\": [2022, 2023]\n      }\n    },\n    // Pivot the data so that sales values for 2022 and 2023 become separate fields\n    {\n      \"pivot\": \"calendar_year\",\n      \"value\": \"sales\",\n      \"groupby\": [\"brand\"]\n    },\n    // Calculate whether 2023 sales are higher than 2022 sales\n    {\n      \"calculate\": \"datum[2023] > datum[2022] ? true : false\",\n      \"as\": \"higher\" // Store this calculation result in a new field called ''higher''\n    }\n  ],\n  \"encoding\": {\n    // Encoding for the x-axis, where ''brand'' is displayed, sorted by 2023 sales in ascending order\n    \"x\": {\n      \"field\": \"brand\",\n      \"axis\": {\n        \"grid\": true,\n        \"gridOpacity\": 0.3,\n        \"zindex\": 0\n      },\n      \"sort\": {\n        \"field\": \"2023\",\n        \"order\": \"ascending\"\n      }\n    }\n  },\n  \"layer\": [\n    {\n      // Line mark to connect 2022 and 2023 sales for each brand\n      \"mark\": {\n        \"type\": \"line\",\n        \"width\": 7,\n        \"strokeWidth\": 10,\n        // Apply conditional formatting to the line stroke based on whether 2023 sales are higher or lower than 2022\n        \"stroke\": {\n          \"expr\": \"datum.higher ? ''limegreen'' : ''crimson''\"\n        }\n      },\n      \"encoding\": {\n        // Encoding for the x-axis, displaying the ''brand''\n        \"x\": {\n          \"field\": \"brand\"\n        },\n        // Encoding for the y-axis, starting from the 2022 sales value\n        \"y\": {\n          \"field\": \"2022\",\n          \"axis\": {\n            \"format\": \",.2~s\",\n            \"grid\": true,\n            \"tickCount\": 6,\n            \"gridDash\": [5, 5],\n            \"gridOpacity\": 0.2,\n            \"ticks\": true\n          },\n          \"type\": \"quantitative\"\n        },\n        // Encoding for the y2 position, which ends at the 2023 sales value\n        \"y2\": {\n          \"field\": \"2023\",\n          \"type\": \"quantitative\"\n        }\n      }\n    },\n    {\n      // First point mark for the 2022 sales values\n      \"mark\": {\n        \"type\": \"point\",\n        \"tooltip\": true,\n        \"stroke\": \"#e3e3e3\",\n        \"fill\": \"darkgrey\",\n        \"filled\": true\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"brand\"\n        },\n        \"y\": {\n          \"field\": \"2022\",\n          \"type\": \"quantitative\"\n        },\n        \"color\": {\n          \"value\": \"#e6959c\"\n        },\n        \"size\": {\n          \"value\": 100\n        },\n        \"opacity\": {\n          \"value\": 1\n        }\n      }\n    },\n    {\n      // Second point mark for the 2023 sales values, with shape and fill color based on whether 2023 sales are higher or lower\n      \"mark\": {\n        \"type\": \"point\",\n        \"tooltip\": true,\n        \"shape\": {\n          \"expr\": \"datum.higher ? ''triangle-up'' : ''triangle-down''\"\n        },\n        \"filled\": true,\n        \"fill\": {\n          \"expr\": \"datum.higher ? ''limegreen'' : ''crimson''\"\n        },\n        \"yOffset\": {\n          \"expr\": \"datum.higher ? -4 : 4\"\n        }\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"brand\"\n        },\n        \"y\": {\n          \"field\": \"2023\",\n          \"type\": \"quantitative\"\n        },\n        \"size\": {\n          \"value\": 100\n        },\n        \"opacity\": {\n          \"value\": 1\n        }\n      }\n    }\n  ]\n}'"
+                  "Value": "'{\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"params\": [],\n  \"transform\": [\n    {\n      \"filter\": {\n        \"field\": \"calendar_year\",\n        \"oneOf\": [\n          2022,\n          2023\n        ]\n      }\n    },\n    {\n      \"pivot\": \"calendar_year\",\n      \"value\": \"sales\",\n      \"groupby\": [\n        \"brand\",\n        \"__selected__\"\n      ]\n    },\n    {\n      \"calculate\": \"datum[2023] > datum[2022] ? true : false\",\n      \"as\": \"higher\"\n    },\n    {\n      \"calculate\": \"(datum[2023] - datum[2022]) / datum[2022]\",\n      \"as\": \"change\"\n    }\n  ],\n  \"encoding\": {\n    \"tooltip\": [\n      {\n        \"field\": \"brand\",\n        \"title\": \"Brand\"\n      },\n      {\n        \"field\": \"2022\",\n        \"format\": \",.2~s\",\n        \"title\": \"PY\"\n      },\n      {\n        \"field\": \"2023\",\n        \"format\": \",.2~s\",\n        \"title\": \"CY\"\n      },\n      {\n        \"field\": \"change\",\n        \"format\": \".1%\",\n        \"title\": \"YoY %\"\n      }\n    ],\n    \"x\": {\n      \"field\": \"brand\", // Swap the axis: ''brand'' is now on the x-axis\n      \"axis\": {\n        \"title\": null,\n        \"grid\": true,\n        \"gridOpacity\": 0.15,\n        \"zindex\": 0\n      },\n      \"sort\": {\n        \"field\": \"2022\",\n        \"order\": \"ascending\"\n      }\n    },\n    \"opacity\": {\n      \"condition\": {\n        \"test\": {\n          \"field\": \"__selected__\",\n          \"equal\": \"off\"\n        },\n        \"value\": 0.3\n      },\n      \"value\": 1\n    }\n  },\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"point\",\n        \"tooltip\": true,\n        \"stroke\": \"#000\",\n        \"strokeWidth\": 1.5,\n        \"fill\": \"#a3a3a3\",\n        \"filled\": false,\n        \"yOffset\": {\n          \"expr\": \"datum.higher ? -1.5 : 1.5\" // Adjusted for yOffset since axes are swapped\n        }\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"brand\" // Swap the axis: ''brand'' is now on the x-axis\n        },\n        \"y\": {\n          \"field\": \"2022\",\n          \"type\": \"quantitative\" // ''2022'' values are now on the y-axis\n        },\n        \"color\": {\n          \"value\": \"#e6959c\"\n        },\n        \"size\": {\n          \"value\": 350\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"rule\",\n        \"strokeWidth\": 20,\n        \"strokeCap\": \"round\",\n        \"stroke\": \"#e3e3e3\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"brand\", // Swap the axis: ''brand'' is now on the x-axis\n          \"axis\": {\n            \"labelPadding\": 75\n          }\n        },\n        \"y\": {\n          \"field\": \"2022\",\n          \"axis\": {\n            \"format\": \",.2~s\",\n            \"grid\": true,\n            \"tickCount\": 6,\n            \"gridDash\": [\n              5,\n              5\n            ],\n            \"gridOpacity\": 0.2,\n            \"ticks\": true\n          },\n          \"type\": \"quantitative\"\n        },\n        \"y2\": {\n          \"field\": \"2023\",\n          \"type\": \"quantitative\" // ''2023'' values are now on the y-axis\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"point\",\n        \"tooltip\": true,\n        \"stroke\": \"#e3e3e3\",\n        \"strokeWidth\": 3,\n        \"fill\": \"#a3a3a3\",\n        \"filled\": true\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"brand\" // Swap the axis: ''brand'' is now on the x-axis\n        },\n        \"y\": {\n          \"field\": \"2022\",\n          \"type\": \"quantitative\" // ''2022'' values are now on the y-axis\n        },\n        \"color\": {\n          \"value\": \"#e6959c\"\n        },\n        \"size\": {\n          \"value\": 300\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"point\",\n        \"tooltip\": true,\n        \"shape\": {\n          \"expr\": \"datum.higher ? ''triangle-up'' : ''triangle-down''\" // Adjust shape based on y-axis direction\n        },\n        \"stroke\": \"#000\",\n        \"strokeWidth\": 0.5,\n        \"filled\": true,\n        \"fill\": {\n          \"expr\": \"datum.higher ? ''limegreen'' : ''crimson''\"\n        },\n        \"yOffset\": {\n          \"expr\": \"datum.higher ? -15 : 15\" // Adjust yOffset since axes are swapped\n        }\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"brand\" // Swap the axis: ''brand'' is now on the x-axis\n        },\n        \"y\": {\n          \"field\": \"2023\",\n          \"type\": \"quantitative\" // ''2023'' values are now on the y-axis\n        },\n        \"size\": {\n          \"value\": 300\n        }\n      }\n    },\n    {\n      // New text mark layer to display 2023 sales values\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": {\n          \"expr\": \"datum.higher ? ''center'' : ''center''\"\n        },\n        \"baseline\": \"middle\",\n        \"dy\": {\n          \"expr\": \"datum.higher ? -35 : 35\"\n        },\n        \"dx\": -0, // Slight vertical adjustment\n        \"fontSize\": 18, // Set the font size\n        \"fontWeight\": \"bold\", // Make the text bold for emphasis\n        \"color\": {\n          \"expr\": \"datum.higher ? ''limegreen'' : ''crimson''\"\n        } // Set the text color to match the point\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"brand\" // Swap the axis: ''brand'' is now on the x-axis\n        },\n        \"y\": {\n          \"field\": \"2023\",\n          \"type\": \"quantitative\" // ''2023'' values are now on the y-axis\n        },\n        \"text\": {\n          \"field\": \"change\", // Display the YoY change percentage\n          \"type\": \"quantitative\",\n          \"format\": \"+0.0%\"\n        }\n      }\n    }\n  ]\n}'"
                 }
               }
             },
@@ -151,14 +151,14 @@
             "enableHighlight": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
             "enableSelection": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
