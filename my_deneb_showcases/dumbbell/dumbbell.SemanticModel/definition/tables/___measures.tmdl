@@ -30,7 +30,7 @@ table ___measures
 			
 			CALCULATE(
 			    [£ sales],
-			    KEEPFILTERS(dim_dates[YearNUM] == 2023)
+			    dim_dates[YearNUM] == 2023
 			)
 		formatString: "£"#,0;-"£"#,0;"£"#,0
 		lineageTag: 6a5fdc24-d54f-491e-b28b-0cd0c8708a33
@@ -41,12 +41,25 @@ table ___measures
 			
 			CALCULATE(
 			    [£ sales],
-			    KEEPFILTERS(dim_dates[YearNUM] == 2022)
+			    dim_dates[YearNUM] == 2022
 			)
 		formatString: "£"#,0;-"£"#,0;"£"#,0
 		lineageTag: 42c46347-8f34-45ca-902b-312575802bc2
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure YoY% =
+			
+			var _prev = [£ sales 2022]
+			var _curr = [£ sales 2023]
+			var _diff = ( _curr - _prev )
+			var _result = DIVIDE( _diff , _prev )
+			RETURN
+			_result
+		formatString: +0.0%;-0.0%
+		lineageTag: 7f9aeda2-638b-4967-9da6-9a068136d717
+
+		annotation PBI_FormatHint = {"isCustom":true}
 
 	column Column1
 		dataType: string

@@ -328,6 +328,9 @@ table dim_dates
 		lineageTag: 3b4de714-623a-4e63-8197-b1121748c4f4
 		summarizeBy: none
 		sourceColumn: Month Initial
+		sortByColumn: MonthNUM
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
