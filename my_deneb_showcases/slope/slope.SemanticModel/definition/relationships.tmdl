@@ -1,0 +1,30 @@
+relationship 39985519-0b81-ee3a-342e-9d3536705faf
+	fromColumn: fct_sales.CustomerKey
+	toColumn: dim_customer.CustomerKey
+
+relationship 79ead0bc-4ca5-b837-9dd9-9988d6c1abce
+	fromColumn: fct_sales.StoreKey
+	toColumn: dim_store.StoreKey
+
+relationship d1545dce-38d6-4980-3b50-9a2e771da723
+	fromColumn: fct_sales.ProductKey
+	toColumn: dim_product.ProductKey
+
+relationship 293b9cbc-f1f1-8a4d-b662-5eb16cf12135
+	fromColumn: fct_sales.'Order Date'
+	toColumn: dim_dates.Date
+
+relationship 0ca73e52-2277-238b-790e-2a997f098c07
+	fromColumn: fct_sales.'Order Date'
+	toColumn: dim_contoso_dates.Date
+
+relationship 4f60d352-b594-9bf7-1f69-47319a2e0a4a
+	isActive: false
+	fromColumn: fct_sales.'Delivery Date'
+	toColumn: dim_dates.Date
+
+relationship 99f45d61-60c3-d630-038b-35382b9045c3
+	isActive: false
+	fromColumn: fct_sales.'Delivery Date'
+	toColumn: dim_contoso_dates.Date
+

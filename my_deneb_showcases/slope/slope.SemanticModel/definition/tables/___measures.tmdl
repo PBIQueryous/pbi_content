@@ -1,0 +1,133 @@
+table ___measures
+	lineageTag: 951d63f2-f64a-4063-acda-9d21e80d8f25
+
+	measure '# orders' =
+			
+			DISTINCTCOUNT( fct_sales[Order Number] )
+		formatString: 0
+		lineageTag: f1e76c0e-3180-408f-893b-3b6426db0997
+
+	measure '£ sales' =
+			
+			SUM( fct_sales[Net Price] )
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: fc7117c5-a930-4bde-82e2-01ab9ed60658
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure '£ sales 2024' =
+			
+			CALCULATE(
+			    [£ sales],
+			    KEEPFILTERS(dim_dates[YearNUM] == 2024)
+			)
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: e9c6a99a-b51e-45cd-97d6-e9f6024396b9
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure '£ sales 2023' =
+			
+			CALCULATE(
+			    [£ sales],
+			    dim_dates[YearNUM] == 2023
+			)
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 6a5fdc24-d54f-491e-b28b-0cd0c8708a33
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure '£ sales 2022' =
+			
+			CALCULATE(
+			    [£ sales],
+			    dim_dates[YearNUM] == 2022
+			)
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 42c46347-8f34-45ca-902b-312575802bc2
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure YoY% =
+			
+			var _prev = [£ sales 2022]
+			var _curr = [£ sales 2023]
+			var _diff = ( _curr - _prev )
+			var _result = DIVIDE( _diff , _prev )
+			RETURN
+			_result
+		formatString: +0.0%;-0.0%
+		lineageTag: 7f9aeda2-638b-4967-9da6-9a068136d717
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure '% sales' = ```
+			
+			var _num = [£ sales]
+			var _den = 
+			CALCULATE( 
+			    [£ sales] 
+			    // , ALLEXCEPT(dim_product, dim_product[Brand]) 
+			    , ALL(dim_product)
+			    /*  , ALL(dim_dates[YearNUM]) */ )
+			var _result = DIVIDE( _num , _den )
+			RETURN
+			    _result
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 614aa154-d9ba-4baa-aa66-883a5aeab226
+
+	measure 'Max Value by Question and Year' = ```
+			
+			var _m1 =
+			CALCULATE(
+			    MAX('abortion_support'[Value]),
+			    ALLEXCEPT('abortion_support', abortion_support[Attribute], abortion_support[poll_date_1])
+			)
+			
+			
+			VAR MaxDateInPeriod = 
+			    CALCULATE(
+			        MAX(abortion_support[poll_date_1]),
+			        ALLSELECTED('abortion_support')
+			    )
+			
+			VAR MaxValueOnMaxDate = 
+			    CALCULATE(
+			        MAX('abortion_support'[Value]),
+			        'abortion_support'[poll_date_1] = MaxDateInPeriod
+			    )
+			
+			RETURN
+			    IF(
+			        CALCULATE(MAX('abortion_support'[poll_date_1]), ALLEXCEPT('abortion_support', 'abortion_support'[Attribute])) = MaxDateInPeriod,
+			        MaxValueOnMaxDate,
+			        BLANK()
+			    )
+			
+			```
+		lineageTag: a680e8da-e4d0-4261-85e5-b43e096bc20c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: add38eaa-ab32-4980-96de-c7e03d3037b9
+		summarizeBy: none
+		sourceColumn: Column1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ___measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

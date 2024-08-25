@@ -1,0 +1,113 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "25e8b7e2301e149749ba",
+  "position": {
+    "x": 815.56231003039511,
+    "y": 303.46504559270517,
+    "z": 1005,
+    "height": 733.86018237082067,
+    "width": 288.87537993920972,
+    "tabOrder": 1004
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Inspiration and Special thanks to:"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Kerry Kolosko",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• "
+                  },
+                  {
+                    "value": "Line Interpolation (bundle)",
+                    "textStyle": {},
+                    "url": "https://kerrykolosko.com/line-interpolation/"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Tableau Youtube",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• "
+                  },
+                  {
+                    "value": "Watch Me Viz",
+                    "textStyle": {},
+                    "url": "https://www.youtube.com/watch?v=jpNKOv5RRRY"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Data Source (Data World)",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• "
+                  },
+                  {
+                    "value": "2021/W36",
+                    "textStyle": {},
+                    "url": "https://data.world/makeovermonday/2021w36"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,72 @@
+table abortion_thoughts_data
+	lineageTag: 0c0a9c97-3b9a-400d-8e59-aceee29a8dec
+
+	column poll_year
+		dataType: int64
+		formatString: 0
+		lineageTag: a213cef4-7d41-4684-b443-dce656d1f6ab
+		summarizeBy: sum
+		sourceColumn: poll_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column poll_month_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 32cecab3-f032-448b-a0c4-edcb97a61e44
+		summarizeBy: none
+		sourceColumn: poll_month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column poll_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 33fd5ea2-0eca-4b87-96d0-91592f5a574d
+		summarizeBy: none
+		sourceColumn: poll_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column category
+		dataType: string
+		lineageTag: 0778affd-a322-447e-945f-bfbbbef2c832
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: d3aa7b45-be92-4a7f-851a-7565295caed6
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition abortion_thoughts_data = m
+		mode: import
+		source =
+				let
+				    Source = DataWorld.Dataset("makeovermonday", "2021w36", null),
+				    abortion_support1 = Source{[tableId="abortion_support"]}[Data],
+				    #"Added Custom" = Table.AddColumn(abortion_support1, "poll_date_1", each Text.BeforeDelimiter([poll_date] , "-" )),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"poll_date_1", type date}}),
+				    #"Inserted Year" = Table.AddColumn(#"Changed Type", "poll_year", each Date.Year([poll_date_1]), Int64.Type),
+				    #"Inserted Start of Month" = Table.AddColumn(#"Inserted Year", "poll_date_2", each Date.StartOfMonth([poll_date_1]), type date),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Inserted Start of Month",{"poll_year", "poll_date_2", "poll_date_1", "legal_under_any", "legal_only_under_certain", "illegal_in_all", "no_opinion"}),
+				    #"Unpivoted Other Columns" = Table.UnpivotOtherColumns(#"Removed Other Columns", {"poll_year", "poll_date_2", "poll_date_1"}, "Attribute", "Value"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Unpivoted Other Columns",{{"poll_date_2", "poll_month_start"}, {"poll_date_1", "poll_date"}, {"Attribute", "category"}, {"Value", "value"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

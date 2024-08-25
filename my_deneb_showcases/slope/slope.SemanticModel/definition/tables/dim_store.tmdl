@@ -1,0 +1,98 @@
+table dim_store
+	lineageTag: df449410-8e2b-4e75-a28d-6ba4694766cc
+
+	column StoreKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 63ad46c3-963d-4417-9f3b-8b5b39a3f063
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Store Code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e1a9121-5ee0-470e-9d8a-a4c503f72836
+		summarizeBy: none
+		sourceColumn: Store Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 111a31e0-bb01-4092-ae1b-2ec9df4988cd
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 2d311d6c-d973-4772-b891-d50733459523
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: ebc0d223-f29f-4d54-ac82-69c46aa49574
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Square Meters'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3cf7bc1d-8195-45b5-91dc-86661e09e97c
+		summarizeBy: none
+		sourceColumn: Square Meters
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Open Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: dd9d0bdf-7326-4821-b833-bbc2174972f5
+		summarizeBy: none
+		sourceColumn: Open Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Close Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 22078cec-3def-448e-a73b-ef96f46f8e27
+		summarizeBy: none
+		sourceColumn: Close Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Status
+		dataType: string
+		lineageTag: c24e31e6-803b-4337-b90d-f92b3f323328
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_store = m
+		mode: import
+		queryGroup: tables
+		source =
+				let
+				    Source = Sql.Database(p_server , p_database),
+				    dbo_Store1 = Source{[Schema="dbo",Item="Store"]}[Data]
+				in
+				    dbo_Store1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

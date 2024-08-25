@@ -1,0 +1,74 @@
+table abortion_support
+	lineageTag: bae5040f-0952-4748-a76b-9949b823bbab
+
+	column poll_date_2
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cbe41523-c667-41fb-8933-de6afb568faa
+		summarizeBy: none
+		sourceColumn: poll_date_2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Value
+		dataType: double
+		lineageTag: 5ee345f0-fd42-4857-bf03-672f5a6d079b
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column poll_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 179252ea-4b4f-440c-850c-29805d4d19a7
+		summarizeBy: sum
+		sourceColumn: poll_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column poll_date_1
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2fde9c8b-4119-47db-9661-4481efc418ae
+		summarizeBy: none
+		sourceColumn: poll_date_1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Attribute
+		dataType: string
+		lineageTag: ce577abb-d7b5-4196-a35e-eccd2d5f78b0
+		summarizeBy: none
+		sourceColumn: Attribute
+
+		annotation SummarizationSetBy = Automatic
+
+	partition abortion_support = m
+		mode: import
+		source =
+				let
+				    Source = DataWorld.Dataset("makeovermonday", "2021w36", null),
+				    abortion_support1 = Source{[tableId="abortion_support"]}[Data],
+				    #"Added Custom" = Table.AddColumn(abortion_support1, "poll_date_1", each Text.BeforeDelimiter([poll_date] , "-" )),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"poll_date_1", type date}}),
+				    #"Inserted Year" = Table.AddColumn(#"Changed Type", "poll_year", each Date.Year([poll_date_1]), Int64.Type),
+				    #"Inserted Start of Month" = Table.AddColumn(#"Inserted Year", "poll_date_2", each Date.StartOfMonth([poll_date_1]), type date),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Inserted Start of Month",{"poll_year", "poll_date_2", "poll_date_1", "legal_under_any", "legal_only_under_certain", "illegal_in_all", "no_opinion"}),
+				    #"Unpivoted Other Columns" = Table.UnpivotOtherColumns(#"Removed Other Columns", {"poll_year", "poll_date_2", "poll_date_1"}, "Attribute", "Value"),
+				    #"Added Conditional Column" = Table.AddColumn(#"Unpivoted Other Columns", "Attribute_", each if [Attribute] = "legal_under_any" then "Legal under any circumstance" else if [Attribute] = "legal_only_under_certain" then "Legal under certain circumstances" else if [Attribute] = "illegal_in_all" then "llegal in all circumstances" else if [Attribute] = "no_opinion" then "No Opinion" else null, type text),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Conditional Column",{"Attribute"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Attribute_", "Attribute"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

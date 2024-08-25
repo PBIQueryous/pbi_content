@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "slope"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f315ac22-5724-451b-a8cf-dc2f83c4191d"
+  }
+}
