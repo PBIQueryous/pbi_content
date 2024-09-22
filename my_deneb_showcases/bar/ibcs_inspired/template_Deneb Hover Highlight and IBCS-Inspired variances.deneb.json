@@ -1,0 +1,493 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "usermeta": {
+    "information": {
+      "uuid": "7025cfce-a5ef-4755-ba59-a77be3b1c600",
+      "generated": "2024-09-22T11:18:08.031Z",
+      "previewImageBase64PNG": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+      "name": "Deneb Hover Highlight and IBCS-Inspired variances",
+      "description": "IBCS-inspired bar chart with concatenated grand total bars together with conditional formatted text labels",
+      "author": "PBI Queryous"
+    },
+    "deneb": {
+      "build": "1.7.1.0",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "5.20.1"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "selectionMode": "simple",
+      "highlight": true,
+      "dataPointLimit": 50
+    },
+    "config": "{\r\n  \"params\": [\r\n    {\r\n      \"name\": \"offset_pos\",\r\n      \"value\": 5\r\n    },\r\n    {\r\n      \"name\": \"offset_neg\",\r\n      \"expr\": \"offset_pos * -1\"\r\n    },\r\n    {\r\n      \"name\": \"month_text_offset\",\r\n      \"value\": 40\r\n    },\r\n    {\r\n      \"name\": \"total_text_offset\",\r\n      \"value\": 52\r\n    },\r\n    {\r\n      \"name\": \"bar_colour\",\r\n      \"value\": \"#034694\"\r\n    }\r\n\r\n  ],\r\n  \"view\": {\r\n    \"stroke\": \"transparent\"\r\n  },\r\n  \"bar\": {\r\n    \"stroke\": \"#000\",\r\n    \"strokeWidth\": 0.8\r\n  },\r\n  \"axis\": {\r\n    \"grid\": false,\r\n    \"domain\": true,\r\n    \"ticks\": true\r\n  },\r\n  \"axisQuantitative\": {\r\n    \"labels\": false,\r\n    \"domain\": false,\r\n    \"ticks\": false,\r\n    \"labelFontSize\": 20\r\n  },\r\n  \"axisY\": {\r\n    \"labels\": true,\r\n    \"domain\": false,\r\n    \"ticks\": true,\r\n    \"tickWidth\": 2,\r\n    \"tickSize\": 10,\r\n    \"labelPadding\": 10,\r\n    \"labelFontSize\": 20,\r\n    \"title\": \"\"\r\n  },\r\n  \"axisX\": {\r\n    \"labels\": true,\r\n    \"domain\": false,\r\n    \"ticks\": true,\r\n    \"labelPadding\": 10,\r\n    \"labelFontSize\": 20,\r\n    \"title\": \"\"\r\n  }\r\n}",
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "month_short",
+        "description": "month name (Jan, Feb, Mar, etc)",
+        "kind": "column",
+        "type": "text"
+      },
+      {
+        "key": "__1__",
+        "name": "sales",
+        "description": "sales or current year",
+        "kind": "measure",
+        "type": "numeric"
+      },
+      {
+        "key": "__2__",
+        "name": "budget",
+        "description": "budget or previous year",
+        "kind": "measure",
+        "type": "numeric"
+      }
+    ]
+  },
+  "data": {
+    "name": "dataset"
+  },
+  /* TITLE */
+  "title": {
+    "text": "Bar Chart with Variances and Grand Total",
+    "align": "center",
+    "anchor": "middle",
+    "subtitle": "(Authored by PBI Queryous)",
+    "offset": 10
+  },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "__1__",
+          "as": "gt_sales"
+        },
+        {
+          "op": "sum",
+          "field": "__2__",
+          "as": "gt_budget"
+        }
+      ],
+      "groupby": []
+    },
+    {
+      "calculate": "datum.gt_sales - datum.gt_budget",
+      "as": "gt_diff"
+    },
+    {
+      "calculate": "datum['__1__'] - datum['__2__']",
+      "as": "diff"
+    },
+    {
+      "calculate": "datum.gt_diff / datum.gt_budget",
+      "as": "gt_pct_diff"
+    },
+    {
+      "calculate": "datum.diff / datum['__2__']",
+      "as": "pct_diff"
+    },
+    {
+      "calculate": "pbiFormat( datum['__1__'], '#', { value: datum[\\'__1__\\'], precision: 1, cultureSelector: 'en-GB'})",
+      "as": "format_sales"
+    }
+  ],
+  /* VCONCAT SPEC */
+  "name": "VCONCAT_SPEC",
+  "spacing": 10,
+  "vconcat": [
+    {
+      /* MAIN LAYER OF BARS */
+      "name": "BAR_LAYER",
+      "description": "BAR_LAYER",
+      "height": 500,
+      "width": 450,
+      "layer": [
+        {
+          /* HIGHLIGHT BAR MARK*/
+          "params": [
+            {
+              "name": "highlight_bar",
+              "select": {
+                "type": "point",
+                "on": "pointerover",
+                "clear": "pointerout"
+              }
+            }
+          ],
+          "mark": {
+            "type": "bar",
+            "color": "#f5f1a3",
+            "stroke": null
+          },
+          "encoding": {
+            "x": {},
+            "opacity": {
+              "condition": {
+                "param": "highlight_bar",
+                "empty": false,
+                "value": 0.7
+              },
+              "value": 0
+            }
+          }
+        },
+        {
+          /* BUDGET MEASURE */
+          "name": "mark_budget",
+          "mark": {
+            "type": "bar",
+            "fill": "#f5f4f8",
+            "stroke": "grey",
+            "height": {
+              "band": 0.65
+            },
+            "yOffset": {
+              "expr": "offset_neg"
+            }
+          },
+          /* BUDGET ENCODING */
+          "encoding": {
+            "x": {
+              "field": "__2__",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          /* AESTHETIC MARK (OPTIONAL) */
+          "name": "mark_opaque_aesthetic",
+          "mark": {
+            "type": "bar",
+            "stroke": "#000",
+            "height": {
+              "band": 0.65
+            },
+            "yOffset": {
+              "expr": "offset_pos"
+            }
+          },
+          /* AESTHETICS - ENCODING */
+          "encoding": {
+            "opacity": {
+              "condition": {
+                "test": {
+                  "field": "__selected__",
+                  "equal": "off"
+                },
+                "value": 1
+              },
+              "value": 0
+            },
+            "fill": {
+              "condition": {
+                "test": {
+                  "field": "__selected__",
+                  "equal": "off"
+                },
+                "value": "ivory"
+              },
+              "value": "transparent"
+            },
+            "strokeOpacity": {
+              "condition": {
+                "test": {
+                  "field": "__selected__",
+                  "equal": "off"
+                },
+                "value": 0.2
+              },
+              "value": 0
+            }
+          }
+        },
+        {
+          /* SALES MEASURE */
+          "name": "mark_sales",
+          "mark": {
+            "type": "bar",
+            "fill": {
+              "expr": "bar_colour"
+            },
+            "height": {
+              "band": 0.65
+            },
+            "yOffset": {
+              "expr": "offset_pos"
+            }
+          }
+        },
+        {
+          /* MAIN LABEL LAYER */
+          "layer": [
+            {
+              "mark": {
+                "type": "text",
+                "color": "#FFF",
+                "strokeWidth": 4,
+                "strokeOpacity": 1,
+                "stroke": "#FFF",
+                "align": "center",
+                "baseline": "line-bottom",
+                "fontSize": 14,
+                "dy": 4,
+                "xOffset": {
+                  "expr": "month_text_offset"
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "line-bottom",
+                "color": "#000",
+                "fontWeight": "bold",
+                "fontSize": 14,
+                "dy": 4,
+                "xOffset": {
+                  "expr": "month_text_offset"
+                }
+              }
+            },
+            {
+              /* VARIANCE LABEL LAYER */
+              "layer": [
+                {
+                  "mark": {
+                    "type": "text",
+                    "align": "center",
+                    "baseline": "line-top",
+                    "color": "#FFF",
+                    "strokeWidth": 6,
+                    "strokeOpacity": 1,
+                    "stroke": "#FFF",
+                    "fontWeight": "bold",
+                    "fontSize": 12,
+                    "dy": 2,
+                    "dx": {
+                      "expr": "month_text_offset"
+                    }
+                  }
+                },
+                {
+                  "mark": {
+                    "type": "text",
+                    "align": "center",
+                    "baseline": "line-top",
+                    "color": {
+                      "expr": "datum.pct_diff >= 0 ? 'seagreen' : 'orangered'"
+                    },
+                    "fontWeight": "bold",
+                    "fontSize": 12,
+                    "dy": 2,
+                    "dx": {
+                      "expr": "month_text_offset"
+                    }
+                  }
+                }
+              ],
+              "encoding": {
+                "x": {
+                  "field": "__1__"
+                },
+                "text": {
+                  "field": "pct_diff",
+                  "format": "(▲ 0.0%) ; (▼ 0.0%)",
+                  "formatType": "pbiFormatAutoUnit"
+                }
+              }
+            }
+          ],
+          "encoding": {
+            "x": {
+              "field": "__1__"
+            },
+            "text": {
+              "field": "format_sales",
+              "formatType": "pbiFormatAutoUnit"
+            }
+          }
+        }
+      ],
+      /* MAIN ENCODING TO BAR LAYER */
+      "encoding": {
+        "y": {
+          "field": "__0__",
+          "type": "nominal",
+          "sort": [],
+          "axis": {
+            "tickOpacity": 0.5
+          }
+        },
+        "x": {
+          "field": "__1__",
+          "type": "quantitative"
+        },
+        "opacity": {
+          "condition": {
+            "test": {
+              "field": "__selected__",
+              "equal": "off"
+            },
+            "value": 0.1
+          },
+          "value": 1
+        }
+      }
+    },
+    {
+      "width": 500,
+      "height": 5,
+      "mark": {
+        "type": "rule",
+        "stroke": "dimgray",
+        "strokeWidth": 3,
+        "strokeDash": [
+          5,
+          5
+        ]
+      },
+      "encoding": {
+        "y": {
+          "datum": 0
+        },
+        "x": {
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "width": 400,
+      /* GRANDTOTAL VCONCAT LAYER */
+      "name": "GRAND_TOTAL_CONCAT",
+      "encoding": {
+        "x": {
+          "type": "quantitative",
+          "aggregate": "sum"
+        }
+      },
+      "height": 30,
+      "layer": [
+        {
+          /* BUDGET MEASURE */
+          "name": "mark_total_budget",
+          "mark": {
+            "type": "bar",
+            "fill": "#ebeaef",
+            "yOffset": {
+              "expr": "offset_neg"
+            }
+          },
+          /* BUDGET ENCODING */
+          "encoding": {
+            "x": {
+              "field": "gt_budget"
+            },
+            "y": {
+              "datum": "TOTAL",
+              "axis": {
+                "title": "",
+                "labelFontWeight": "bold"
+              }
+            }
+          }
+        },
+        {
+          /* SALES MEASURE */
+          "name": "mark_total_sales",
+          "mark": {
+            "type": "bar",
+            "fill": {
+              "expr": "bar_colour"
+            },
+            "yOffset": {
+              "expr": "offset_pos"
+            }
+          }
+        },
+        {
+          /* TEXT LABEL LAYER"*/
+          "layer": [
+            {
+              "mark": {
+                "type": "text",
+                "color": "#FFF",
+                "strokeWidth": 3,
+                "strokeOpacity": 1,
+                "stroke": "#FFF",
+                "align": "center",
+                "baseline": "line-bottom",
+                "fontSize": 14,
+                "dy": 0,
+                "xOffset": {
+                  "expr": "total_text_offset"
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "line-bottom",
+                "color": "#000",
+                "fontWeight": "bold",
+                "fontSize": 14,
+                "dy": 0,
+                "dx": {
+                  "expr": "total_text_offset"
+                }
+              }
+            },
+            {
+              /* VARIANCE LABEL LAYER */
+              "layer": [
+                {
+                  "mark": {
+                    "type": "text",
+                    "align": "center",
+                    "baseline": "line-top",
+                    "color": {
+                      "expr": "datum.gt_pct_diff >= 0 ? 'seagreen' : 'orangered'"
+                    },
+                    "fontWeight": "bold",
+                    "fontSize": 14,
+                    "dy": 0,
+                    "dx": {
+                      "expr": "total_text_offset"
+                    }
+                  }
+                }
+              ],
+              "encoding": {
+                "y": {},
+                "x": {
+                  "field": "gt_sales"
+                },
+                "text": {
+                  "field": "gt_pct_diff",
+                  "format": "(▲ 0.0%) ; (▼ 0.0%)",
+                  "formatType": "pbiFormatAutoUnit"
+                }
+              }
+            }
+          ],
+          "encoding": {
+            "y": {},
+            "x": {
+              "field": "gt_sales"
+            },
+            "text": {
+              "field": "gt_sales",
+              "formatType": "pbiFormatAutoUnit"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
