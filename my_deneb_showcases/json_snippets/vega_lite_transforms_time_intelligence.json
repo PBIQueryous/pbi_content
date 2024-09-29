@@ -1,0 +1,35 @@
+"transform": [
+    {
+      "calculate": "datetime( now()) ",
+      "as": "_utcToday"
+    },
+    {
+      "calculate": "datetime(utc(year( datum['month_Start'] ), month(datum['month_Start']), 1, 1,0,0,0)) ",
+      "as": "_month_start"
+    },
+    {
+      "calculate": "datetime(utc(year(datum._month_start), month(datum._month_start)+1, (date(datum._month_start) - 1),23,59,0,0))",
+      "as": "_month_end"
+    },
+    {
+      "calculate": "datum['_month_end'] <= datum._utcToday ? 1 : 0 ",
+      "as": "isMTD"
+    },
+    {
+      "calculate": "datum['month_Start'] <= datum._utcToday ? 1 : 0 ",
+      "as": "isYTD"
+    },
+
+    {
+      "calculate": "datum['_month_end'] <= datum._utcToday ? 0 : 1 ",
+      "as": "isFRC"
+    },
+    {
+      "calculate": "datum.isYTD == 1 ? datum['_AC'] : null",
+      "as": "AC"
+    },
+    {
+      "calculate": "datum.isFRC == 1 ? datum['_AC'] : null",
+      "as": "FRC"
+    }
+  ]
