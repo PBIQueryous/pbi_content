@@ -1,0 +1,18 @@
+{
+  "window": [
+    {
+      "op": "sum",
+      "field": "_AC", // overwrite this measure
+      "as": "_AC" // return new windowed measure with same name'
+    },
+    {
+      "op": "sum",
+      "field": "_BU", // overwrite this measure
+      "as": "_BU" // return new windowed measure with same name'
+    }
+  ],
+  // frame below [0,0] is snapshot 
+  // [null,0] is cumulative
+  // [null,null] creates a flat line (like a max line constant)
+  "frame": [ null, 0 ] // this is the part that makes it cumulative
+}
