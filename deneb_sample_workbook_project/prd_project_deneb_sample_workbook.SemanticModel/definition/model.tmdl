@@ -24,7 +24,7 @@ queryGroup development
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBIDesktopVersion = 2.132.1053.0 (24.08)
+annotation PBIDesktopVersion = 2.137.952.0 (24.10)
 
 annotation PBI_QueryOrder = ["fn_import_vega_dataset","fn_import_json_array","fn_JSONarrary_toTable_Parsable","output_data_values_json","output_jsonFunction_test","output_manual_input_json","output_jsonFunction_test2","json_table_built","perception_gap","penguins","stocks","sodapops","seattle_weather","themes","themes_named","intensity","patterns","driving","movies","barley","nps_score","population","un_population_projections","__ukpopulation","average_monthly_temperatures_UK","__dim_cities","__KK_KPIsDATA","__KK_KPI","worldpopulation_pq","_tempAverage","tbl_cities_dimension_prep","revenue","actual_vs_budget","countries","ohlc","dynamic_formatting","__dummy","cars","unemployment_across_industries","categorical_revenue","fn_import_json_array_TEST","__americanEstimation","numberFormatting","numberFormattingRange","basicnumberFormatting","__dim_bookmark","__dim_stepstatus"]
 

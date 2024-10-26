@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.3.0/schema.json",
   "name": "e86c9f374b67b10da9b2",
   "position": {
     "x": 2.3759617139680813,
@@ -78,7 +78,7 @@
             "version": {
               "expr": {
                 "Literal": {
-                  "Value": "'1.6.2.1'"
+                  "Value": "'1.7.2.1'"
                 }
               }
             }
@@ -119,7 +119,7 @@
             "version": {
               "expr": {
                 "Literal": {
-                  "Value": "'5.16.3'"
+                  "Value": "'5.20.1'"
                 }
               }
             },
@@ -155,6 +155,26 @@
               "expr": {
                 "Literal": {
                   "Value": "50D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "227.1429679743708D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "896.148112742063D"
                 }
               }
             }
